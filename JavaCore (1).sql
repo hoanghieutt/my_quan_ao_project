@@ -124,11 +124,11 @@ go
 	)
 	INSERT INTO SanPham (maSP, tenSP, soLuong, ngayTao, ngaySua, trangThai, [Image])
 VALUES
-('SP001', 'Áo chạy bộ', 20, '2023-07-01', '2023-07-03', 1, 'image1.jpg'),
-('SP002', 'Áo đá bóng', 15, '2023-07-02', '2023-07-04', 1, 'image2.jpg'),
-('SP003', 'Quần chạy bộ', 30, '2023-07-01', '2023-07-02', 1, 'image3.jpg'),
-('SP004', 'Áo tập gym', 25, '2023-07-03', '2023-07-05', 1, 'image4.jpg'),
-('SP005', 'Quần tập gym', 10, '2023-07-04', '2023-07-06', 1, 'image5.jpg');
+('SP001', N'Áo chạy bộ', 20, '2023-07-01', '2023-07-03', 1, 'image1.jpg'),
+('SP002', N'Áo đá bóng', 15, '2023-07-02', '2023-07-04', 1, 'image2.jpg'),
+('SP003', N'Quần chạy bộ', 30, '2023-07-01', '2023-07-02', 1, 'image3.jpg'),
+('SP004', N'Áo tập gym', 25, '2023-07-03', '2023-07-05', 1, 'image4.jpg'),
+('SP005', N'Quần tập gym', 10, '2023-07-04', '2023-07-06', 1, 'image5.jpg');
 go
 
 ---bảng chi tiết sản phẩm
@@ -342,3 +342,7 @@ insert into KHUYENMAI values (N'KM2','2018-02-02','2019-01-01',100,'2003-01-01',
 insert into KHUYENMAI values (N'KM3','2018-02-02','2019-01-01',600,'2003-01-01','2002-02-02',1)
 insert into KHUYENMAI values (N'KM4','2018-02-02','2019-01-01',700,'2003-01-01','2002-02-02',0)
 insert into KHUYENMAI values (N'KM5','2018-02-02','2019-01-01',1000,'2003-01-01','2002-02-02',0)
+
+
+
+select * from SanPham
