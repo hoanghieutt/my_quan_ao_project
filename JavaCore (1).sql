@@ -243,7 +243,7 @@ create table Users
 	  gioiTinh			nvarchar(30)					null,
 	  email				nvarchar(30)					null,
 	  soDienThoai       int							    null,
-	  [Image]           nvarchar (max)                  NULL,
+	 
 	  ngaySinh          nvarchar(30)				    null,
 	  ngayTao			Date							null,
 	  ngaySua			Date							null,
@@ -254,13 +254,13 @@ create table Users
 	  Constraint FK_Users_ChucVu        Foreign key(maCV)  References ChucVu
 
 )
-INSERT INTO Users (maNV, maCV, tenNV, diaChi, gioiTinh, email, soDienThoai, [Image], ngaySinh, ngayTao, ngaySua, trangThai, [role])
+INSERT INTO Users (maNV, maCV, tenNV, diaChi, gioiTinh, email, soDienThoai, ngaySinh, ngayTao, ngaySua, trangThai, [role])
 VALUES
-    ('NV001', 'CV002', 'Nguyễn Văn A', 'Hà Nội', 'Nam', 'nva@example.com', 123456789, 'image1.jpg', '2000-01-01', '2023-07-01', '2023-07-03', 1, 'Admin'),
-    ('NV002', 'CV002', 'Nguyễn Thị B', 'HCM', 'Nữ', 'ntb@example.com', 987654321, 'image2.jpg', '1998-05-10', '2023-07-02', '2023-07-04', 1, 'User'),
-    ('NV003', 'CV003', 'Trần Văn C', 'Đà Nẵng', 'Nam', 'tvc@example.com', 567891234, 'image3.jpg', '2002-09-15', '2023-07-01', '2023-07-02', 1, 'User'),
-    ('NV004', 'CV002', 'Lê Thị D', 'Hà Nội', 'Nữ', 'ltd@example.com', 345678912, 'image4.jpg', '1995-03-20', '2023-07-03', '2023-07-05', 1, 'User'),
-    ('NV005', 'CV003', 'Phạm Văn E', 'HCM', 'Nam', 'pve@example.com', 789123456, 'image5.jpg', '1997-07-25', '2023-07-04', '2023-07-06', 1, 'User');
+    ('NV001', 'CV002', 'Nguyễn Văn A', 'Hà Nội', 'Nam', 'nva@example.com', 123456789, '2000-01-01', '2023-07-01', '2023-07-03', 1, 'Admin'),
+    ('NV002', 'CV002', 'Nguyễn Thị B', 'HCM', 'Nữ', 'ntb@example.com', 987654321, '1998-05-10', '2023-07-02', '2023-07-04', 1, 'User'),
+    ('NV003', 'CV003', 'Trần Văn C', 'Đà Nẵng', 'Nam', 'tvc@example.com', 567891234, '2002-09-15', '2023-07-01', '2023-07-02', 1, 'User'),
+    ('NV004', 'CV002', 'Lê Thị D', 'Hà Nội', 'Nữ', 'ltd@example.com', 345678912, '1995-03-20', '2023-07-03', '2023-07-05', 1, 'User'),
+    ('NV005', 'CV003', 'Phạm Văn E', 'HCM', 'Nam', 'pve@example.com', 789123456, '1997-07-25', '2023-07-04', '2023-07-06', 1, 'User');
 
 
 go
@@ -345,4 +345,4 @@ insert into KHUYENMAI values (N'KM5','2018-02-02','2019-01-01',1000,'2003-01-01'
 
 
 
-select * from SanPham
+select * from KHUYENMAI
