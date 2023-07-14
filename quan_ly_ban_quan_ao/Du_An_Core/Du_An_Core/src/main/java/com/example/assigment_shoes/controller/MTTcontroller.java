@@ -1,4 +1,4 @@
-package com.example.assigment_shoes.controller.vietnh;
+package com.example.assigment_shoes.controller;
 
 import com.example.assigment_shoes.entity.MonTheThao;
 import com.example.assigment_shoes.repository.MonTheThaoRepository;
