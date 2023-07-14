@@ -36,11 +36,11 @@ public class HinhThucThanhToanController {
     public String hienThi(Model model){
         model.addAttribute("data", repo.findAll());
         Date min = Date.valueOf("2020-01-01");
-        Date max = Date.valueOf("2023-07-20");
+        Date now = new Date(System.currentTimeMillis());
 
         // Thêm giá trị mặc định vào model
         model.addAttribute("minDate", min);
-        model.addAttribute("maxDate", max);
+        model.addAttribute("maxDate", now);
         return "/thanh_toan/index";
     }
 
