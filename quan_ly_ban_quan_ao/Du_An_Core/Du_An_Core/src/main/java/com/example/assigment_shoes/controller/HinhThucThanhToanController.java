@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Date;
 import java.util.List;
@@ -34,6 +35,12 @@ public class HinhThucThanhToanController {
     @GetMapping("hien-thi")
     public String hienThi(Model model){
         model.addAttribute("data", repo.findAll());
+        Date min = Date.valueOf("2020-01-01");
+        Date max = Date.valueOf("2023-07-20");
+
+        // Thêm giá trị mặc định vào model
+        model.addAttribute("minDate", min);
+        model.addAttribute("maxDate", max);
         return "/thanh_toan/index";
     }
 
@@ -94,12 +101,30 @@ public class HinhThucThanhToanController {
         return "redirect:/hinh-thuc-thanh-toan/hien-thi";
     }
 
-    @GetMapping("search")
-    public String search(@Param("min") Date min, @Param("max") Date max, Model model){
-        List<HinhThucThanhToan> data = repo.findByMinMax(min,max);
-        model.addAttribute("data",data);
+    @PostMapping("search")
+    public String search(@RequestParam("keyword") String keyword, @RequestParam("min") Date min, @RequestParam("max") Date max, Model model) {
+        List<HinhThucThanhToan> data = repo.findByKeywordAndDate("%" + keyword + "%", min, max);
+        model.addAttribute("data", data);
+        model.addAttribute("keyword", keyword);
         model.addAttribute("minDate", min);
         model.addAttribute("maxDate", max);
         return "/thanh_toan/index";
     }
+
+//    @GetMapping("searchByDate")
+//    public String searchByDate(@Param("min") Date min, @Param("max") Date max, Model model){
+//        List<HinhThucThanhToan> data = repo.findByMinMax(min,max);
+//        model.addAttribute("data",data);
+//        model.addAttribute("minDate", min);
+//        model.addAttribute("maxDate", max);
+//        return "/thanh_toan/index";
+//    }
+//
+//    @GetMapping("searchByKeyword")
+//    public String searchByKeyword(@Param("keyword") String keyword, Model model){
+//        List<HinhThucThanhToan> data = repo.findByKeyWord("%"+keyword+"%");
+//        model.addAttribute("data",data);
+//        model.addAttribute("keyword", keyword);
+//        return "/thanh_toan/index";
+//    }
 }

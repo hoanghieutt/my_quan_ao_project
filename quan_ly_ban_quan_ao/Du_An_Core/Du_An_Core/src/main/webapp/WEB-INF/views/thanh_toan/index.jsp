@@ -16,11 +16,23 @@
         <div class="col-md-10">
             <h1 style="text-align: center;">Quản lý Hình thức thanh toán</h1>
             <br>
-            <form action="${pageContext.request.contextPath}/hinh-thuc-thanh-toan/search" method="get">
+<%--            <form action="${pageContext.request.contextPath}/hinh-thuc-thanh-toan/searchByDate" method="get">--%>
+<%--                <input type="date" name="min" value="${minDate}">--%>
+<%--                <input type="date" name="max" value="${maxDate}">--%>
+<%--                <button>search</button>--%>
+<%--            </form>--%>
+
+<%--            <form action="${pageContext.request.contextPath}/hinh-thuc-thanh-toan/searchByKeyword" method="get">--%>
+<%--                <input type="text" placeholder="Nhập từ khóa cần tìm kiếm" name="keyword" value="${keyword}">--%>
+<%--                <button>search</button>--%>
+<%--            </form>--%>
+            <form action="${pageContext.request.contextPath}/hinh-thuc-thanh-toan/search" method="post">
+                <input type="text" placeholder="Nhập từ khóa cần tìm kiếm" name="keyword" value="${keyword}">
                 <input type="date" name="min" value="${minDate}">
                 <input type="date" name="max" value="${maxDate}">
                 <button>search</button>
             </form>
+
             <br>
             <a class="btn btn-warning" href="/hinh-thuc-thanh-toan/create">ADD</a>
             <br>
