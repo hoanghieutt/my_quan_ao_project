@@ -1,25 +1,16 @@
 package com.example.assigment_shoes.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Id;
 
-import java.io.Serializable;
+import java.util.Date;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-
-@Entity
-@Table(name = "khuyenmai")
-public class KhuyenMai implements Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer makm;// INT IDENTITY(1, 1) NOT NULL,
-    String tenkm;// NVARCHAR(50) NOT NULL,
-    String ngaybatdau;// DATE,
-    String ngayketthuc;// DATE,
-    Double giamgia;// money NOT NULL,
-    String ngaytao;// date not null,
-    String ngaysua;// date not null,
-    Integer trangthai;// BIT DEFAULT 1 NOT NULL
+public class KhuyenMai {
+    Integer makm;
+    String tenkm;
+    Date ngaybatdau;
+    Date ngayketthuc;
+    Double giamgia;
+    Date ngaytao;
+    Date ngaysua;
+    Integer trangthai;
 }
