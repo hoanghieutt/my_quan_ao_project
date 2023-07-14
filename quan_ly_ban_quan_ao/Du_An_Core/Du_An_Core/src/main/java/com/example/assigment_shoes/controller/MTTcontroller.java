@@ -70,6 +70,7 @@ public class MTTcontroller {
                           Model model){
         monTheThao.setNgaytao(String.valueOf(LocalDate.now()));
         monTheThao.setNgaysua(String.valueOf(LocalDate.now()));
+        monTheThao.setTrangthai(1);
         repository.save(monTheThao);
         return "redirect:/mon_the_thao/index";
     }
@@ -78,6 +79,7 @@ public class MTTcontroller {
     public String save(@ModelAttribute("mtt")MonTheThao monTheThao,
                        Model model){
         monTheThao.setNgaysua(String.valueOf(LocalDate.now()));
+        monTheThao.setTrangthai(1);
         repository.save(monTheThao);
         return "redirect:/mon_the_thao/index";
     }
