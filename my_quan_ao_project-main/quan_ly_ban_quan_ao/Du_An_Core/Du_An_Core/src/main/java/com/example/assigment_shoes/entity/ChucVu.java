@@ -1,74 +1,37 @@
 package com.example.assigment_shoes.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
-public class ChucVu implements Serializable {
+@Table(name = "ChucVu")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 
+public class ChucVu {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "maCV")
     private String maCV;
 
+    @Column(name = "tenCV")
     private String tenCV;
+
+    @Column(name = "ngayTao")
     private Date ngayTao;
+
+    @Column(name = "ngaySua")
     private Date ngaySua;
-    private int trangThai;
 
-
-    public ChucVu() {
-    }
-
-    public ChucVu(String maCV, String tenCV, Date ngayTao, Date ngaySua, int trangThai) {
-        this.maCV = maCV;
-        this.tenCV = tenCV;
-        this.ngayTao = ngayTao;
-        this.ngaySua = ngaySua;
-        this.trangThai = trangThai;
-    }
-
-    public String getMaCV() {
-        return maCV;
-    }
-
-    public void setMaCV(String maCV) {
-        this.maCV = maCV;
-    }
-
-    public String getTenCV() {
-        return tenCV;
-    }
-
-    public void setTenCV(String tenCV) {
-        this.tenCV = tenCV;
-    }
-
-    public Date getNgayTao() {
-        return ngayTao;
-    }
-
-    public void setNgayTao(Date ngayTao) {
-        this.ngayTao = ngayTao;
-    }
-
-    public Date getNgaySua() {
-        return ngaySua;
-    }
-
-    public void setNgaySua(Date ngaySua) {
-        this.ngaySua = ngaySua;
-    }
-
-    public int getTrangThai() {
-        return trangThai;
-    }
-
-    public void setTrangThai(int trangThai) {
-        this.trangThai = trangThai;
-    }
+    @Column(name = "trangThai")
+    private String trangThai;
 }
