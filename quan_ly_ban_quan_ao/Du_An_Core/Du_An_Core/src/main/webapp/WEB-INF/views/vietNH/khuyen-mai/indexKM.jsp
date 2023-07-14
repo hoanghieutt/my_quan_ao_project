@@ -87,6 +87,7 @@
                 <td>${k.giamgia}</td>
                 <td>${k.ngaytao}</td>
                 <td>${k.ngaysua}</td>
+                <td><a href="/KM/suaKM/${k.makm}">RESTORE</a></td>
             </tr>
         </c:forEach>
     </table>

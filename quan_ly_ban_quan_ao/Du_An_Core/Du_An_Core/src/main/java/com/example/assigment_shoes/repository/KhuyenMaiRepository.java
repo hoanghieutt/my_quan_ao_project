@@ -14,4 +14,7 @@ public interface KhuyenMaiRepository extends JpaRepository<KhuyenMai,Integer> {
 
     @Query("select p from KhuyenMai p where p.trangthai=0")
     List<KhuyenMai> findDeleted();
+
+    @Query("select p from KhuyenMai p where p.trangthai=1 and p.tenkm like ?1")
+    List<KhuyenMai> findActive(String s);
 }
