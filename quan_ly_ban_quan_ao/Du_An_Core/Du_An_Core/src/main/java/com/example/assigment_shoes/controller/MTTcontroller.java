@@ -72,6 +72,7 @@ public class MTTcontroller {
         monTheThao.setNgaysua(String.valueOf(LocalDate.now()));
         monTheThao.setTrangthai(1);
         repository.save(monTheThao);
+        kwd = "";
         return "redirect:/mon_the_thao/index";
     }
 
@@ -81,6 +82,7 @@ public class MTTcontroller {
         monTheThao.setNgaysua(String.valueOf(LocalDate.now()));
         monTheThao.setTrangthai(1);
         repository.save(monTheThao);
+        kwd = "";
         return "redirect:/mon_the_thao/index";
     }
 
