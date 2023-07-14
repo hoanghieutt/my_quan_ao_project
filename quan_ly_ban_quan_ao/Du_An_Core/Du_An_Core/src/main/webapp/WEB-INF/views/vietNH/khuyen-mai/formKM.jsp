@@ -9,7 +9,7 @@
 </head>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <body>
-    <form:form modelAttribute="fkm" method="post" action="/KM/${malenh}">
+    <form:form modelAttribute="fkm" method="post" action="/KM/save">
         <div>
             <p>Name: </p>
             <form:input path="tenkm"/>

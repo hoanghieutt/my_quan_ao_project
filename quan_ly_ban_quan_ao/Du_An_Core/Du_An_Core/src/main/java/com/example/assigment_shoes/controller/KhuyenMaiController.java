@@ -96,17 +96,18 @@ public class KhuyenMaiController {
     @RequestMapping("/KM/themKM")
     public String formThem(@ModelAttribute("fkm")KhuyenMai object,
                            Model model){
-        model.addAttribute("malenh", "create");
         return "vietNH/khuyen-mai/formKM";
     }
 
-    @PostMapping("/KM/create")
-    public String themKM( @ModelAttribute("fkm")KhuyenMai object,
+    @PostMapping("/KM/save")
+    public String themKM( @ModelAttribute("fkm")KhuyenMai khuyenMai,
                          Model model){
-        object.setNgaytao(String.valueOf(LocalDate.now()));
-        object.setNgaysua(String.valueOf(LocalDate.now()));
-        object.setTrangthai(1);
-        repository.save(object);
+        if(khuyenMai.getMakm()==null){
+            khuyenMai.setNgaytao(String.valueOf(LocalDate.now()));
+        }
+        khuyenMai.setNgaysua(String.valueOf(LocalDate.now()));
+        khuyenMai.setTrangthai(1);
+        repository.save(khuyenMai);
         kwd = "";
         return "redirect:/KM/index";
     }
@@ -117,19 +118,9 @@ public class KhuyenMaiController {
                            Model model){
         KhuyenMai km = repository.findById(id).get();
         model.addAttribute("fkm",km);
-        model.addAttribute("malenh", "update");
         return "vietNH/khuyen-mai/formKM";
     }
 
-    @PostMapping("/KM/update")
-    public String suaKM(@ModelAttribute("fkm")KhuyenMai object,
-                         Model model){
-        object.setNgaysua(String.valueOf(LocalDate.now()));
-        object.setTrangthai(1);
-        repository.save(object);
-        kwd = "";
-        return "redirect:/KM/index";
-    }
 
     @RequestMapping("/KM/xoaKM/{id}")
     public String xoaKM(@PathVariable("id") Integer id){

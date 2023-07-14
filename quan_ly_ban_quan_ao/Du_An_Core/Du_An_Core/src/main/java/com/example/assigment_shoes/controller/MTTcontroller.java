@@ -51,7 +51,6 @@ public class MTTcontroller {
     @RequestMapping("/mon_the_thao/form")
     public String formMTT(@ModelAttribute("mtt")MonTheThao monTheThao,
                           Model model){
-        model.addAttribute("kieuchay", "add");
         return "vietNH/mtt/_form";
     }
 
@@ -61,24 +60,15 @@ public class MTTcontroller {
                          @PathVariable String id){
         MonTheThao mtt = repository.findById(id).get();
         model.addAttribute("mtt", mtt);
-        model.addAttribute("kieuchay", "update");
         return "vietNH/mtt/_form";
     }
 
-    @PostMapping("/mon_the_thao/add")
+    @PostMapping("/mon_the_thao/save")
     public String them(@ModelAttribute("mtt")MonTheThao monTheThao,
                           Model model){
-        monTheThao.setNgaytao(String.valueOf(LocalDate.now()));
-        monTheThao.setNgaysua(String.valueOf(LocalDate.now()));
-        monTheThao.setTrangthai(1);
-        repository.save(monTheThao);
-        kwd = "";
-        return "redirect:/mon_the_thao/index";
-    }
-
-    @PostMapping("/mon_the_thao/update")
-    public String save(@ModelAttribute("mtt")MonTheThao monTheThao,
-                       Model model){
+        if(monTheThao.getNgaytao()==""){
+            monTheThao.setNgaytao(String.valueOf(LocalDate.now()));
+        }
         monTheThao.setNgaysua(String.valueOf(LocalDate.now()));
         monTheThao.setTrangthai(1);
         repository.save(monTheThao);
