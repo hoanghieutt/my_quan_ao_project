@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <html>
 <head>
-    <title>CRUD Thanh Toán</title>
+    <title>CRUD Khách Hàng</title>
     <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -22,25 +22,44 @@
         integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
         crossorigin="anonymous"></script>
 
-<sf:form action="${action}" method="post"
-         modelAttribute="vm">
-
+<sf:form action="${action}" method="post" modelAttribute="vm">
     <div class="container">
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-5">
-                <h1 style="align-items: center">Quản lý Hình thức thanh toán</h1>
+                <h1 style="align-items: center">Quản lý Khách Hàng</h1>
             </div>
         </div>
 
         <div>
             <label class="form-label">Mã</label>
-            <sf:input path="maHTTT" class="form-control"/>
+            <sf:input path="maKH" class="form-control"/>
         </div>
 
         <div>
             <label class="form-label">Tên</label>
-            <sf:input path="tenHTTT" class="form-control"/>
+            <sf:input path="tenKH" class="form-control"/>
+        </div>
+
+        <div>
+            <label class="form-label">Ngày sinh</label>
+            <sf:input path="ngaySinh" class="form-control" type="date"/>
+        </div>
+
+        <div>
+            <label class="form-label">Giới tính</label>
+            <sf:radiobutton value="Nam" path="gioiTinh" class="form-check-input"/> Nam
+            <sf:radiobutton value="Nữ" path="gioiTinh" class="form-check-input"/> Nữ
+        </div>
+
+        <div>
+            <label class="form-label">Số điện thoại</label>
+            <sf:input path="soDienThoai" class="form-control"/>
+        </div>
+
+        <div>
+            <label class="form-label">Địa chỉ</label>
+            <sf:input path="diaChi" class="form-control"/>
         </div>
 
         <div class="row">
@@ -51,7 +70,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </sf:form>
 </body>
