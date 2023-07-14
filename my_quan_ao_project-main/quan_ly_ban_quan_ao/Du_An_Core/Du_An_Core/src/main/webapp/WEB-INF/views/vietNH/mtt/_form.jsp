@@ -9,7 +9,7 @@
 </head>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <body>
-    <form:form modelAttribute="mtt" action="/mon_the_thao/${kieuchay}" method="post">
+    <form:form modelAttribute="mtt" action="/mon_the_thao/save" method="post">
         <p>
             <div>ID:</div>
             <form:input path="mamtt"/>
@@ -21,7 +21,7 @@
 
         <form:input path="ngaytao" type="hidden"/>
 
-        <button type="submit"><strong>${kieuchay}</strong></button>
+        <button type="submit"><strong>SAVE</strong></button>
     </form:form>
 </body>
 </html>
