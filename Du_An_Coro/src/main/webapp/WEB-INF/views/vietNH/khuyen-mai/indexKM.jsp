@@ -1,12 +1,13 @@
-<!doctype html>
-<html lang="en">
+<%@ page pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%--    <link rel="icon" href="img/background_title.jpg" type="image/x-icon">--%>
+    <title>Teams Store</title>
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -20,24 +21,22 @@
     <link href="/css/index.css" rel="stylesheet">
     <link href="/css/home.css" rel="stylesheet">
     <link href="/css/productList.css" rel="stylesheet">
-</head>
-<STYLE>
-    h2{
-        width: 100%;
-        text-align: center;
-    }
-    table{
-        border: 1px solid black;
-        width: 100%;
-    }
-    td{
-        border: 1px solid black;
-    }
-    th{
-        border: 1px solid black;
-    }
-</STYLE>
 
+    <STYLE>
+        h2{
+            width: 100%;
+            text-align: center;
+        }
+        table{
+            border: 1px solid black;
+            width: 100%;
+        }
+        td{
+            border: 1px solid black;
+        }
+    </STYLE>
+
+</head>
 <body id="page-top">
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -64,21 +63,21 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header" style="color: black; font-size: 13px;">Pages</h6>
-                    <a class="collapse-item" href="/sanPham/list">S?n ph?m</a>
-                    <a class="collapse-item" href="/hoaDonCT/list">H�a ??n chi ti?t</a>
-                    <a class="collapse-item" href="/category/list">H�a ??n</a>
-                    <a class="collapse-item" href="/hinh-thuc-thanh-toan/hien-thi">H�nh th?c thanh to�n</a>
-                    <a class="collapse-item" href="/khach-hang/hien-thi">Kh�ch h�ng</a>
-                    <a class="collapse-item" href="/KM/index">Khuy?n m?i</a>
-                    <a class="collapse-item" href="">Chi ti?t s?n ph?m</a>
+                    <a class="collapse-item" href="/sanPham/list">Sản phẩm</a>
+                    <a class="collapse-item" href="/hoaDonCT/list">Hóa đơn chi tiết</a>
+                    <a class="collapse-item" href="/category/list">Hóa đơn</a>
+                    <a class="collapse-item" href="/hinh-thuc-thanh-toan/hien-thi">Hình thức thanh toán</a>
+                    <a class="collapse-item" href="/khach-hang/hien-thi">Khách hàng</a>
+                    <a class="collapse-item" href="/KM/index">Khuyến mại</a>
+                    <a class="collapse-item" href="">Chi tiết sản phẩm</a>
 
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Other pages:</h6>
-                    <a class="collapse-item" href="">M�u s?c</a>
+                    <a class="collapse-item" href="">Màu sắc</a>
                     <a class="collapse-item" href="">Size</a>
-                    <a class="collapse-item" href="/mon_the_thao/index">M�n th? thao</a>
-                    <a class="collapse-item" href="/chat-lieu/hien-thi">Ch?t li?u</a>
-                    <a class="collapse-item" href="/loai-san-pham/add">Lo?i s?n ph?m</a>
+                    <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
+                    <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
+                    <a class="collapse-item" href="/loai-san-pham/add">Loại sản phẩm</a>
 
 
                 </div>
@@ -96,8 +95,8 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">User:</h6>
-                    <a class="collapse-item" href="/login">Nh�n vi�n</a>
-                    <a class="collapse-item" href="/chuc-vu/hien-thi">Ch?c v?</a>
+                    <a class="collapse-item" href="/login">Nhân viên</a>
+                    <a class="collapse-item" href="/chuc-vu/hien-thi">Chức vụ</a>
 
 
 
@@ -252,7 +251,7 @@
                                     <div class="text-truncate">Hi there! I am wondering if you can help me with a
                                         problem I've been having.
                                     </div>
-                                    <div class="small text-gray-500">Emily Fowler � 58m</div>
+                                    <div class="small text-gray-500">Emily Fowler · 58m</div>
                                 </div>
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
@@ -264,7 +263,7 @@
                                     <div class="text-truncate">I have the photos that you ordered last month, how
                                         would you like them sent to you?
                                     </div>
-                                    <div class="small text-gray-500">Jae Chun � 1d</div>
+                                    <div class="small text-gray-500">Jae Chun · 1d</div>
                                 </div>
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
@@ -276,7 +275,7 @@
                                     <div class="text-truncate">Last month's report looks great, I am very happy with
                                         the progress so far, keep up the good work!
                                     </div>
-                                    <div class="small text-gray-500">Morgan Alvarez � 2d</div>
+                                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
                                 </div>
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
@@ -289,7 +288,7 @@
                                     <div class="text-truncate">Am I a good boy? The reason I ask is because someone
                                         told me that people say this to all dogs, even if they aren't good...
                                     </div>
-                                    <div class="small text-gray-500">Chicken the Dog � 2w</div>
+                                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                 </div>
                             </a>
                             <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
@@ -428,7 +427,7 @@
                 <div class="modal-header">
                     <h5 class="modal-titl se" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">�</span>
+                        <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
@@ -452,5 +451,4 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 </body>
-
 </html>

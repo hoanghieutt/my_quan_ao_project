@@ -67,6 +67,21 @@ public class MTTcontroller {
     @PostMapping("/mon_the_thao/save")
     public String them(@ModelAttribute("mtt")MonTheThao monTheThao,
                           Model model){
+        if("".equalsIgnoreCase(monTheThao.getMamtt().trim())
+                || "".equalsIgnoreCase(monTheThao.getTen().trim())){
+
+            model.addAttribute("mtt", monTheThao);
+
+            if ("".equalsIgnoreCase(monTheThao.getMamtt().trim())){
+                model.addAttribute("loiID", "Need ID");
+            }
+
+            if ("".equalsIgnoreCase(monTheThao.getTen().trim())){
+                model.addAttribute("loiTen", "Need ID");
+            }
+
+            return "vietNH/mtt/_form";
+        }
         if(monTheThao.getNgaytao()==""){
             monTheThao.setNgaytao(String.valueOf(LocalDate.now()));
         }

@@ -1,5 +1,5 @@
 
-
+<%@ page pageEncoding="utf-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
@@ -322,11 +322,11 @@
             <form:form modelAttribute="mtt" action="/mon_the_thao/save" method="post">
                 <p>
                 <div>ID:</div>
-                <form:input path="mamtt"/>
+                <form:input path="mamtt"/> <form:errors cssStyle="color: red" path="mamtt"/> <div style="color: red">${loiID}</div>
                 </p>
                 <p>
                 <div>Name:</div>
-                <form:input path="ten"/>
+                <form:input path="ten"/> <form:errors cssStyle="color: red" path="ten"/> <div style="color: red">${loiTen}</div>
                 </p>
 
                 <form:input path="ngaytao" type="hidden"/>
