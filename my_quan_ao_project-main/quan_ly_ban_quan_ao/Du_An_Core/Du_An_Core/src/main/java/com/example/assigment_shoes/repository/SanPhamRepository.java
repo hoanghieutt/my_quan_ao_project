@@ -1,9 +1,11 @@
-package com.example.assigment_shoes.repository;
+package com.example.duancore.repository;
 
-import com.example.assigment_shoes.entity.SanPham;
+import com.example.duancore.entity.SanPham;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SanPhamRepository extends JpaRepository<SanPham,String> {
+public interface SanPhamRepository extends JpaRepository<SanPham, String> {
+
+
 }

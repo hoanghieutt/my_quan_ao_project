@@ -25,5 +25,12 @@ public class BeanConfig {
         return vm;
     }
 
+   @Bean("sanPham")
+    public SanPham getSanPham(){
+        SanPham sp = new SanPham();
+        return sp;
+    }
+
+
 
 }

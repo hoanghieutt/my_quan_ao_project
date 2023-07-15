@@ -1,82 +1,106 @@
-package com.example.assigment_shoes.entity;
+package com.example.duancore.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
-import java.io.Serializable;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+
 import java.util.Date;
 
 @Entity
-public class SanPham implements Serializable {
+@Table(name = "SanPham")
+public class SanPham {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String maSP;
-    private String tenSP;
-    private int soLuong;
-    private Date ngayTao;
-    private Date ngaySua;
-    private int trangThai;
+    @NotBlank(message = "Vui lòng nhập mã sản phẩm")
+    @Column(name = "maSP")
+    private String masp;
+
+    @Column(name = "image")
+    private String image;
+
+    @NotBlank(message = "Vui lòng nhập tên sản phẩm")
+    @Column(name = "tenSP")
+    private String tensp;
+
+    @Column(name = "soLuong")
+    private int soluong;
+
+    @Column(name = "ngayTao")
+    private String ngaytao;
+
+    @Column(name = "ngaySua")
+    private String ngaysua;
+
+    @Column(name = "trangThai")
+    private int trangthai;
+
 
     public SanPham() {
     }
 
-    public SanPham(String maSP, String tenSP, int soLuong, Date ngayTao, Date ngaySua, int trangThai) {
-        this.maSP = maSP;
-        this.tenSP = tenSP;
-        this.soLuong = soLuong;
-        this.ngayTao = ngayTao;
-        this.ngaySua = ngaySua;
-        this.trangThai = trangThai;
+    public SanPham(String masp, String image, String tensp, int soluong, String ngaytao, String ngaysua, int trangthai) {
+        this.masp = masp;
+        this.image = image;
+        this.tensp = tensp;
+        this.soluong = soluong;
+        this.ngaytao = ngaytao;
+        this.ngaysua = ngaysua;
+        this.trangthai = trangthai;
     }
 
-    public String getMaSP() {
-        return maSP;
+    public String getMasp() {
+        return masp;
     }
 
-    public void setMaSP(String maSP) {
-        this.maSP = maSP;
+    public void setMasp(String masp) {
+        this.masp = masp;
     }
 
-    public String getTenSP() {
-        return tenSP;
+    public String getImage() {
+        return image;
     }
 
-    public void setTenSP(String tenSP) {
-        this.tenSP = tenSP;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public int getSoLuong() {
-        return soLuong;
+    public String getTensp() {
+        return tensp;
     }
 
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
+    public void setTensp(String tensp) {
+        this.tensp = tensp;
     }
 
-    public Date getNgayTao() {
-        return ngayTao;
+    public int getSoluong() {
+        return soluong;
     }
 
-    public void setNgayTao(Date ngayTao) {
-        this.ngayTao = ngayTao;
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
     }
 
-    public Date getNgaySua() {
-        return ngaySua;
+    public String getNgaytao() {
+        return ngaytao;
     }
 
-    public void setNgaySua(Date ngaySua) {
-        this.ngaySua = ngaySua;
+    public void setNgaytao(String ngaytao) {
+        this.ngaytao = ngaytao;
     }
 
-    public int getTrangThai() {
-        return trangThai;
+    public String getNgaysua() {
+        return ngaysua;
     }
 
-    public void setTrangThai(int trangThai) {
-        this.trangThai = trangThai;
+    public void setNgaysua(String ngaysua) {
+        this.ngaysua = ngaysua;
+    }
+
+    public int getTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(int trangthai) {
+        this.trangthai = trangthai;
     }
 }
