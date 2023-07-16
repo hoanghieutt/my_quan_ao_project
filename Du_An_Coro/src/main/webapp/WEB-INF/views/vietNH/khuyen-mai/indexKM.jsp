@@ -332,7 +332,7 @@
             </nav>
             <!-- How to code article   -->
             <%--Todo code article--%>
-            <h2>ACRIVATED DISCOUNT</h2>
+            <h2 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">KHUYẾN MÃI CÒN HOẠT ĐỘNG</h2>
             <form method="post" action="/KM/timKW">
                 <p>Key word: </p>
                 <input type="text" name="tukhoa">
@@ -344,15 +344,15 @@
 
             <a href="/KM/themKM">Create new discount</a>
             <br>
-            <table>
+            <table class="col-md-12">
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Begin</th>
-                    <th>End</th>
-                    <th>Value</th>
-                    <th>Created</th>
-                    <th>Updated</th>
+                    <th>Tên</th>
+                    <th>Ngày bắt đầu</th>
+                    <th>Ngày kết thúc</th>
+                    <th>Giá trị</th>
+                    <th>Ngày tạo</th>
+                    <th>Ngày sửa</th>
                 </tr>
                 <c:forEach items="${kmpage.content}" var="k">
                     <tr>
@@ -374,16 +374,16 @@
             <a href="?pageNum=${kmpage.number+1}">Next</a>
             <a href="?pageNum=${kmpage.totalPages-1}">Last</a>
 
-            <h2>DELETED DISCOUNT</h2>
-            <table>
+            <h2 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">KHUYẾN MÃI DỪNG HOẠT ĐỘNG</h2>
+            <table class="col-md-12">
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Begin</th>
-                    <th>End</th>
-                    <th>Value</th>
-                    <th>Created</th>
-                    <th>Updated</th>
+                    <th>Tên</th>
+                    <th>Ngày bắt đầu</th>
+                    <th>Ngày kết thúc</th>
+                    <th>Giá trị</th>
+                    <th>Ngày tạo</th>
+                    <th>Ngày sửa lần cuối bởi người dùng</th>
                 </tr>
                 <c:forEach items="${kmX}" var="k">
                     <tr>

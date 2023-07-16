@@ -40,15 +40,16 @@ public class KhuyenMaiController {
         }
 
         Integer kiemTraTrang = 5;
-
-        if (pageNum<0){
-            pageNum=0;
-        }
-
         Integer soTrang = soTrangKM.size();
 
         if(pageNum>soTrang/kiemTraTrang){
             pageNum=soTrang/kiemTraTrang;
+        }
+
+
+
+        if (pageNum<0){
+            pageNum=0;
         }
 
         Pageable pageable = PageRequest.of(pageNum, kiemTraTrang);
@@ -99,6 +100,49 @@ public class KhuyenMaiController {
     @PostMapping("/KM/save")
     public String themKM( @ModelAttribute("fkm")KhuyenMai khuyenMai,
                          Model model){
+
+
+
+        if("".equalsIgnoreCase(khuyenMai.getTenkm()) ||
+        "".equalsIgnoreCase(khuyenMai.getNgayketthuc()) ||
+        "".equalsIgnoreCase(khuyenMai.getNgaybatdau()) ||
+        null == khuyenMai.getGiamgia()){
+            model.addAttribute("fkm", khuyenMai);
+
+            if ("".equalsIgnoreCase(khuyenMai.getTenkm())){
+                model.addAttribute("loiten","Nhập tên");
+            }
+            if ("".equalsIgnoreCase(khuyenMai.getNgaybatdau())){
+                model.addAttribute("loibatdau","Chọn ngày bắt đầu");
+            }
+            if ("".equalsIgnoreCase(khuyenMai.getNgayketthuc())){
+                model.addAttribute("loiketthuc","Chọn ngày kết thúc");
+            }
+            if (null==khuyenMai.getGiamgia()){
+                model.addAttribute("loigiatri","Nhập giá trị giảm");
+            }
+
+            return "vietNH/khuyen-mai/formKM";
+        }
+
+        Date batdau = doiVeNgay(khuyenMai.getNgaybatdau());
+        Date ketthuc = doiVeNgay(khuyenMai.getNgayketthuc());
+
+        if (ketthuc.compareTo(batdau)<0 ||
+        khuyenMai.getGiamgia()<0){
+
+            model.addAttribute("fkm", khuyenMai);
+
+            if (ketthuc.compareTo(batdau)<0){
+                model.addAttribute("loiketthuc","Ngày kết thúc phải trong hoặc sau ngày bắt đầu");
+            }
+            if (khuyenMai.getGiamgia()<0){
+                model.addAttribute("loigiatri","Giá trị giảm không được là âm");
+            }
+
+            return "vietNH/khuyen-mai/formKM";
+        }
+
         if(khuyenMai.getMakm()==null){
             khuyenMai.setNgaytao(String.valueOf(LocalDate.now()));
         }

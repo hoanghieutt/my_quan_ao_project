@@ -318,32 +318,53 @@
                 </ul>
             </nav>
             <!-- How to code article   -->
-
+            <%--Todo code article--%>
             <div>
 
-                <h1 style="text-align: center">Create bảng khuyến mãi</h1>
+                <h1 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">THÔNG TIN KHUYẾN MÃI</h1>
 
             </div>
 
-            <form:form modelAttribute="fkm" method="post" action="/KM/save">
-                <div>
-                    <p style="margin-left: 70px">Name: </p>
-                    <form:input path="tenkm" style="margin-left: 70px"/>
+            <form:form modelAttribute="fkm" method="post" action="/KM/save"
+            cssStyle="width: 100%">
+                <div class="col-md-12">
+                    <div style="margin-left: 70px" class="col-md-4">
+                        Tên:
+                    </div>
+                    <div class="col-md-8">
+                        <div style="margin-left: 70px; color: red">${loiten}</div>
+                        <form:input path="tenkm" style="margin-left: 70px"/>
+                    </div>
                 </div>
 
-                <div>
-                    <p style="margin-left: 70px">Started date: </p>
-                    <form:input path="ngaybatdau" style="margin-left: 70px" type="date"/>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin-left: 70px">
+                        Ngày bắt đầu:
+                    </div>
+                    <div class="col-md-8">
+                        <div style="margin-left: 70px; color: red">${loibatdau}</div>
+                        <form:input path="ngaybatdau" style="margin-left: 70px" type="date"/>
+                    </div>
                 </div>
 
-                <div>
-                    <p style="margin-left: 70px">Ended date: </p>
-                    <form:input style="margin-left: 70px" path="ngayketthuc" type="date"/>
+                <div class="col-md-12">
+                    <div style="margin-left: 70px" class="col-md-4">
+                        Ngày kết thúc:
+                    </div>
+                    <div class="col-md-8">
+                        <div style="margin-left: 70px; color: red">${loiketthuc}</div>
+                        <form:input style="margin-left: 70px" path="ngayketthuc" type="date"/>
+                    </div>
                 </div>
 
-                <div>
-                    <p style="margin-left: 70px">Discount value: </p>
-                    <form:input style="margin-left: 70px" path="giamgia" type="number"/>
+                <div class="col-md-12">
+                    <div style="margin-left: 70px" class="col-md-4">
+                        Giá trị:
+                    </div>
+                    <div class="col-md-8">
+                        <div style="color: red;margin-left: 70px">${loigiatri}</div>
+                        <form:input style="margin-left: 70px" path="giamgia" type="number"/>
+                    </div>
                 </div>
 
                 <div>
@@ -351,7 +372,7 @@
                     <form:input style="margin-left: 70px" path="makm" type="hidden"/>
                 </div>
 
-                <button type="submit" style="margin-top: 40px; margin-bottom: 170px; margin-left: 70px">SAVE</button>
+                <div><button type="submit" style="margin-top: 40px; margin-bottom: 170px; margin-left: 70px">SAVE</button></div>
             </form:form>
                 <!-- Footer -->
                 <footer style="margin-top: 50px" class="sticky-footer bg-white">

@@ -332,7 +332,7 @@
             </nav>
             <!-- How to code article   -->
             <%--Todo code article--%>
-            <h2>ACTIVATED SPORTS</h2>
+            <h2 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">MÔN THỂ THAO CÒN HOẠT ĐỘNG</h2>
             <form action="/mon_the_thao/tim" method="post">
                 <p>
                 <div>Key word: </div>
@@ -346,9 +346,9 @@
             <table>
                 <tr>
                     <td><strong>ID</strong></td>
-                    <td><strong>Name</strong></td>
-                    <td><strong>Created</strong></td>
-                    <td><strong>Updated</strong></td>
+                    <td><strong>Tên</strong></td>
+                    <td><strong>Ngày tạo</strong></td>
+                    <td><strong>Ngày sửa</strong></td>
                 </tr>
                 <c:forEach items="${mttTable.content}" var="spr">
                     <tr>
@@ -367,13 +367,13 @@
             <a href="?pageNum=${mttTable.totalPages-1}">Last</a>
 
 
-            <h2>DELETED SPORTS</h2>
+            <h2 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">MÔN THỂ THAO ĐÃ XÓA</h2>
             <table>
                 <tr>
                     <td><strong>ID</strong></td>
-                    <td><strong>Name</strong></td>
-                    <td><strong>Created</strong></td>
-                    <td><strong>Deleted</strong></td>
+                    <td><strong>Tên</strong></td>
+                    <td><strong>Ngày tạo</strong></td>
+                    <td><strong>Ngày sửa</strong></td>
                 </tr>
                 <c:forEach items="${mttTableD}" var="spr">
                     <tr>

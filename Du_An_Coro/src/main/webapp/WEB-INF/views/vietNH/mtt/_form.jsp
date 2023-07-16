@@ -319,21 +319,28 @@
             </nav>
             <!-- How to code article   -->
             <%--Todo code article--%>
-            <form:form modelAttribute="mtt" action="/mon_the_thao/save" method="post">
-                <p>
-                <div>ID:</div>
-                <form:input path="mamtt"/> <form:errors cssStyle="color: red" path="mamtt"/> <div style="color: red">${loiID}</div>
-                </p>
-                <p>
-                <div>Name:</div>
-                <form:input path="ten"/> <form:errors cssStyle="color: red" path="ten"/> <div style="color: red">${loiTen}</div>
-                </p>
+            <h3 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">THÔNG TIN MÔN THỂ THAO</h3>
+            <form:form  modelAttribute="mtt" action="/mon_the_thao/save" method="post" cssStyle="width: 100%">
+                <div class="col-md-12">
+                    <div class="col-md-4">ID:</div>
+                    <div class="col-md-8">
+                        <div style="color: red">${loiID}</div>
+                        <form:input path="mamtt"/>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="col-md-4">Tên:</div>
+                    <div class="col-md-8">
+                        <div style="color: red">${loiTen}</div>
+                        <form:input path="ten"/>
+                    </div>
+                </div>
 
                 <form:input path="ngaytao" type="hidden"/>
 
-                <button type="submit"><strong>SAVE</strong></button>
+                <button type="submit" style="margin-top: 40px; margin-bottom: 170px; margin-left: 70px">SAVE</button>
             </form:form>
-Ư
                 <!-- Footer -->
                 <footer style="margin-top: 430px" class="sticky-footer bg-white">
                     <div class="container my-auto">

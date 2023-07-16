@@ -23,25 +23,22 @@ public class MTTcontroller {
     @RequestMapping("/mon_the_thao/index")
     public String hienMTT(@RequestParam(defaultValue = "0")Integer pageNum,
                           Model model){
-        Integer cungvitri = 3;
+
+        Integer thucTheTren1Trang = 3;
+        List<MonTheThao> kiemchung = repository.listLoc("%"+kwd+"%");
+        Integer tongThucThe = kiemchung.size();
+
+        if (pageNum>tongThucThe/thucTheTren1Trang){
+            pageNum = tongThucThe/thucTheTren1Trang;
+        }
+
+
 
         if (pageNum<0){
             pageNum=0;
         }
 
-        List<MonTheThao> kiemchung = repository.listLoc("%"+kwd+"%");
-        Integer soTrang = 0;
-        for (MonTheThao mtt: kiemchung){
-            if (mtt.getTrangthai()==1){
-                soTrang++;
-            }
-        }
-
-        if (pageNum>soTrang/cungvitri){
-            pageNum = soTrang/cungvitri;
-        }
-
-        Pageable pageable = PageRequest.of(pageNum, cungvitri);
+        Pageable pageable = PageRequest.of(pageNum, thucTheTren1Trang);
         Page<MonTheThao> mttl = repository.findByKwd("%"+kwd+"%", pageable);
         List<MonTheThao> mttX = repository.findDeleted();
         model.addAttribute("mttTable", mttl);
@@ -77,7 +74,7 @@ public class MTTcontroller {
             }
 
             if ("".equalsIgnoreCase(monTheThao.getTen().trim())){
-                model.addAttribute("loiTen", "Need ID");
+                model.addAttribute("loiTen", "Need Name");
             }
 
             return "vietNH/mtt/_form";
