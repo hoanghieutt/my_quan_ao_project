@@ -337,12 +337,13 @@
                 <p>
                 <div>Key word: </div>
                 <input type="text" name="keyword">
-                <button type="submit">Find</button>
+                <button type="submit" class="btn btn-primary">Find</button>
                 </p>
             </form>
             <br>
             <br>
-            <a href="/mon_the_thao/form">Add a new sport</a>
+            <a class="btn btn-primary" href="/mon_the_thao/form">Thêm môn thể thao</a> <br>
+            <br>
             <table>
                 <tr>
                     <td><strong>ID</strong></td>
@@ -356,15 +357,16 @@
                         <td>${spr.ten}</td>
                         <td>${spr.ngaytao}</td>
                         <td>${spr.ngaysua}</td>
-                        <td><a href="/mon_the_thao/sua/${spr.mamtt}">UPDATE</a></td>
-                        <td><a href="/mon_the_thao/delete/${spr.mamtt}">DELETE</a></td>
+                        <td><a class="btn btn-primary" href="/mon_the_thao/sua/${spr.mamtt}">UPDATE</a>
+                        <a class="btn btn-danger" href="/mon_the_thao/delete/${spr.mamtt}">DELETE</a></td>
                     </tr>
                 </c:forEach>
             </table>
-            <a href="?pageNum=0">First</a>
-            <a href="?pageNum=${mttTable.number-1}">Previous</a>
-            <a href="?pageNum=${mttTable.number+1}">Next</a>
-            <a href="?pageNum=${mttTable.totalPages-1}">Last</a>
+            <br> <br>
+            <a class="btn btn-primary" href="?pageNum=0">First</a>
+            <a class="btn btn-primary" href="?pageNum=${mttTable.number-1}">Previous</a>
+            <a class="btn btn-primary" href="?pageNum=${mttTable.number+1}">Next</a>
+            <a class="btn btn-primary" href="?pageNum=${mttTable.totalPages-1}">Last</a>
 
 
             <h2 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">MÔN THỂ THAO ĐÃ XÓA</h2>
@@ -381,7 +383,7 @@
                         <td>${spr.ten}</td>
                         <td>${spr.ngaytao}</td>
                         <td>${spr.ngaysua}</td>
-                        <td><a href="/mon_the_thao/restore/${spr.mamtt}">RESTORE</a></td>
+                        <td><a class="btn btn-primary" href="/mon_the_thao/restore/${spr.mamtt}">RESTORE</a></td>
                     </tr>
                 </c:forEach>
             </table>

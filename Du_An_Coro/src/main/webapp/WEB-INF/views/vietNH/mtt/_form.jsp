@@ -339,7 +339,7 @@
 
                 <form:input path="ngaytao" type="hidden"/>
 
-                <button type="submit" style="margin-top: 40px; margin-bottom: 170px; margin-left: 70px">SAVE</button>
+                <button type="submit" style="margin-top: 40px; margin-bottom: 170px; margin-left: 70px" class="btn btn-primary">SAVE</button>
             </form:form>
                 <!-- Footer -->
                 <footer style="margin-top: 430px" class="sticky-footer bg-white">

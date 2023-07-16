@@ -336,14 +336,14 @@
             <form method="post" action="/KM/timKW">
                 <p>Key word: </p>
                 <input type="text" name="tukhoa">
-                <button type="submit">Find</button>
+                <button class="btn btn-primary" type="submit">Find</button>
             </form>
 
             <br>
             <br>
 
-            <a href="/KM/themKM">Create new discount</a>
-            <br>
+            <a href="/KM/themKM" class="btn btn-primary">Tạo khuyến mãi mới</a>
+            <br> <br>
             <table class="col-md-12">
                 <tr>
                     <th>ID</th>
@@ -363,16 +363,18 @@
                         <td>${k.giamgia}</td>
                         <td>${k.ngaytao}</td>
                         <td>${k.ngaysua}</td>
-                        <td><a href="/KM/suaKM/${k.makm}">UPDATE</a></td>
-                        <td><a href="/KM/xoaKM/${k.makm}">DELETE</a></td>
+                        <td><a class="btn btn-primary" href="/KM/suaKM/${k.makm}">UPDATE</a>
+                        <a class="btn btn-danger" href="/KM/xoaKM/${k.makm}">DELETE</a>
+                        </td>
                     </tr>
                 </c:forEach>
             </table>
-
-            <a href="?pageNum=0">First</a>
-            <a href="?pageNum=${kmpage.number-1}">Pevious</a>
-            <a href="?pageNum=${kmpage.number+1}">Next</a>
-            <a href="?pageNum=${kmpage.totalPages-1}">Last</a>
+            <br>
+            <br>
+            <a href="?pageNum=0" class="btn btn-primary">First</a>
+            <a href="?pageNum=${kmpage.number-1}" class="btn btn-primary">Pevious</a>
+            <a href="?pageNum=${kmpage.number+1}" class="btn btn-primary">Next</a>
+            <a href="?pageNum=${kmpage.totalPages-1}" class="btn btn-primary">Last</a>
 
             <h2 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">KHUYẾN MÃI DỪNG HOẠT ĐỘNG</h2>
             <table class="col-md-12">
@@ -394,7 +396,7 @@
                         <td>${k.giamgia}</td>
                         <td>${k.ngaytao}</td>
                         <td>${k.ngaysua}</td>
-                        <td><a href="/KM/suaKM/${k.makm}">RESTORE</a></td>
+                        <td><a class="btn btn-primary" href="/KM/suaKM/${k.makm}">RESTORE</a></td>
                     </tr>
                 </c:forEach>
             </table>

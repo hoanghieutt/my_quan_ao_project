@@ -372,7 +372,7 @@
                     <form:input style="margin-left: 70px" path="makm" type="hidden"/>
                 </div>
 
-                <div><button type="submit" style="margin-top: 40px; margin-bottom: 170px; margin-left: 70px">SAVE</button></div>
+                <div><button type="submit" style="margin-top: 40px; margin-bottom: 170px; margin-left: 70px" class="btn btn-primary">SAVE</button></div>
             </form:form>
                 <!-- Footer -->
                 <footer style="margin-top: 50px" class="sticky-footer bg-white">
