@@ -332,7 +332,7 @@
                         Tên:
                     </div>
                     <div class="col-md-8">
-                        <div style="margin-left: 70px; color: red">${loiten}</div>
+                        <form:errors cssStyle="margin-left: 70px; color: red" path="tenkm"/> <br>
                         <form:input path="tenkm" style="margin-left: 70px"/>
                     </div>
                 </div>
@@ -342,7 +342,6 @@
                         Ngày bắt đầu:
                     </div>
                     <div class="col-md-8">
-                        <div style="margin-left: 70px; color: red">${loibatdau}</div>
                         <form:input path="ngaybatdau" style="margin-left: 70px" type="date"/>
                     </div>
                 </div>
@@ -362,7 +361,7 @@
                         Giá trị:
                     </div>
                     <div class="col-md-8">
-                        <div style="color: red;margin-left: 70px">${loigiatri}</div>
+                        <form:errors cssStyle="margin-left: 70px; color: red" path="giamgia"/> <br>
                         <form:input style="margin-left: 70px" path="giamgia" type="number"/>
                     </div>
                 </div>

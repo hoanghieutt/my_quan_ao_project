@@ -3,12 +3,14 @@ package com.example.duancore.controller;
 
 import com.example.duancore.entity.KhuyenMai;
 import com.example.duancore.repository.KhuyenMaiRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
@@ -29,7 +31,7 @@ public class KhuyenMaiController {
         List<KhuyenMai> soTrangKM = repository.findActive("%"+kwd+"%");
         for(KhuyenMai k: soTrangKM){
 
-            Date ngayKetThuc = doiVeNgay(k.getNgayketthuc());
+            Date ngayKetThuc = k.getNgayketthuc();
             Date hienTai = doiVeNgay(String.valueOf(LocalDate.now()));
 
             if (ngayKetThuc.compareTo(hienTai)<0){
@@ -98,35 +100,22 @@ public class KhuyenMaiController {
     }
 
     @PostMapping("/KM/save")
-    public String themKM( @ModelAttribute("fkm")KhuyenMai khuyenMai,
+    public String themKM(
+            @Valid
+            @ModelAttribute("fkm")KhuyenMai khuyenMai,
+                         BindingResult result,
                          Model model){
 
-
-
-        if("".equalsIgnoreCase(khuyenMai.getTenkm()) ||
-        "".equalsIgnoreCase(khuyenMai.getNgayketthuc()) ||
-        "".equalsIgnoreCase(khuyenMai.getNgaybatdau()) ||
-        null == khuyenMai.getGiamgia()){
-            model.addAttribute("fkm", khuyenMai);
-
-            if ("".equalsIgnoreCase(khuyenMai.getTenkm())){
-                model.addAttribute("loiten","Nhập tên");
-            }
-            if ("".equalsIgnoreCase(khuyenMai.getNgaybatdau())){
-                model.addAttribute("loibatdau","Chọn ngày bắt đầu");
-            }
-            if ("".equalsIgnoreCase(khuyenMai.getNgayketthuc())){
-                model.addAttribute("loiketthuc","Chọn ngày kết thúc");
-            }
-            if (null==khuyenMai.getGiamgia()){
-                model.addAttribute("loigiatri","Nhập giá trị giảm");
-            }
+        if(result.hasErrors()){
 
             return "vietNH/khuyen-mai/formKM";
+
         }
 
-        Date batdau = doiVeNgay(khuyenMai.getNgaybatdau());
-        Date ketthuc = doiVeNgay(khuyenMai.getNgayketthuc());
+
+
+        Date batdau = khuyenMai.getNgaybatdau();
+        Date ketthuc = khuyenMai.getNgayketthuc();
 
         if (ketthuc.compareTo(batdau)<0 ||
         khuyenMai.getGiamgia()<0){
