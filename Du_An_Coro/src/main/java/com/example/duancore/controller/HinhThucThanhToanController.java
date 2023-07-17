@@ -3,6 +3,7 @@ package com.example.duancore.controller;
 
 import com.example.duancore.entity.HinhThucThanhToan;
 import com.example.duancore.repository.HinhThucThanhToanRepository;
+import com.oracle.wls.shaded.org.apache.xpath.operations.Mod;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -49,11 +50,17 @@ public class HinhThucThanhToanController {
     @PostMapping("store")
     public String store(
             @Valid @ModelAttribute("vm") HinhThucThanhToan hinhThucThanhToan,
-            BindingResult result
+            BindingResult result, Model model
     ) {
         if (result.hasErrors()) {
             return "/thanh_toan/create";
-        } else {
+        }
+        String ma = hinhThucThanhToan.getMaHTTT();
+        if (repo.findByMaHTTT(ma) != null) {
+            model.addAttribute("messageMaKH", "Mã đã tồn tại");
+            return "/thanh_toan/create";
+        }
+        else {
             Date now = new Date(System.currentTimeMillis()); // Lấy ngày hiện tại
             hinhThucThanhToan.setNgayTao(now); // Đặt ngày tạo là ngày hiện tại
             repo.save(hinhThucThanhToan);

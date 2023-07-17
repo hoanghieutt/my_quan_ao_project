@@ -11,4 +11,8 @@ import java.util.List;
 public interface KhachHangRepository extends JpaRepository<KhachHang, String> {
     @Query("SELECT kh FROM KhachHang kh WHERE kh.tenKH LIKE ?1 AND kh.ngayTao BETWEEN ?2 AND ?3")
     List<KhachHang> findByKeywordAndDate(String keyword, Date min, Date max);
+
+    KhachHang findByMaKH(String maKH);
+
+    KhachHang findBySoDienThoai(Integer sdt);
 }

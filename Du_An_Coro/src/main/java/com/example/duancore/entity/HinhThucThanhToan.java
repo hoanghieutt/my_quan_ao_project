@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,9 +21,11 @@ import java.sql.Date;
 
 public class HinhThucThanhToan {
     @Id
+    @NotEmpty(message = "Không được để trống")
     @Column(name = "maHTTT")
     private String maHTTT;
 
+    @NotEmpty(message = "Không được để trống")
     @Column(name = "tenHTTT")
     private String tenHTTT;
 

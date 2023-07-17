@@ -2,6 +2,7 @@ package com.example.duancore.repository;
 
 
 import com.example.duancore.entity.HinhThucThanhToan;
+import com.example.duancore.entity.KhachHang;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -17,5 +18,7 @@ public interface HinhThucThanhToanRepository extends JpaRepository<HinhThucThanh
 //    List<HinhThucThanhToan> findByMinMax(Date min, Date max);
 @Query("SELECT httt FROM HinhThucThanhToan httt WHERE httt.tenHTTT LIKE ?1 AND httt.ngayTao BETWEEN ?2 AND ?3")
 List<HinhThucThanhToan> findByKeywordAndDate(String keyword, Date min, Date max);
+
+    HinhThucThanhToan findByMaHTTT(String ma);
 
 }

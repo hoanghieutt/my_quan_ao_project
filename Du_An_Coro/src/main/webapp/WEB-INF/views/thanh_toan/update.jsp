@@ -335,6 +335,7 @@
                     <div>
                         <label class="form-label">Tên</label>
                         <sf:input path="tenHTTT" class="form-control"/>
+                        <sf:errors path="tenHTTT" cssStyle="color:red;"/>
                     </div>
 
                     <div>

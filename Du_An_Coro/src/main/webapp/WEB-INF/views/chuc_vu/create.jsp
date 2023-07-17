@@ -35,12 +35,58 @@
 
         <div>
             <label class="form-label">Mã</label>
+<<<<<<< Updated upstream:Du_An_Coro/src/main/webapp/WEB-INF/views/chuc_vu/create.jsp
             <sf:input path="maCV" class="form-control"/>
+=======
+            <sf:input path="maKH" class="form-control"/>
+            <c:if test="${not empty messageMaKH}">
+                <div style="color: red">
+                        ${messageMaKH}
+                </div>
+            </c:if>
+            <sf:errors path="maKH" cssStyle="color:red;"/>
+>>>>>>> Stashed changes:quan_ly_ban_quan_ao/Du_An_Core/Du_An_Core/src/main/webapp/WEB-INF/views/khach_hang/create.jsp
         </div>
 
         <div>
             <label class="form-label">Tên</label>
+<<<<<<< Updated upstream:Du_An_Coro/src/main/webapp/WEB-INF/views/chuc_vu/create.jsp
             <sf:input path="tenCV" class="form-control"/>
+=======
+            <sf:input path="tenKH" class="form-control"/>
+            <sf:errors path="tenKH" cssStyle="color:red;"/>
+        </div>
+
+        <div>
+            <label class="form-label">Ngày sinh</label>
+            <sf:input path="ngaySinh" class="form-control" type="date" required="true"/>
+            <sf:errors path="ngaySinh"  cssStyle="color:red;"/>
+        </div>
+
+        <div>
+            <label class="form-label">Giới tính</label>
+            <sf:radiobutton value="Nam" path="gioiTinh" class="form-check-input" checked="true"/> Nam
+            <sf:radiobutton value="Nữ" path="gioiTinh" class="form-check-input"/> Nữ
+            <br>
+            <sf:errors path="gioiTinh" cssStyle="color:red;"/>
+        </div>
+
+        <div>
+            <label class="form-label">Số điện thoại</label>
+            <sf:input path="soDienThoai" class="form-control"/>
+            <c:if test="${not empty messageSdt}">
+                <div style="color: red">
+                        ${messageSdt}
+                </div>
+            </c:if>
+            <sf:errors path="soDienThoai" cssStyle="color:red;"/>
+        </div>
+
+        <div>
+            <label class="form-label">Địa chỉ</label>
+            <sf:input path="diaChi" class="form-control"/>
+            <sf:errors path="diaChi" cssStyle="color:red;"/>
+>>>>>>> Stashed changes:quan_ly_ban_quan_ao/Du_An_Core/Du_An_Core/src/main/webapp/WEB-INF/views/khach_hang/create.jsp
         </div>
 
         <div class="row">

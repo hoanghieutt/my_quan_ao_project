@@ -334,40 +334,45 @@
                     <div>
                         <label class="form-label">Tên</label>
                         <sf:input path="tenKH" class="form-control"/>
+                        <sf:errors path="tenKH" cssStyle="color:red;"/>
                     </div>
 
                     <div>
                         <label class="form-label">Ngày sinh</label>
-                        <sf:input path="ngaySinh" class="form-control" type="date"/>
+                        <sf:input path="ngaySinh" class="form-control" type="date" required="true"/>
+                        <sf:errors path="ngaySinh"  cssStyle="color:red;"/>
                     </div>
 
                     <div>
                         <label class="form-label">Giới tính</label>
-                        <sf:radiobutton value="Nam" path="gioiTinh" class="form-check-input" cssStyle="margin-left: 10px"/> <label style="margin-left: 30px">Nam</label>
-                        <sf:radiobutton value="Nữ" path="gioiTinh" class="form-check-input" cssStyle="margin-left: 30px"/> <label style="margin-left: 60px">Nữ</label>
+                        <sf:radiobutton value="Nam" path="gioiTinh" class="form-check-input" checked="true"/> Nam
+                        <sf:radiobutton value="Nữ" path="gioiTinh" class="form-check-input"/> Nữ
+                        <br>
+                        <sf:errors path="gioiTinh" cssStyle="color:red;"/>
                     </div>
 
                     <div>
                         <label class="form-label">Số điện thoại</label>
                         <sf:input path="soDienThoai" class="form-control"/>
+                        <c:if test="${not empty messageSdt}">
+                            <div style="color: red">
+                                    ${messageSdt}
+                            </div>
+                        </c:if>
+                        <sf:errors path="soDienThoai" cssStyle="color:red;"/>
                     </div>
 
                     <div>
                         <label class="form-label">Địa chỉ</label>
                         <sf:input path="diaChi" class="form-control"/>
-                    </div>
-
-                    <div>
-                        <label class="form-label" style="margin-right: 40px">Trạng thái</label>
-                        <sf:radiobutton value="1" path="trangThai" class="form-check-input" cssStyle="margin-left: 90p"/><label style="margin-left: 30px">Còn hoạt động</label>
-                        <sf:radiobutton value="0" path="trangThai" class="form-check-input" cssStyle="margin-left: 30px"/> <label style="margin-left: 60px">Không hoạt động</label>
+                        <sf:errors path="diaChi" cssStyle="color:red;"/>
                     </div>
 
                     <div class="row">
                         <div class="col-md-2"></div>
                         <div class="col-md-8">
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary" style="margin-top: 70px">UPDATE</button>
+                                <button type="submit" class="btn btn-primary">UPDATE</button>
                             </div>
                         </div>
                     </div>

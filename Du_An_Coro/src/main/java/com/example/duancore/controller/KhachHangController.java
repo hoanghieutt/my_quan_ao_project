@@ -24,7 +24,7 @@ public class KhachHangController {
     private KhachHangRepository repo;
 
     @GetMapping("hien-thi")
-    public String hienThi(Model model){
+    public String hienThi(Model model) {
         model.addAttribute("data", repo.findAll());
         Date min = Date.valueOf("2020-01-01");
         Date now = new Date(System.currentTimeMillis());
@@ -38,8 +38,7 @@ public class KhachHangController {
     
 
     @GetMapping("create")
-    public String create(Model model)
-    {
+    public String create(Model model) {
         model.addAttribute("vm", vm);
         model.addAttribute("action", "/khach-hang/store");
         return "/khach_hang/create";
@@ -48,11 +47,26 @@ public class KhachHangController {
     @PostMapping("store")
     public String store(
             @Valid @ModelAttribute("vm") KhachHang khachHang,
-            BindingResult result
+            BindingResult result, Model model
     ) {
         if (result.hasErrors()) {
             return "/khach_hang/create";
-        } else {
+        }
+        String maKH = khachHang.getMaKH();
+        Integer sdt = khachHang.getSoDienThoai();
+
+        // Kiểm tra sự tồn tại của maKH
+        if (repo.findByMaKH(maKH) != null) {
+            model.addAttribute("messageMaKH", "Mã khách hàng đã tồn tại");
+            return "/khach_hang/create";
+        }
+
+        if (repo.findBySoDienThoai(sdt) != null) {
+            model.addAttribute("messageSdt", "Số điện thoại đã tồn tại");
+            return "/khach_hang/create";
+        }
+
+         else {
             Date now = new Date(System.currentTimeMillis()); // Lấy ngày hiện tại
             khachHang.setNgayTao(now); // Đặt ngày tạo là ngày hiện tại
             repo.save(khachHang);
@@ -61,33 +75,45 @@ public class KhachHangController {
     }
 
     @GetMapping("delete/{maKH}")
-    public String delete(@PathVariable("maKH") String ma){
+    public String delete(@PathVariable("maKH") String ma) {
         repo.deleteById(ma);
         return "redirect:/khach-hang/hien-thi";
     }
 
     @GetMapping("edit/{maKH}")
-    public String edit(@PathVariable("maKH") KhachHang khachHang, Model model)
-    {
+    public String edit(@PathVariable("maKH") KhachHang khachHang, Model model) {
         vm.setTenKH(khachHang.getTenKH());
         vm.setNgaySinh(khachHang.getNgaySinh());
         vm.setGioiTinh(khachHang.getGioiTinh());
         vm.setSoDienThoai(khachHang.getSoDienThoai());
         vm.setDiaChi(khachHang.getDiaChi());
         vm.setTrangThai(khachHang.getTrangThai());
-        model.addAttribute("vm",vm);
-        model.addAttribute("action","/khach-hang/update/" + khachHang.getMaKH());
+        model.addAttribute("vm", vm);
+        model.addAttribute("action", "/khach-hang/update/" + khachHang.getMaKH());
         return "/khach_hang/update";
     }
 
     @PostMapping("update/{maKH}")
     public String update(@PathVariable("maKH") KhachHang khachHang,
                          @Valid @ModelAttribute("vm") KhachHang vmm,
-                         BindingResult result
+                         BindingResult result, Model model
     ) {
         if (result.hasErrors()) {
             return "/khach_hang/update";
-        } else {
+        }
+        String maKH = khachHang.getMaKH();
+        Integer sdt = khachHang.getSoDienThoai();
+        // Kiểm tra sự tồn tại của maKH
+        if (repo.findByMaKH(maKH) != null) {
+            model.addAttribute("messageMaKH", "Mã khách hàng đã tồn tại");
+            return "/khach_hang/edit";
+        }
+
+        if (repo.findBySoDienThoai(sdt) != null) {
+            model.addAttribute("messageSdt", "Số điện thoại đã tồn tại");
+            return "/khach_hang/edit";
+        }
+        else {
             Date now = new Date(System.currentTimeMillis()); // Lấy ngày hiện tại
             khachHang.setNgaySua(now); // Đặt ngày tạo là ngày hiện tại
             khachHang.setTenKH(vmm.getTenKH());
