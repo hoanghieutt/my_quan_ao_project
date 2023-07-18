@@ -334,8 +334,22 @@
             <%--Todo code article--%>
             <h2 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">KHUYẾN MÃI CÒN HOẠT ĐỘNG</h2>
             <form method="post" action="/KM/timKW">
-                <p>Key word: </p>
-                <input type="text" name="tukhoa">
+
+                <table style="border: none">
+                    <tr style="border: none">
+                        <td style="border: none">Tên:</td>
+                        <td style="border: none"><input type="text" name="tukhoa"> <br></td>
+                    </tr>
+                    <tr style="border: none">
+                        <td style="border: none">Khoảng giá:</td>
+                        <td style="border: none"><input type="number" name="minVL"> - <input type="number" name="maxVL"></td>
+                    </tr>
+                    <tr style="border: none">
+                        <td style="border: none">Khoảng thời gian:</td>
+                        <td style="border: none"><input type="date" name="startD"> - <input type="date" name="endD"></td>
+                    </tr>
+                </table>
+                
                 <button class="btn btn-primary" type="submit">Find</button>
             </form>
 
