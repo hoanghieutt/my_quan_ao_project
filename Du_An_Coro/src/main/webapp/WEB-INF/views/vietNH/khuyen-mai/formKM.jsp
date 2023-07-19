@@ -342,6 +342,7 @@
                         Ngày bắt đầu:
                     </div>
                     <div class="col-md-8">
+                        <div style="margin-left: 70px; color: red">${loibatdau}</div>
                         <form:input path="ngaybatdau" style="margin-left: 70px" type="date"/>
                     </div>
                 </div>

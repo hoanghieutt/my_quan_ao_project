@@ -1,9 +1,6 @@
 package com.example.duancore.config;
 
-import com.example.duancore.entity.ChucVu;
-import com.example.duancore.entity.HinhThucThanhToan;
-import com.example.duancore.entity.KhachHang;
-import com.example.duancore.entity.SanPham;
+import com.example.duancore.entity.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -39,6 +36,11 @@ public class WebMVCConfig implements WebMvcConfigurer {
     public ChucVu getChucVu(){
         ChucVu vm = new ChucVu();
         return vm;
+    }
+    @Bean("users")
+    public Users getnhanvien(){
+        Users us = new Users();
+        return us;
     }
 
 
