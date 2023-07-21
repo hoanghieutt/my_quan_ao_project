@@ -1,72 +1,27 @@
 package com.example.duancore.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.Date;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 
 @Entity
+@Table(name = "LoaiSanPham")
 public class LoaiSanPham {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String maLSP;
 
     private String ten;
-    private Date ngayTao;
-    private Date ngaySua;
+    private String ngayTao;
+    private String ngaySua;
     private int trangThai;
 
-    public LoaiSanPham() {
-    }
 
-    public LoaiSanPham(String maLSP, String ten, Date ngayTao, Date ngaySua, int trangThai) {
-        this.maLSP = maLSP;
-        this.ten = ten;
-        this.ngayTao = ngayTao;
-        this.ngaySua = ngaySua;
-        this.trangThai = trangThai;
-    }
-
-    public String getMaLSP() {
-        return maLSP;
-    }
-
-    public void setMaLSP(String maLSP) {
-        this.maLSP = maLSP;
-    }
-
-    public String getTen() {
-        return ten;
-    }
-
-    public void setTen(String ten) {
-        this.ten = ten;
-    }
-
-    public Date getNgayTao() {
-        return ngayTao;
-    }
-
-    public void setNgayTao(Date ngayTao) {
-        this.ngayTao = ngayTao;
-    }
-
-    public Date getNgaySua() {
-        return ngaySua;
-    }
-
-    public void setNgaySua(Date ngaySua) {
-        this.ngaySua = ngaySua;
-    }
-
-    public int getTrangThai() {
-        return trangThai;
-    }
-
-    public void setTrangThai(int trangThai) {
-        this.trangThai = trangThai;
-    }
 }

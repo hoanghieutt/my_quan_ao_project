@@ -321,18 +321,29 @@
             <!-- How to code article   -->
             <%--Todo code article--%>
 
-            <form action="/chat-lieu/update?id=${ns.id}" method="post">
+            <form action="/chat-lieu/update?id=${cl.id}" method="post">
 
-                Mã: <input type="text" name="ma" value="${ns.maCL}"/>
-
-                <br/>
-                Tên: <input type="text" name="ten" value="${ns.ten}"/>
-                <br/>
-
-                Ngày Tạo: <input type="date" name="ngayTao" value="${ns.ngayTao}"/>
+                Mã: <input type="text" name="maCL" value="${chatLieu.maCL}"/>
 
                 <br/>
-                Ngày Sửa: <input type="date" name="ngaySua" value="${ns.ngaySua}"/>
+                Tên: <input type="text" name="ten" value="${chatLieu.ten}"/>
+                <br/>
+
+                Ngày Tạo: <input type="date" name="ngayTao" value="${chatLieu.ngayTao}"/>
+
+                <br/>
+                Ngày Sửa: <input type="date" name="ngaySua" value="${chatLieu.ngaySua}"/>
+                <br/>
+                <br>
+                Trạng Thái:
+                <select value="${chatLieu.trangThai}" cssStyle="width: 200px;">
+                    <option value="${chatLieu.trangThai}">
+                        Còn hàng
+                    </option>
+                    <option value="${chatLieu.trangThai}">
+                        Hết hàng
+                    </option>
+                </select>
                 <br/>
 
                 <button type="submit">Upadte</button>
