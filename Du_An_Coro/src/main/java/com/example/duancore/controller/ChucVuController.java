@@ -1,7 +1,14 @@
 package com.example.duancore.controller;
 
+import com.example.duancore.controller.user.chucVuExportExcel;
+import com.example.duancore.controller.user.chucVuPDFExport;
+import com.example.duancore.controller.user.sanPhamExportExcel;
+import com.example.duancore.controller.user.sanPhamPDFExport;
 import com.example.duancore.entity.ChucVu;
+import com.example.duancore.entity.SanPham;
 import com.example.duancore.repository.ChucVuRepository;
+import com.lowagie.text.DocumentException;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,7 +17,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Controller
@@ -102,5 +112,54 @@ public class ChucVuController {
         model.addAttribute("maxDate", max);
         return "/chuc_vu/index";
     }
+    @GetMapping("exportFilePDF")
+    public void FileFDP(
+
+            HttpServletResponse response
+
+    ) throws DocumentException, IOException {
+
+        response.setContentType("application/pdf");
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currenDateTime = dateFormat.format(new java.util.Date());
+
+        String headerkey = "Content-Disposition";
+        String headerValue = "attachment; filename=Product_"+currenDateTime+".pdf";
+
+        response.setHeader(headerkey,headerValue);
+
+        List<ChucVu> products = repo.findAll();
+
+        chucVuPDFExport pdfExport = new chucVuPDFExport(products);
+        pdfExport.export(response);
+
+    }
+
+//Todo code Export Excal
+
+
+    @GetMapping("exportFileExcel")
+    public void FileExcel(
+            Model model,
+            HttpServletResponse response)throws IOException{
+
+        response.setContentType("application/octet-stream");
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currenDateTime = dateFormat.format(new java.util.Date());
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=Product_"+currenDateTime+".xlsx";
+
+        response.setHeader(headerKey,headerValue);
+
+        List<ChucVu> products = repo.findAll();
+
+        chucVuExportExcel exportExcel = new chucVuExportExcel(products);
+        exportExcel.export(response);
+
+    }
+
 
 }
