@@ -43,6 +43,11 @@ public class WebMVCConfig implements WebMvcConfigurer {
         return us;
     }
 
+    @Bean("ctsp")
+    public ChiTietSanPham getCTSP(){
+        ChiTietSanPham vm = new ChiTietSanPham();
+        return vm;
+    }
 
     @Bean("sanPham")
     public SanPham getSanPham(){
