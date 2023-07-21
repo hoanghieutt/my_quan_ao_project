@@ -1,6 +1,7 @@
 package com.example.duancore.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -20,7 +21,7 @@ public class KhuyenMai {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer makm;
 
-    @NotEmpty(message = "Yêu cầu nhập tên")
+    @NotBlank(message = "Yêu cầu nhập tên")
     String tenkm;
 
     @NotNull(message = "Yêu cầu nhập ngày bắt đầu")
@@ -30,6 +31,7 @@ public class KhuyenMai {
     Date ngayketthuc = null;
 
     @NotNull(message = "Yêu cầu nhập giá")
+    @Min(value = 0, message = "Giá trị giảm phải là một số dương")
     Double giamgia;
 
     String ngaytao;

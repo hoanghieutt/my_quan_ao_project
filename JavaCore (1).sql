@@ -244,7 +244,7 @@ create table Users
 	  email				nvarchar(30)					null,
 	  soDienThoai       int							    null,
 	 
-	  ngaySinh          nvarchar(30)				    null,
+	  ngaySinh          Date        				    null,
 	  ngayTao			Date							null,
 	  ngaySua			Date							null,
 	  trangThai		    int								null,

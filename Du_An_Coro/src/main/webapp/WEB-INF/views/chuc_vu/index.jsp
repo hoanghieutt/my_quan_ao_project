@@ -15,6 +15,7 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <h1 style="text-align: center;">Quản lý chức vụ</h1>
+
             <br>
 
             <form action="${pageContext.request.contextPath}/chuc-vu/search" method="post">
@@ -23,6 +24,12 @@
                 <input type="date" name="max" value="${maxDate}">
                 <button>search</button>
             </form>
+            <h1 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">List danh sách sản phẩm</h1>
+
+            <a class="col-sm-4" href="${pageContext.request.contextPath}/chuc-vu/create"><button class="btn btn-primary" style="margin-bottom: 30px">Create</button></a>
+            <a class="col-sm-4" href="${pageContext.request.contextPath}/chuc-vu/exportFilePDF"><button class="btn btn-primary" style="margin-bottom: 30px">Xuất file pdf</button></a>
+            <a class="col-sm-4" href="${pageContext.request.contextPath}/chuc-vu/exportFileExcel"><button class="btn btn-primary" style="margin-bottom: 30px">Xuất file excal</button></a>
+
 
             <br>
             <a class="btn btn-warning" href="/chuc-vu/create">ADD</a>

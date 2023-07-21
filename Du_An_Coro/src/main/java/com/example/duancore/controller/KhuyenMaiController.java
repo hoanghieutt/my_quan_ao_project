@@ -24,11 +24,18 @@ public class KhuyenMaiController {
     KhuyenMaiRepository repository;
 
     String kwd = "";
+
+    Double minVLs = 0.0;
+    Double maxVLs = 100000000000000.0;
+
+    Date startDs = doiVeNgay("1999-01-01");
+    Date endDs = doiVeNgay("9999-12-20");
+
     @RequestMapping("/KM/index")
     public String hienThiKM(@RequestParam(defaultValue = "0")Integer pageNum,
                             Model model){
 
-        List<KhuyenMai> soTrangKM = repository.findActive("%"+kwd+"%");
+        List<KhuyenMai> soTrangKM = repository.findActive("%"+kwd+"%", minVLs, maxVLs, startDs, endDs);
         for(KhuyenMai k: soTrangKM){
 
             Date ngayKetThuc = k.getNgayketthuc();
@@ -55,7 +62,7 @@ public class KhuyenMaiController {
         }
 
         Pageable pageable = PageRequest.of(pageNum, kiemTraTrang);
-        Page<KhuyenMai> listKM = repository.findByKwd("%"+kwd+"%", pageable);
+        Page<KhuyenMai> listKM = repository.findByKwd("%"+kwd+"%", minVLs, maxVLs, startDs, endDs, pageable);
         model.addAttribute("kmpage", listKM);
 
         List<KhuyenMai> daXoa = repository.findDeleted();
@@ -88,8 +95,16 @@ public class KhuyenMaiController {
     }
 
     @PostMapping("/KM/timKW")
-    public String timKM(@RequestParam(defaultValue = "")String tukhoa){
+    public String timKM(@RequestParam(defaultValue = "")String tukhoa,
+                        @RequestParam(defaultValue = "0.0")Double minVL,
+                        @RequestParam(defaultValue = "100000000000000.0")Double maxVL,
+                        @RequestParam(defaultValue = "1999-01-01")String startD,
+                        @RequestParam(defaultValue = "9999-12-20")String endD){
         kwd = tukhoa.trim();
+        minVLs = minVL;
+        maxVLs = maxVL;
+        startDs = doiVeNgay(startD);
+        endDs = doiVeNgay(endD);
         return "redirect:/KM/index";
     }
 
@@ -107,12 +122,16 @@ public class KhuyenMaiController {
                          Model model){
 
         if(result.hasErrors()){
+            if(null==khuyenMai.getNgayketthuc()){
+                model.addAttribute("loiketthuc","Nhập ngày kết thúc");
+            }
+
+            if(null==khuyenMai.getNgaybatdau()){
+                model.addAttribute("loibatdau","Nhập ngày bắt đầu");
+            }
 
             return "vietNH/khuyen-mai/formKM";
-
         }
-
-
 
         Date batdau = khuyenMai.getNgaybatdau();
         Date ketthuc = khuyenMai.getNgayketthuc();
@@ -138,7 +157,14 @@ public class KhuyenMaiController {
         khuyenMai.setNgaysua(String.valueOf(LocalDate.now()));
         khuyenMai.setTrangthai(1);
         repository.save(khuyenMai);
-        kwd = "";
+
+         kwd = "";
+
+         minVLs = 0.0;
+         maxVLs = 100000000000000.0;
+
+         startDs = doiVeNgay("1999-01-01");
+         endDs = doiVeNgay("9999-12-20");
         return "redirect:/KM/index";
     }
 
@@ -148,6 +174,13 @@ public class KhuyenMaiController {
                            Model model){
         KhuyenMai km = repository.findById(id).get();
         model.addAttribute("fkm",km);
+         kwd = "";
+
+         minVLs = 0.0;
+         maxVLs = 100000000000000.0;
+
+         startDs = doiVeNgay("1999-01-01");
+         endDs = doiVeNgay("9999-12-20");
         return "vietNH/khuyen-mai/formKM";
     }
 
@@ -158,6 +191,14 @@ public class KhuyenMaiController {
         km.setNgaysua(String.valueOf(LocalDate.now()));
         km.setTrangthai(0);
         repository.save(km);
+
+         kwd = "";
+
+         minVLs = 0.0;
+         maxVLs = 100000000000000.0;
+
+         startDs = doiVeNgay("1999-01-01");
+         endDs = doiVeNgay("9999-12-20");
         return "redirect:/KM/index";
     }
 }

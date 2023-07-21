@@ -335,14 +335,14 @@
             <h2 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">MÔN THỂ THAO CÒN HOẠT ĐỘNG</h2>
             <form action="/mon_the_thao/tim" method="post">
                 <p>
-                <div>Key word: </div>
-                <input type="text" name="keyword">
-                <button type="submit" class="btn btn-primary">Find</button>
+                <div style="margin-left: 40px">Key word: </div>
+                <input type="text" name="keyword" style="margin-left: 40px"> <br>
+                <button type="submit" class="btn btn-primary" style="margin-left: 40px">Find</button>
                 </p>
             </form>
             <br>
             <br>
-            <a class="btn btn-primary" href="/mon_the_thao/form">Thêm môn thể thao</a> <br>
+            <a style="margin-left: 40px" class="btn btn-primary" href="/mon_the_thao/form">Thêm môn thể thao</a> <br>
             <br>
             <table>
                 <tr>
@@ -363,7 +363,7 @@
                 </c:forEach>
             </table>
             <br> <br>
-            <a class="btn btn-primary" href="?pageNum=0">First</a>
+            <a style="margin-left: 40px" class="btn btn-primary" href="?pageNum=0">First</a>
             <a class="btn btn-primary" href="?pageNum=${mttTable.number-1}">Previous</a>
             <a class="btn btn-primary" href="?pageNum=${mttTable.number+1}">Next</a>
             <a class="btn btn-primary" href="?pageNum=${mttTable.totalPages-1}">Last</a>

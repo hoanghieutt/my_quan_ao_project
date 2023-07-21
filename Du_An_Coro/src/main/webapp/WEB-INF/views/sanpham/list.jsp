@@ -60,8 +60,8 @@
 
                     <div class="collapse-divider"></div>
                                         <h6 class="collapse-header">Other Pages:</h6>
-                    <a class="collapse-item" href="">Màu sắc</a>
-                    <a class="collapse-item" href="">Size</a>
+                    <a class="collapse-item" href="/mau-sac/hien-thi">Màu sắc</a>
+                    <a class="collapse-item" href="/size/hien-thi">Size</a>
                     <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
                     <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
                     <a class="collapse-item" href="/loai-san-pham/hien-thi">Loại sản phẩm</a>
@@ -365,8 +365,6 @@
 
 
 
-
-
             <!-- Footer -->
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
@@ -405,7 +403,6 @@
 </div>
     </div>
 </div>
-
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>

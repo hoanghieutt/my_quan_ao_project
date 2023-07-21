@@ -52,7 +52,7 @@
     <nav class="navbar navbar-expand-lg row shadow-sm fixed-top px-3"
          style="background-color: #0a3d62">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"> <img alt="logo"
+            <a class="navbar-brand" href="/home"> <img alt="logo"
                                                    src="https://media.istockphoto.com/id/1315110986/vi/vec-to/l%C6%B0u-tr%E1%BB%AF-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-ph%C3%A1c-th%E1%BA%A3o-n%C3%A9t-c%C3%B3-th%E1%BB%83-ch%E1%BB%89nh-s%E1%BB%ADa-%C4%91%C6%B0%E1%BB%A3c-c%C3%A1ch-ly-tr%C3%AAn-h%C3%ACnh-minh-h%E1%BB%8Da-vector.jpg?s=2048x2048&w=is&k=20&c=AX40xiMyHP8Gqj8Yl0I-u4VfeZmArtKj0H79nyypQcg="
                                                    width="80" height="80">
             </a>
@@ -62,6 +62,21 @@
                     aria-label="Toggle navigation">
                 <i class="fa-solid fa-bars fs-2"></i>
             </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link text-white"
+                                            aria-current="page" href="/home">Trang Chủ</a></li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link text-white"
+                                            aria-current="page" href="/home">login</a></li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link text-white"
+                                            aria-current="page" href="/home">Quên MK</a></li>
+                </ul>
+
+            </div>
 
 
             <div class="d-flex px-4">

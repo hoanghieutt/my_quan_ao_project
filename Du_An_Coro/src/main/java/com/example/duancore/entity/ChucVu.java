@@ -33,5 +33,5 @@ public class ChucVu {
     private Date ngaySua;
 
     @Column(name = "trangThai")
-    private String trangThai;
+    private int trangThai;
 }

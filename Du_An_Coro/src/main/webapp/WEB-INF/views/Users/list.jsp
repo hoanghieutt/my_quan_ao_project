@@ -1,6 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ page language="java" pageEncoding="UTF-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -14,8 +15,7 @@
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <!-- Custom styles for this template-->
     <link href="/css/css.css" rel="stylesheet">
     <link href="/css/css1.css" rel="stylesheet">
@@ -53,7 +53,7 @@
                     <h6 class="collapse-header" style="color: black; font-size: 13px;">Pages</h6>
                     <a class="collapse-item" href="/sanPham/list">Sản phẩm</a>
                     <a class="collapse-item" href="/hoaDonCT/list">Hóa đơn chi tiết</a>
-                    <a class="collapse-item" href="/category/list">Hóa đơn</a>
+                    <a class="collapse-item" href="/hoaDon/list">Hóa đơn</a>
                     <a class="collapse-item" href="/hinh-thuc-thanh-toan/hien-thi">Hình thức thanh toán</a>
                     <a class="collapse-item" href="/khach-hang/hien-thi">Khách hàng</a>
                     <a class="collapse-item" href="/KM/index">Khuyến mại</a>
@@ -85,6 +85,7 @@
                     <h6 class="collapse-header">User:</h6>
                     <a class="collapse-item" href="/#">Nhân viên</a>
                     <a class="collapse-item" href="/chuc-vu/hien-thi">Chức vụ</a>
+
 
 
                     <%--                    <a class="collapse-item" href="/authentication/enregistrer">Register</a>--%>
@@ -307,7 +308,7 @@
                                 Activity Log
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/logout">
+                            <a class="dropdown-item" href="/logout" >
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
@@ -320,14 +321,64 @@
             <!-- How to code article   -->
             <%--Todo code article--%>
 
-            <div class="">
+            <h1 style="text-align: center;">Quản lý Khách hàng</h1>
+            <br>
+            <form action="${pageContext.request.contextPath}/Users/search" method="post">
+                <input type="text" placeholder="Nhập từ khóa cần tìm kiếm" name="keyword" value="${keyword}">
+                <input type="date" name="min" value="${minDate}">
+                <input type="date" name="max" value="${maxDate}">
+                <button class="btn btn-primary">Tìm kiếm</button>
+            </form>
 
-                <h1 style="text-align: center; color: black">Hóa đơn đang được cập nhật</h1>
+            <br>
+            <a class="btn btn-warning" href="/Users/create">Thêm mới</a>
+            <br>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Mã</th>
+                    <th scope="col">chúc vụ</th>
+                    <th scope="col">Tên</th>
+                    <th scope="col">Ngày sinh</th>
+                    <th scope="col">Giới tính</th>
+                    <th scope="col">emai</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">Ngày tạo</th>
+                    <th scope="col">Ngày sửa</th>
+                    <th scope="col">role</th>
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
 
-            </div>
+                <tbody>
+                <c:forEach items="${data}" var="khachHang">
+                    <tr>
+                        <td>${khachHang.maNV}</td>
+                        <td>${khachHang.maCV.tenCV}</td>
+                        <td>${khachHang.tenNV}</td>
+                        <td>${khachHang.ngaySinh}</td>
+                        <td>${khachHang.gioiTinh}</td>
+                        <td>${khachHang.email}</td>
+                        <td>${khachHang.soDienThoai}</td>
+                        <td>${khachHang.diaChi}</td>
+                        <td>${khachHang.ngayTao}</td>
+                        <td>${khachHang.ngaySua}</td>
+                        <td>${khachHang.role}</td>
+                        <td>${khachHang.trangThai == 1 ? 'Còn hoạt động' : 'Không hoạt động'}</td>
+                        <td>
+                            <a class="btn btn-warning" href="/Users/edit/${khachHang.maNV}">Sửa</a>
+                            <a class="btn btn-danger" href="/Users/delete/${khachHang.maNV}">Xóa</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+
 
             <!-- Footer -->
-            <footer style="margin-top: 500px" class="sticky-footer bg-white">
+            <footer style="margin-top: 50px" class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website 2021</span>
@@ -336,6 +387,7 @@
             </footer>
         </div>
     </div>
+
 
 
     <a class="scroll-to-top rounded" href="#page-top">
@@ -371,11 +423,7 @@
 <script src="/vendor/chart.js/Chart.min.js"></script>
 <script src="/js/demo/chart-area-demo.js"></script>
 <script src="/js/demo/chart-pie-demo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
-        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 </body>
 </html>

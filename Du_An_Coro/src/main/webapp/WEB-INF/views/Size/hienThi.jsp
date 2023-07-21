@@ -60,8 +60,8 @@
 
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Other pages:</h6>
-                    <a class="collapse-item" href="">Màu sắc</a>
-                    <a class="collapse-item" href="/Size/list">Size</a>
+                    <a class="collapse-item" href="/mau-sac/hien-thi">Màu sắc</a>
+                    <a class="collapse-item" href="/size/hien-thi">Size</a>
                     <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
                     <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
                     <a class="collapse-item" href="/loai-san-pham/add">Loại sản phẩm</a>
@@ -320,10 +320,60 @@
             <!-- How to code article   -->
             <%--Todo code article--%>
 
-            <div>
-                 <h1 style="text-align: center; color: black; margin-top: 90px">Bảng Size đang hoàn dần hoàn thiện</h1>
-            </div>
+            <a class="col-sm-4" href="/size/view-add"><button class="btn btn-primary" style="margin-bottom: 30px">ADD</button></a>
 
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">MÃ SIZE</th>
+                    <th scope="col">SIZE</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Ngày Tạo</th>
+                    <th scope="col">Ngày Sửa</th>
+                    <th scope="col">Trạng Thái</th>
+                    <th scope="col">ACTION</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${list}" var="sz" varStatus="stt">
+                    <tr>
+                        <td>${stt.index+1}</td>
+                        <td>${sz.maSize}</td>
+                        <td>${sz.size}</td>
+                        <td>${sz.soLuong}</td>
+                        <td>${sz.ngayTao}</td>
+                        <td>${sz.ngaySua}</td>
+                        <td>${sz.trangThai==1?"Còn hàng":"Hết hàng"}</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-success"><a href="/size/delete/${sz.maSize}">DELETE</a>
+                            </button>
+                            <button type="button" class="btn btn-outline-danger"><a
+                                    href="/size/view-update/${sz.maSize}">UPDATE</a></button>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example" style="margin-right: 750px">
+                <ul class="pagination float-end">
+                    <li class="page-item">
+                        <a class="page-link" href="/size/hien-thi?page=${currentPage -1 <= 0?0:currentPage -1}">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <c:forEach var="i" begin="0" end="${totalPages -1}">
+                        <li class="page-item"><a class="page-link" href="/size/hien-thi?page=${i}">${i + 1}</a></li>
+                    </c:forEach>
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="/size/hien-thi?page=${currentPage +1 >= totalPages -1?totalPages -1:currentPage +1}">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
                 <!-- Footer -->
                 <footer style="margin-top: 500px" class="sticky-footer bg-white">
                     <div class="container my-auto">
