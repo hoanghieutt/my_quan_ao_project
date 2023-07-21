@@ -1,84 +1,43 @@
 package com.example.duancore.entity;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.Date;
-
+import java.sql.Date;
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
+@Table(name = "Size")
 public class Size implements Serializable {
 
-     @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private String maSize;
+    @Id
+    @Column(name = "maSize")
+    private String maSize;
 
-     private String size;
-     private String soLuong;
-     private Date ngayTao;
-     private Date ngaySua;
-     private int trangThai;
+    @Column(name = "size")
+    private int size;
 
-    public Size() {
-    }
+    @Column(name = "soLuong")
+    private int soLuong;
 
-    public Size(String maSize, String size, String soLuong, Date ngayTao, Date ngaySua, int trangThai) {
-        this.maSize = maSize;
-        this.size = size;
-        this.soLuong = soLuong;
-        this.ngayTao = ngayTao;
-        this.ngaySua = ngaySua;
-        this.trangThai = trangThai;
-    }
+    @Column(name = "ngayTao")
+    private java.sql.Date ngayTao;
 
-    public String getMaSize() {
-        return maSize;
-    }
+    @Column(name = "ngaySua")
+    private Date ngaySua;
 
-    public void setMaSize(String maSize) {
-        this.maSize = maSize;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
-    public String getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(String soLuong) {
-        this.soLuong = soLuong;
-    }
-
-    public Date getNgayTao() {
-        return ngayTao;
-    }
-
-    public void setNgayTao(Date ngayTao) {
-        this.ngayTao = ngayTao;
-    }
-
-    public Date getNgaySua() {
-        return ngaySua;
-    }
-
-    public void setNgaySua(Date ngaySua) {
-        this.ngaySua = ngaySua;
-    }
-
-    public int getTrangThai() {
-        return trangThai;
-    }
-
-    public void setTrangThai(int trangThai) {
-        this.trangThai = trangThai;
-    }
+    @Column(name = "trangThai")
+    private int trangThai;
 }

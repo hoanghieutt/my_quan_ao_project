@@ -1,25 +1,33 @@
 package com.example.duancore.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
+@Table(name = "MauSac")
 public class MauSac implements Serializable {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "maMS")
     private String maMS;
+    @Column(name = "ten")
 
     private String ten;
-    private Date ngayTao;
-    private Date ngaySua;
-    private int trangThai;
+    @Column(name = "ngayTao")
 
+    private Date ngayTao;
+    @Column(name = "ngaySua")
+
+    private Date ngaySua;
+    @Column(name = "trangThai")
+
+    private int trangThai;
     public MauSac(String maMS, String ten, Date ngayTao, Date ngaySua, int trangThai) {
         this.maMS = maMS;
         this.ten = ten;
