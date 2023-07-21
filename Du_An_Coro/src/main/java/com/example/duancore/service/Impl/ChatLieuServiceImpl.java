@@ -7,8 +7,8 @@ import com.example.duancore.service.ChatLieuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
-
 @Service
 public class ChatLieuServiceImpl implements ChatLieuService {
     @Autowired
@@ -31,6 +31,10 @@ public class ChatLieuServiceImpl implements ChatLieuService {
 
     @Override
     public void addChatLieu(ChatLieu chatLieu) {
+
+        chatLieu.setNgayTao(String.valueOf(LocalDate.now()));
+        chatLieu.setNgaySua(String.valueOf(LocalDate.now()));
+        chatLieu.setTrangThai(1);
         chatLieuRepository.save(chatLieu);
     }
 
@@ -42,6 +46,9 @@ public class ChatLieuServiceImpl implements ChatLieuService {
 
     @Override
     public void updateChatLieu(ChatLieu chatLieu) {
+        chatLieu.setNgayTao(String.valueOf(LocalDate.now()));
+        chatLieu.setNgaySua(String.valueOf(LocalDate.now()));
+        chatLieu.setTrangThai(1);
         chatLieuRepository.save(chatLieu);
     }
 }
