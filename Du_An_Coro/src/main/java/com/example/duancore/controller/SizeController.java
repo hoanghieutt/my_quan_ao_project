@@ -15,7 +15,10 @@ public class SizeController {
          return "Size/hienThi";
 
      }
-
+@GetMapping("/size/hien-thi")
+    public String hienthi(){
+         return "";
+}
 
 
 
