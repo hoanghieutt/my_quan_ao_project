@@ -1,20 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<%--    <link rel="icon" href="img/background_title.jpg" type="image/x-icon">--%>
+    <%--    <link rel="icon" href="img/background_title.jpg" type="image/x-icon">--%>
     <title>Teams Store</title>
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <!-- Custom styles for this template-->
     <link href="/css/css.css" rel="stylesheet">
     <link href="/css/css1.css" rel="stylesheet">
@@ -50,21 +51,21 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header" style="color: black; font-size: 13px;">Pages</h6>
-                                        <a class="collapse-item" href="/sanPham/list">Sản phẩm</a>
-                                        <a class="collapse-item" href="/hoaDonCT/list">Hóa đơn chi tiết</a>
-                                        <a class="collapse-item" href="/hoaDon/list">Hóa đơn</a>
-                                        <a class="collapse-item" href="/hinh-thuc-thanh-toan/hien-thi">Hình thức thanh toán</a>
-                                        <a class="collapse-item" href="/khach-hang/hien-thi">Khách hàng</a>
-                                        <a class="collapse-item" href="/KM/index">Khuyến mại</a>
-                                        <a class="collapse-item" href="">Chi tiết sản phẩm</a>
+                    <a class="collapse-item" href="/sanPham/list">Sản phẩm</a>
+                    <a class="collapse-item" href="/hoaDonCT/list">Hóa đơn chi tiết</a>
+                    <a class="collapse-item" href="/hoaDon/list">Hóa đơn</a>
+                    <a class="collapse-item" href="/hinh-thuc-thanh-toan/hien-thi">Hình thức thanh toán</a>
+                    <a class="collapse-item" href="/khach-hang/hien-thi">Khách hàng</a>
+                    <a class="collapse-item" href="/KM/index">Khuyến mại</a>
+                    <a class="collapse-item" href="">Chi tiết sản phẩm</a>
 
                     <div class="collapse-divider"></div>
-                                        <h6 class="collapse-header">Other pages:</h6>
-                                        <a class="collapse-item" href="">Màu sắc</a>
-                                        <a class="collapse-item" href="/Size/list">Size</a>
-                                        <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
-                                        <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
-                                        <a class="collapse-item" href="/loai-san-pham/add">Loại sản phẩm</a>
+                    <h6 class="collapse-header">Other pages:</h6>
+                    <a class="collapse-item" href="/mau-sac/hien-thi">Màu sắc</a>
+                    <a class="collapse-item" href="/size/hien-thi">Size</a>
+                    <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
+                    <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
+                    <a class="collapse-item" href="/loai-san-pham/add">Loại sản phẩm</a>
 
 
                 </div>
@@ -86,8 +87,7 @@
                     <a class="collapse-item" href="/chuc-vu/hien-thi">Chức vụ</a>
 
 
-
-                <%--                    <a class="collapse-item" href="/authentication/enregistrer">Register</a>--%>
+                    <%--                    <a class="collapse-item" href="/authentication/enregistrer">Register</a>--%>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Other User:</h6>
                     <a class="collapse-item" href="/404">Login</a>
@@ -307,7 +307,7 @@
                                 Activity Log
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/logout" >
+                            <a class="dropdown-item" href="/logout">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
@@ -320,26 +320,29 @@
             <!-- How to code article   -->
             <%--Todo code article--%>
             <br>
-<%--            <h3 style="text-align: center">Thông tin Product</h3>--%>
+            <%--            <h3 style="text-align: center">Thông tin Product</h3>--%>
             <br>
             <div class="boderListHome">
 
                 <div class="toll">
-                    <div class="card" style="width: 15rem;float: left; margin-left: 150px; margin-right: 20px; font-weight: bold; background-color: cornflowerblue">
+                    <div class="card"
+                         style="width: 15rem;float: left; margin-left: 150px; margin-right: 20px; font-weight: bold; background-color: cornflowerblue">
                         <div class="card-body" style="height: 130px">
                             <h5 class="card-title" style="text-align: center">Total Product</h5>
                             <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
                             <p class="card-text"></p>
                         </div>
                     </div>
-                    <div class="card" style="width: 15rem;float: left; margin-right: 20px; font-weight: bold; background-color: cornflowerblue">
+                    <div class="card"
+                         style="width: 15rem;float: left; margin-right: 20px; font-weight: bold; background-color: cornflowerblue">
                         <div class="card-body" style="height: 130px">
                             <h5 class="card-title" style="text-align: center">Total Payment</h5>
                             <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
                             <p class="card-text"></p>
                         </div>
                     </div>
-                    <div class="card" style="width: 15rem;float: left;  margin-right: 20px; font-weight: bold; background-color: cornflowerblue">
+                    <div class="card"
+                         style="width: 15rem;float: left;  margin-right: 20px; font-weight: bold; background-color: cornflowerblue">
                         <div class="card-body" style="height: 130px">
                             <h5 class="card-title" style="text-align: center">Total Account</h5>
                             <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
@@ -347,7 +350,8 @@
                         </div>
                     </div>
                     <div class="card" style="width: 15rem;">
-                        <div class="card-body" style="height: 130px; font-weight: bold; background-color: cornflowerblue">
+                        <div class="card-body"
+                             style="height: 130px; font-weight: bold; background-color: cornflowerblue">
                             <h5 class="card-title" style="text-align: center">Total Bill</h5>
                             <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
                             <p class="card-text"></p>
@@ -362,12 +366,15 @@
                     <div class="col-sm-8">
                         <div class="row">
                             <c:forEach var="product" items="${listPage}">
-                                <a class="col-sm-4" href="${pageContext.request.contextPath}/product/detail/${product.masp}">
+                                <a class="col-sm-4"
+                                   href="${pageContext.request.contextPath}/product/detail/${product.masp}">
                                     <div class="card" style="width: 300px;margin-left: 30px" id="cardHomeList">
-                                        <img class="card-img-top" alt="..." class="img_upload_file" width="20%"  style="margin-top: 7px; height: 200px"
-                                                                    src="${pageContext.request.contextPath}/upload/${product.image}">
+                                        <img class="card-img-top" alt="..." class="img_upload_file" width="20%"
+                                             style="margin-top: 7px; height: 200px"
+                                             src="${pageContext.request.contextPath}/upload/${product.image}">
 
-                                        <div class="card-body" style="text-align: center; font-size: 20px; font-weight: bold; margin-bottom: 50px">
+                                        <div class="card-body"
+                                             style="text-align: center; font-size: 20px; font-weight: bold; margin-bottom: 50px">
                                             <span class="card-title">${product.tensp} </span>
                                         </div>
                                     </div>
@@ -378,59 +385,63 @@
                         <ul class="pagination" style="margin-left: 500px">
                             <c:forEach begin="1" end="${totalPage}" varStatus="status">
                                 <li class="page-item">
-                                    <a href="${pageContext.request.contextPath}/home?pageNum=${status.index}" class="page-link">${status.index}</a>
+                                    <a href="${pageContext.request.contextPath}/home?pageNum=${status.index}"
+                                       class="page-link">${status.index}</a>
                                 </li>
                             </c:forEach>
                         </ul>
                     </div>
                 </div>
-        <!-- Footer -->
-        <footer style="margin-top: 50px" class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2021</span>
+                <!-- Footer -->
+                <footer style="margin-top: 50px" class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Your Website 2021</span>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-titl se" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="/logout">Logout</a>
+                    </div>
                 </div>
-            </div>
-        </footer>
-    </div>
-</div>
-
-
-
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
-
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-titl se" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="/logout">Logout</a>
             </div>
         </div>
     </div>
 </div>
-    </div>
-</div>
 
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="/js/sb-admin-2.min.js"></script>
-    <script src="/vendor/chart.js/Chart.min.js"></script>
-    <script src="/js/demo/chart-area-demo.js"></script>
-    <script src="/js/demo/chart-pie-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/js/sb-admin-2.min.js"></script>
+<script src="/vendor/chart.js/Chart.min.js"></script>
+<script src="/js/demo/chart-area-demo.js"></script>
+<script src="/js/demo/chart-pie-demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+        crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
@@ -83,7 +84,7 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">User:</h6>
-                    <a class="collapse-item" href="/#">Nhân viên</a>
+                    <a class="collapse-item" href="/login">Nhân viên</a>
                     <a class="collapse-item" href="/chuc-vu/hien-thi">Chức vụ</a>
 
 
@@ -319,12 +320,33 @@
             </nav>
             <!-- How to code article   -->
             <%--Todo code article--%>
+            <form:form action="/size/add" method="post" modelAttribute="sz">
 
-            <div class="">
+                                MaSIZE: <form:input type="text" path="maSize"/>
+<%--                                <form:errors path="maSize"/>--%>
+                                <br>
+                                SIZE: <form:input type="text" path="size"/>
+<%--                                <form:errors path="size"/>--%>
+                                <br>
+                                so luong: <form:input type="text" path="soLuong"/>
+                                <br>
+                                Ngày Tạo: <form:input type="Date" path="ngayTao"/>
+                                <br>
+                                Ngày Sửa: <form:input type="Date" path="ngaySua"/>
+                                <br>
+                                Trạng Thái:
+                                <form:select path="trangThai" cssStyle="width: 200px;">
+                                    <option value="1">
+                                        Còn hàng
+                                    </option>
+                                    <option value="0">
+                                        Hết hàng
+                                    </option>
+                                </form:select>
+                                <br/>
 
-                <h1 style="text-align: center; color: black">Hóa đơn đang được cập nhật</h1>
-
-            </div>
+                <form:button type="submit">ADD</form:button>
+            </form:form>
 
             <!-- Footer -->
             <footer style="margin-top: 500px" class="sticky-footer bg-white">
