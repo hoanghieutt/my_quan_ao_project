@@ -1,6 +1,9 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -14,8 +17,7 @@
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <!-- Custom styles for this template-->
     <link href="/css/css.css" rel="stylesheet">
     <link href="/css/css1.css" rel="stylesheet">
@@ -65,7 +67,7 @@
                     <a class="collapse-item" href="/size/hien-thi">Size</a>
                     <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
                     <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
-                    <a class="collapse-item" href="/loai-san-pham/add">Loại sản phẩm</a>
+                    <a class="collapse-item" href="/loai-san-pham/hien-thi">Loại sản phẩm</a>
 
 
                 </div>
@@ -83,8 +85,9 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">User:</h6>
-                    <a class="collapse-item" href="/#">Nhân viên</a>
+                    <a class="collapse-item" href="/login">Nhân viên</a>
                     <a class="collapse-item" href="/chuc-vu/hien-thi">Chức vụ</a>
+
 
 
                     <%--                    <a class="collapse-item" href="/authentication/enregistrer">Register</a>--%>
@@ -307,7 +310,7 @@
                                 Activity Log
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/logout">
+                            <a class="dropdown-item" href="/logout" >
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
@@ -320,48 +323,106 @@
             <!-- How to code article   -->
             <%--Todo code article--%>
 
-            <div class="">
 
-                <h1 style="text-align: center; color: black">Hóa đơn đang được cập nhật</h1>
+            <h2>Chất Liệu</h2>
+            <form:form action="/chat-lieu/add" method="post" modelAttribute="cl">
 
+                Ma: <form:input path="maCL"/>
+                <form:errors path="maCL"/>
+                <br>
+                Ten: <form:input path="ten"/>
+                <form:errors path="ten"/>
+                <br>
+                Ngày Tạo: <form:input type="Date" path="ngayTao"/>
+                <br>
+                Ngày Sửa: <form:input type="Date" path="ngaySua"/>
+                <br>
+                Trạng Thái:
+                <form:select path="trangThai" cssStyle="width: 200px;">
+                    <option value="1">
+                        Còn hàng
+                    </option>
+                    <option value="0">
+                        Hết hàng
+                    </option>
+                </form:select>
+                <br/>
+
+                <form:button type="submit">add</form:button>
+            </form:form>
+            <table class="table">
+                <tr>
+                    <th>STT</th>
+                    <th>Ma</th>
+                    <th>Tên</th>
+                    <th>Ngày Tạo</th>
+                    <th>Ngày Sửa</th>
+                    <th>Trạng Thái</th>
+                    <th colspan="2">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <c:forEach items="${chatLieu}" var="cl"  varStatus="stt">
+                    <tr>
+
+                        <td>${stt.index}</td>
+                        <td>${cl.maCL}</td>
+                        <td>${cl.ten} </td>
+                        <td>${cl.ngayTao}</td>
+                        <td>${cl.ngaySua} </td>
+                        <td>${cl.trangThai == 1 ? "còn": "hết"}</td>
+                        <td>
+                            <a href="/chat-lieu/delete/${cl.maCL}">Delete</a>
+                            <a href="/chat-lieu/view-update/${cl.maCL}">Update</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+
+
+
+
+
+
+                <!-- Footer -->
+                <footer style="margin-top: 50px" class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Your Website 2021</span>
+                        </div>
+                    </div>
+                </footer>
             </div>
+        </div>
 
-            <!-- Footer -->
-            <footer style="margin-top: 500px" class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+
+
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-titl se" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="/logout">Logout</a>
                     </div>
                 </div>
-            </footer>
-        </div>
-    </div>
-
-
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-titl se" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/logout">Logout</a>
-                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <script src="/vendor/jquery/jquery.min.js"></script>
@@ -371,11 +432,7 @@
 <script src="/vendor/chart.js/Chart.min.js"></script>
 <script src="/js/demo/chart-area-demo.js"></script>
 <script src="/js/demo/chart-pie-demo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
-        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 </body>
 </html>

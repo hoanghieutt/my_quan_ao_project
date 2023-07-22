@@ -61,8 +61,8 @@
 
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Other pages:</h6>
-                    <a class="collapse-item" href="">Màu sắc</a>
-                    <a class="collapse-item" href="">Size</a>
+                    <a class="collapse-item" href="/mau-sac/hien-thi">Màu sắc</a>
+                    <a class="collapse-item" href="/size/hien-thi">Size</a>
                     <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
                     <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
                     <a class="collapse-item" href="/loai-san-pham/add">Loại sản phẩm</a>
@@ -321,18 +321,29 @@
             <!-- How to code article   -->
             <%--Todo code article--%>
 
-            <form action="/chat-lieu/update?id=${ns.id}" method="post">
+            <form action="/chat-lieu/update?id=${cl.id}" method="post">
 
-                Mã: <input type="text" name="ma" value="${ns.maCL}"/>
-
-                <br/>
-                Tên: <input type="text" name="ten" value="${ns.ten}"/>
-                <br/>
-
-                Ngày Tạo: <input type="date" name="ngayTao" value="${ns.ngayTao}"/>
+                Mã: <input type="text" name="maCL" value="${chatLieu.maCL}"/>
 
                 <br/>
-                Ngày Sửa: <input type="date" name="ngaySua" value="${ns.ngaySua}"/>
+                Tên: <input type="text" name="ten" value="${chatLieu.ten}"/>
+                <br/>
+
+                Ngày Tạo: <input type="date" name="ngayTao" value="${chatLieu.ngayTao}"/>
+
+                <br/>
+                Ngày Sửa: <input type="date" name="ngaySua" value="${chatLieu.ngaySua}"/>
+                <br/>
+                <br>
+                Trạng Thái:
+                <select value="${chatLieu.trangThai}" cssStyle="width: 200px;">
+                    <option value="${chatLieu.trangThai}">
+                        Còn hàng
+                    </option>
+                    <option value="${chatLieu.trangThai}">
+                        Hết hàng
+                    </option>
+                </select>
                 <br/>
 
                 <button type="submit">Upadte</button>

@@ -13,25 +13,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.Date;
-
-@Entity
-@Table(name = "Size")
-@NoArgsConstructor
+import java.sql.Date;
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
+@Entity
+@Table(name = "Size")
 public class Size {
 
-     @Id
-     @Column(name = "maSize")
-     private String maSize;
-
-     private String size;
-     private String soLuong;
-     private Date ngayTao;
-     private Date ngaySua;
-     private int trangThai;
-
-
+    @Id
+    @Column(name = "maSize")
+    private String maSize;
 }

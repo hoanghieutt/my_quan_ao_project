@@ -1,6 +1,9 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -14,8 +17,7 @@
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <!-- Custom styles for this template-->
     <link href="/css/css.css" rel="stylesheet">
     <link href="/css/css1.css" rel="stylesheet">
@@ -65,7 +67,7 @@
                     <a class="collapse-item" href="/size/hien-thi">Size</a>
                     <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
                     <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
-                    <a class="collapse-item" href="/loai-san-pham/add">Loại sản phẩm</a>
+                    <a class="collapse-item" href="/loai-san-pham/hien-thi">Loại sản phẩm</a>
 
 
                 </div>
@@ -83,8 +85,9 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">User:</h6>
-                    <a class="collapse-item" href="/#">Nhân viên</a>
+                    <a class="collapse-item" href="/login">Nhân viên</a>
                     <a class="collapse-item" href="/chuc-vu/hien-thi">Chức vụ</a>
+
 
 
                     <%--                    <a class="collapse-item" href="/authentication/enregistrer">Register</a>--%>
@@ -307,7 +310,7 @@
                                 Activity Log
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/logout">
+                            <a class="dropdown-item" href="/logout" >
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
@@ -320,14 +323,62 @@
             <!-- How to code article   -->
             <%--Todo code article--%>
 
-            <div class="">
 
-                <h1 style="text-align: center; color: black">Hóa đơn đang được cập nhật</h1>
+            <h2>Mau Sac</h2>
+            <a class="col-sm-4" href="/mau-sac/view-add"><button class="btn btn-primary" style="margin-bottom: 30px">ADD</button></a>
+            <table class="table">
+                <tr>
+                    <th>STT</th>
+                    <th>Ma</th>
+                    <th>Tên</th>
+                    <th>Ngày Tạo</th>
+                    <th>Ngày Sửa</th>
+                    <th>Trạng Thái</th>
+                    <th colspan="2">Action</th>
+                </tr>
+                </thead>
+                <tbody>
 
-            </div>
+                <c:forEach items="${list}" var="ms" varStatus="stt">
+                    <tr>
+
+                        <td>${stt.index}</td>
+                        <td>${ms.maMS}</td>
+                        <td>${ms.ten} </td>
+                        <td>${ms.ngayTao}</td>
+                        <td>${ms.ngaySua} </td>
+                        <td>${ms.trangThai == 1 ? "Còn Hàng": "Hết Hàng"}</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-success"><a href="/mau-sac/delete/${ms.maMS}">DELETE</a>
+                            </button>
+                            <button type="button" class="btn btn-outline-danger"><a
+                                    href="/mau-sac/view-update/${ms.maMS}">UPDATE</a></button>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example" style="margin-right: 800px">
+                <ul class="pagination float-end">
+                    <li class="page-item">
+                        <a class="page-link" href="/mau-sac/hien-thi?page=${currentPage -1 <= 0?0:currentPage -1}">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <c:forEach var="i" begin="0" end="${totalPages -1}">
+                        <li class="page-item"><a class="page-link" href="/mau-sac/hien-thi?page=${i}">${i + 1}</a></li>
+                    </c:forEach>
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="/mau-sac/hien-thi?page=${currentPage +1 >= totalPages -1?totalPages -1:currentPage +1}">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
             <!-- Footer -->
-            <footer style="margin-top: 500px" class="sticky-footer bg-white">
+            <footer style="margin-top: 50px" class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website 2021</span>
@@ -336,6 +387,7 @@
             </footer>
         </div>
     </div>
+
 
 
     <a class="scroll-to-top rounded" href="#page-top">
@@ -371,11 +423,7 @@
 <script src="/vendor/chart.js/Chart.min.js"></script>
 <script src="/js/demo/chart-area-demo.js"></script>
 <script src="/js/demo/chart-pie-demo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
-        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 </body>
 </html>
