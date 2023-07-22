@@ -325,11 +325,20 @@
 
 
             <h2>Mau Sac</h2>
-            <a class="col-sm-4" href="/mau-sac/view-add"><button class="btn btn-primary" style="margin-bottom: 30px">ADD</button></a>
+            <div class="row">
+                <a class="col-sm-4" href="/mau-sac/view-add"><button class="btn btn-primary" style="margin-bottom: 30px">ADD</button></a>
+                <div class="col-">
+                    <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form></div>
+
+            </div>
+
             <table class="table">
                 <tr>
                     <th>STT</th>
-                    <th>Ma</th>
+                    <th>Mã</th>
                     <th>Tên</th>
                     <th>Ngày Tạo</th>
                     <th>Ngày Sửa</th>
@@ -342,16 +351,16 @@
                 <c:forEach items="${list}" var="ms" varStatus="stt">
                     <tr>
 
-                        <td>${stt.index}</td>
+                        <td>${stt.index+1}</td>
                         <td>${ms.maMS}</td>
                         <td>${ms.ten} </td>
                         <td>${ms.ngayTao}</td>
                         <td>${ms.ngaySua} </td>
                         <td>${ms.trangThai == 1 ? "Còn Hàng": "Hết Hàng"}</td>
                         <td>
-                            <button type="button" class="btn btn-outline-success"><a href="/mau-sac/delete/${ms.maMS}">DELETE</a>
+                            <button type="button" class="btn btn-outline-success" onclick="return confirm('Bạn muốn xóa..')"><a href="/mau-sac/delete/${ms.maMS}">DELETE</a>
                             </button>
-                            <button type="button" class="btn btn-outline-danger"><a
+                            <button type="button" class="btn btn-outline-danger" onclick="return confirm('Bạn muốn sửa..')"><a
                                     href="/mau-sac/view-update/${ms.maMS}">UPDATE</a></button>
                         </td>
                     </tr>

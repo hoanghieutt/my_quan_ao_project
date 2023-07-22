@@ -320,32 +320,53 @@
             </nav>
             <!-- How to code article   -->
             <%--Todo code article--%>
+            <h1 style="text-align: center; color: black; margin-top: 30px; margin-bottom: 60px">Sửa dữ liệu bảng
+                size</h1>
             <form:form action="/size/update/${sz.maSize}" method="post" modelAttribute="sz">
-
-                Ma: <form:input path="maSize"/>
-                <form:errors path="maSize"/>
-                <br>
-                SIZE: <form:input path="size"/>
-                <form:errors path="size"/>
-                <br>
-                so luong: <form:input type="text" path="soLuong"/>
-                <br>
-                Ngày Tạo: <form:input type="Date" path="ngayTao" />
-                <br>
-                Ngày Sửa: <form:input type="Date" path="ngaySua" />
-                <br>
-                Trạng Thái:
-                <form:select path="trangThai" cssStyle="width: 200px;">
-                    <option value="1">
-                        Còn hàng
-                    </option>
-                    <option value="0">
-                        Hết hàng
-                    </option>
-                </form:select>
-                <br/>
-
-                <button type="submit">UPDATE</button>
+                <div class="row">
+                    <div class="col-6">
+                        <label style="margin-left: 150px; margin-right: 30px; margin-bottom: 30px">Mã size</label>
+                        <form:input path="maSize" cssStyle="width: 200px;"/>
+                        <div class="textTitle"><form:errors cssStyle="margin-left: 50px; color: red" class="errors"
+                                                            path="maSize"/></div>
+                    </div>
+                    <br>
+                    <div class="col-6">
+                        <label style="margin-left: 150px; margin-right: 30px; margin-bottom: 30px">Size</label>
+                        <form:input path="size" cssStyle="width: 200px;" value=""/>
+                        <div class="textTitle"><form:errors cssStyle="margin-left: 50px; color: red" class="errors"
+                                                            path="size"/></div>
+                    </div>
+                    <br>
+                    <div class="col-6">
+                        <label style="margin-left: 150px; margin-right: 30px; margin-bottom: 30px">Số lượng</label>
+                        <form:input path="soLuong" cssStyle="width: 200px;" min="1" value=""/>
+                    </div>
+                    <br>
+<%--                    <div class="col-6">--%>
+<%--                        <label style="margin-left: 150px; margin-right: 30px; margin-bottom: 30px">Ngày tao</label>--%>
+<%--                        <form:input path="ngayTao" cssStyle="width: 200px;" type="date" />--%>
+<%--                    </div>  --%>
+                    <div class="col-6">
+                        <label style="margin-left: 150px; margin-right: 30px; margin-bottom: 30px">Ngày sửa</label>
+                        <form:input path="ngaySua" cssStyle="width: 200px;" type="date" />
+                    </div>
+                    <div class="col-6">
+                        <label style="margin-left: 150px; margin-right: 30px; margin-bottom: 30px">Trạng thái</label>
+                        <form:select path="trangThai" cssStyle="width: 200px;">
+                            <option value="1">
+                                Còn hàng
+                            </option>
+                            <option value="0">
+                                Hết hàng
+                            </option>
+                        </form:select>
+                    </div>
+                    <br/>
+                </div>
+                <form:button type="submit" onclick="return confirm('Bạn muốn sửa..')"
+                             style="margin-left: 400px; margin-bottom: 190px"
+                             class="btn btn-primary">UPDATE</form:button>
             </form:form>
 
 

@@ -1,6 +1,7 @@
 package com.example.duancore.controller;
 
 import com.example.duancore.entity.MauSac;
+import com.example.duancore.entity.Size;
 import com.example.duancore.service.MauSacService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,8 +59,16 @@ public class MauSacController {
         return "/mauSac/view-update";
     }
     @PostMapping("/mau-sac/update/{id}")
-    public String update(@ModelAttribute("ms") MauSac ms, Model model){
-        mauSacService.update(ms);
-        return "redirect:/mau-sac/hien-thi";
+    public String update(@Valid @PathVariable("id") MauSac mauSac,@ModelAttribute("ms") MauSac mss,BindingResult result, Model model){
+        if (result.hasErrors()) {
+            return "/mauSac/view-update";
+        } else {
+            mauSac.setMaMS(mss.getMaMS());
+            mauSac.setTen(mss.getTen());
+            mauSac.setNgaySua(mss.getNgaySua());
+            mauSac.setTrangThai(mss.getTrangThai());
+            mauSacService.update(mauSac);
+            return "redirect:/mau-sac/hien-thi";
+        }
     }
 }

@@ -347,9 +347,10 @@
                         <td>${sz.ngaySua}</td>
                         <td>${sz.trangThai==1?"Còn hàng":"Hết hàng"}</td>
                         <td>
-                            <button type="button" class="btn btn-outline-success"><a href="/size/delete/${sz.maSize}">DELETE</a>
+
+                            <button type="button" class="btn btn-outline-success " onclick="return confirm('Bạn muốn xóa..')"><a href="/size/delete/${sz.maSize}">DELETE</a>
                             </button>
-                            <button type="button" class="btn btn-outline-danger"><a
+                            <button type="button" class="btn btn-outline-danger" onclick="return confirm('Bạn muốn sửa..')"><a
                                     href="/size/view-update/${sz.maSize}">UPDATE</a></button>
                         </td>
                     </tr>

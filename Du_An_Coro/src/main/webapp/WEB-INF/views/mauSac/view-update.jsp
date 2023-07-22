@@ -320,32 +320,45 @@
             </nav>
             <!-- How to code article   -->
             <%--Todo code article--%>
+            <h1 style="text-align: center; color: black; margin-top: 30px; margin-bottom: 60px">Sửa dữ liệu bảng
+                màu sắc</h1>
             <form:form action="/mau-sac/update/${ms.maMS}" method="post" modelAttribute="ms">
-
-                Ma: <form:input path="maMS"/>
-                <form:errors path="maMS"/>
-                <br>
-                SIZE: <form:input path="ten"/>
-                <form:errors path="ten"/>
-                <br>
-                Ngày Tạo: <form:input type="Date" path="ngayTao" />
-                <br>
-                Ngày Sửa: <form:input type="Date" path="ngaySua" />
-                <br>
-                Trạng Thái:
-                <form:select path="trangThai" cssStyle="width: 200px;">
-                    <option value="1">
-                        Còn hàng
-                    </option>
-                    <option value="0">
-                        Hết hàng
-                    </option>
-                </form:select>
-                <br/>
-
-                <button type="submit">UPDATE</button>
+                <div class="row">
+                    <div class="col-6">
+                        <label style="margin-left: 150px; margin-right: 30px; margin-bottom: 30px">Mã size</label>
+                        <form:input path="maMS" cssStyle="width: 200px;"/>
+                        <div class="textTitle"><form:errors cssStyle="margin-left: 50px; color: red" class="errors"
+                                                            path="maMS"/></div>
+                    </div>
+                    <br>
+                    <div class="col-6">
+                        <label style="margin-left: 150px; margin-right: 30px; margin-bottom: 30px">Tên</label>
+                        <form:input path="ten" cssStyle="width: 200px;" value=""/>
+                        <div class="textTitle"><form:errors cssStyle="margin-left: 50px; color: red" class="errors"
+                                                            path="ten"/></div>
+                    </div>
+                    <br>
+                    <div class="col-6">
+                        <label style="margin-left: 150px; margin-right: 30px; margin-bottom: 30px">Ngày sửa</label>
+                        <form:input path="ngaySua" cssStyle="width: 200px;" type="date" />
+                    </div>
+                    <div class="col-6">
+                        <label style="margin-left: 150px; margin-right: 30px; margin-bottom: 30px">Trạng thái</label>
+                        <form:select path="trangThai" cssStyle="width: 200px;">
+                            <option value="1">
+                                Còn hàng
+                            </option>
+                            <option value="0">
+                                Hết hàng
+                            </option>
+                        </form:select>
+                    </div>
+                    <br/>
+                </div>
+                <form:button type="submit" onclick="return confirm('Bạn muốn sửa..')"
+                             style="margin-left: 400px; margin-bottom: 190px"
+                             class="btn btn-primary">UPDATE</form:button>
             </form:form>
-
             <%--            <div>--%>
             <%--                 <h1 style="text-align: center; color: black; margin-top: 90px">Bảng Size đang hoàn dần hoàn thiện</h1>--%>
             <%--            </div>--%>

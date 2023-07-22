@@ -31,7 +31,7 @@ public class SizeController {
         return "/Size/hienThi";
     }
     @GetMapping("/size/view-add")
-    public String viewadd(@ModelAttribute("sz") Size size, Model model) {
+    public String viewadd(@ModelAttribute("sz") Size sz, Model model) {
         return "/Size/add";
     }
     @PostMapping("/size/add")
@@ -61,10 +61,18 @@ public class SizeController {
         return "/Size/view-update";
     }
     @PostMapping("/size/update/{id}")
-    public String update(@ModelAttribute("sz") Size sz, Model model){
-        sizeService.update(sz);
-        return "redirect:/size/hien-thi";
+    public String update(@Valid @PathVariable("id") Size size, @ModelAttribute("sz") Size szz, BindingResult result , Model model) {
+        if (result.hasErrors()) {
+            return "/Size/view-update";
+        } else {
+            size.setMaSize(szz.getMaSize());
+            size.setSize(szz.getSize());
+            size.setSoLuong(szz.getSoLuong());
+            size.setNgaySua(szz.getNgaySua());
+            size.setTrangThai(szz.getTrangThai());
+            sizeService.update(size);
+            return "redirect:/size/hien-thi";
+        }
+
     }
-
-
 }

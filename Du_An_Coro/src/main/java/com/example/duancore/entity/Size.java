@@ -7,6 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +26,7 @@ public class Size implements Serializable {
 
     @Id
     @Column(name = "maSize")
+    @NotBlank(message = "Vui lòng nhập mã size")
     private String maSize;
 
     @Column(name = "size")
@@ -33,7 +36,7 @@ public class Size implements Serializable {
     private int soLuong;
 
     @Column(name = "ngayTao")
-    private java.sql.Date ngayTao;
+    private Date ngayTao;
 
     @Column(name = "ngaySua")
     private Date ngaySua;

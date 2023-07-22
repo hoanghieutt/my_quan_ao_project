@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -15,9 +16,10 @@ import java.sql.Date;
 public class MauSac implements Serializable {
     @Id
     @Column(name = "maMS")
+    @NotEmpty(message = "Vui lòng nhập mã màu sắc")
     private String maMS;
     @Column(name = "ten")
-
+    @NotEmpty(message = "Vui lòng nhập tên màu sắc")
     private String ten;
     @Column(name = "ngayTao")
 
