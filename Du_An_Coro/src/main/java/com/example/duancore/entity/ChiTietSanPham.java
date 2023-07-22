@@ -13,39 +13,40 @@ import lombok.Setter;
 
 import java.sql.Date;
 
-@Entity
-@Table(name = "ChiTietSanPham")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@Entity
+@Table(name = "ChiTietSanPham")
+
 public class ChiTietSanPham {
     @Id
     @Column(name = "maCTSP")
     private String maCTSP;
 
     @ManyToOne
-    @JoinColumn(name = "maSize", referencedColumnName = "maSize")
+    @JoinColumn(name = "maSize")
     private Size size;
 
     @ManyToOne
-    @JoinColumn(name = "maMS", referencedColumnName = "maMS")
+    @JoinColumn(name = "maMS")
     private MauSac mauSac;
 
     @ManyToOne
-    @JoinColumn(name = "maCL", referencedColumnName = "maCL")
+    @JoinColumn(name = "maCL")
     private ChatLieu chatLieu;
 
     @ManyToOne
-    @JoinColumn(name = "maSP", referencedColumnName = "maSP")
+    @JoinColumn(name = "maSP")
     private SanPham sanPham;
 
     @ManyToOne
-    @JoinColumn(name = "maLSP", referencedColumnName = "maLSP")
+    @JoinColumn(name = "maLSP")
     private LoaiSanPham loaiSanPham;
 
     @ManyToOne
-    @JoinColumn(name = "maMTT", referencedColumnName = "maMTT")
+    @JoinColumn(name = "maMTT")
     private MonTheThao monTheThao;
 
     @Column(name = "soLuong")

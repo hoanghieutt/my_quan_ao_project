@@ -27,6 +27,18 @@ public class WebMVCConfig implements WebMvcConfigurer {
         return vm;
     }
 
+    @Bean("size")
+    public Size getSize(){
+        Size vm = new Size();
+        return vm;
+    }
+
+    @Bean("mauSac")
+    public MauSac getMauSac(){
+        MauSac vm = new MauSac();
+        return vm;
+    }
+
     @Bean("khachHang")
     public KhachHang getKhachHang(){
         KhachHang vm = new KhachHang();

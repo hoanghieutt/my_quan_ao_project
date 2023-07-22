@@ -21,8 +21,22 @@ import java.sql.Date;
 @Entity
 @Table(name = "Size")
 public class Size {
-
     @Id
     @Column(name = "maSize")
     private String maSize;
+
+    @Column(name = "size")
+    private int size;
+
+    @Column(name = "soLuong")
+    private int soLuong;
+
+    @Column(name = "ngayTao")
+    private Date ngayTao;
+
+    @Column(name = "ngaySua")
+    private Date ngaySua;
+
+    @Column(name = "trangThai")
+    private int trangThai;
 }

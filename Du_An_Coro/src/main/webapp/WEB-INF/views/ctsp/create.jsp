@@ -27,7 +27,6 @@
 
 <%@ include file="../layout/header.jsp" %>
 
-<h1 style="text-align: center;">Quản lý Chi Tiết Sản Phẩm</h1>
 <br>
 <sf:form action="${action}" method="post" modelAttribute="vm">
     <div class="container">
@@ -36,73 +35,84 @@
         <div>
             <label class="form-label">Mã Chi tiết</label>
             <sf:input path="maCTSP" class="form-control"/>
+            <c:if test="${not empty massageMaTrung}">
+                <div style="color: red">
+                        ${massageMaTrung}
+                </div>
+            </c:if>
             <sf:errors path="maCTSP" cssStyle="color:red;"/>
         </div>
 
         <div>
             <label class="form-label">Kích cỡ</label>
-            <sf:select path="maSize" class="form-control">
+            <sf:select path="size" class="form-control">
                 <sf:option value="">-- Chọn Kích cỡ --</sf:option>
-                <c:forEach items="${listSize}" var="size">
-                    <sf:option value="${size.maSize}">${size.tenSize}</sf:option>
+                <c:forEach items="${listSize}" var="s">
+                    <sf:option value="${s.maSize}">${s.size}</sf:option>
                 </c:forEach>
             </sf:select>
-            <sf:errors path="maSize" cssStyle="color:red;"/>
+
+            <sf:errors path="size" cssStyle="color:red;"/>
         </div>
 
         <div>
             <label class="form-label">Màu sắc</label>
-            <sf:select path="maMS" class="form-control">
+            <sf:select path="mauSac" class="form-control">
                 <sf:option value="">-- Chọn Màu sắc --</sf:option>
-                <c:forEach items="${listMauSac}" var="mauSac">
-                    <sf:option value="${mauSac.maMS}">${mauSac.tenMS}</sf:option>
+                <c:forEach items="${listMauSac}" var="ms">
+                    <sf:option value="${ms.maMS}">${ms.ten}</sf:option>
                 </c:forEach>
             </sf:select>
-            <sf:errors path="maMS" cssStyle="color:red;"/>
+            <sf:errors path="mauSac" cssStyle="color:red;"/>
         </div>
 
         <div>
             <label class="form-label">Chất liệu</label>
-            <sf:select path="maCL" class="form-control">
+            <sf:select path="chatLieu" class="form-control">
                 <sf:option value="">-- Chọn Chất liệu --</sf:option>
-                <c:forEach items="${listChatLieu}" var="chatLieu">
-                    <sf:option value="${chatLieu.maCL}">${chatLieu.tenCL}</sf:option>
+                <c:forEach items="${listChatLieu}" var="cl">
+                    <sf:option value="${cl.maCL}">${cl.ten}</sf:option>
                 </c:forEach>
             </sf:select>
-            <sf:errors path="maCL" cssStyle="color:red;"/>
+            <c:if test="${not empty validateNull}">
+                <div style="color: red">
+                        ${validateNull}
+                </div>
+            </c:if>
+            <sf:errors path="chatLieu" cssStyle="color:red;"/>
         </div>
 
         <div>
             <label class="form-label">Sản phẩm</label>
-            <sf:select path="maSP" class="form-control">
+            <sf:select path="sanPham" class="form-control">
                 <sf:option value="">-- Chọn Sản phẩm --</sf:option>
-                <c:forEach items="${listSanPham}" var="sanPham">
-                    <sf:option value="${sanPham.maSP}">${sanPham.tenSP}</sf:option>
+                <c:forEach items="${listSanPham}" var="sp">
+                    <sf:option value="${sp.masp}">${sp.tensp}</sf:option>
                 </c:forEach>
             </sf:select>
-            <sf:errors path="maSP" cssStyle="color:red;"/>
+            <sf:errors path="sanPham" cssStyle="color:red;"/>
         </div>
 
         <div>
             <label class="form-label">Loại sản phẩm</label>
-            <sf:select path="maLSP" class="form-control">
+            <sf:select path="loaiSanPham" class="form-control">
                 <sf:option value="">-- Chọn Loại sản phẩm --</sf:option>
-                <c:forEach items="${listLoaiSP}" var="loaiSanPham">
-                    <sf:option value="${loaiSanPham.maLSP}">${loaiSanPham.tenLSP}</sf:option>
+                <c:forEach items="${listLoaiSP}" var="lsp">
+                    <sf:option value="${lsp.maLSP}">${lsp.ten}</sf:option>
                 </c:forEach>
             </sf:select>
-            <sf:errors path="maLSP" cssStyle="color:red;"/>
+            <sf:errors path="loaiSanPham" cssStyle="color:red;"/>
         </div>
 
         <div>
             <label class="form-label">Môn thể thao</label>
-            <sf:select path="maMTT" class="form-control">
+            <sf:select path="monTheThao" class="form-control">
                 <sf:option value="">-- Chọn Môn thể thao --</sf:option>
-                <c:forEach items="${listMTT}" var="monTheThao">
-                    <sf:option value="${monTheThao.maMTT}">${monTheThao.tenMTT}</sf:option>
+                <c:forEach items="${listMTT}" var="mtt">
+                    <sf:option value="${mtt.mamtt}">${mtt.ten}</sf:option>
                 </c:forEach>
             </sf:select>
-            <sf:errors path="maMTT" cssStyle="color:red;"/>
+            <sf:errors path="monTheThao" cssStyle="color:red;"/>
         </div>
 
         <div>
