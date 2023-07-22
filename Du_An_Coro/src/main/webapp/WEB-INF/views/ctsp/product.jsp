@@ -43,19 +43,11 @@
 <table class="table">
     <thead>
     <tr>
-        <th scope="col">Mã Chi tiết</th>
-        <th scope="col">Kích cỡ</th>
-        <th scope="col">Màu sắc</th>
-        <th scope="col">Chất liệu</th>
-        <th scope="col">Sản phẩm</th>
-        <th scope="col">Loại sản phẩm</th>
-        <th scope="col">Môn thể thao</th>
-        <th scope="col">Số lượng</th>
-        <th scope="col">Giá</th>
-        <th scope="col">Ngày tạo</th>
-        <th scope="col">Ngày sửa</th>
-        <th scope="col">Trạng thái</th>
-        <th scope="col">Action</th>
+        <th>Mã</th>
+        <th>Tên</th>
+        <th>Giá</th>
+        <th>Số lượng</th>
+        <th>Action</th>
     </tr>
     </thead>
 
@@ -63,21 +55,16 @@
     <c:forEach items="${data}" var="chiTietSP">
         <tr>
             <td>${chiTietSP.maCTSP}</td>
-            <td>${chiTietSP.size.maSize}</td>
-            <td>${chiTietSP.mauSac.maMS}</td>
-            <td>${chiTietSP.chatLieu.maCL}</td>
-            <td>${chiTietSP.sanPham.masp}</td>
-            <td>${chiTietSP.loaiSanPham.maLSP}</td>
-            <td>${chiTietSP.monTheThao.mamtt}</td>
-            <td>${chiTietSP.soLuong}</td>
+            <td>${chiTietSP.sanPham.tensp}</td>
             <td>${chiTietSP.gia}</td>
-            <td>${chiTietSP.ngayTao}</td>
-            <td>${chiTietSP.ngaySua}</td>
-            <td>${chiTietSP.trangThai == 1 ? 'Còn hoạt động' : 'Không hoạt động'}</td>
+            <td>${chiTietSP.soLuong}</td>
             <td>
                 <a class="btn btn-warning" href="/chi-tiet-san-pham/edit/${chiTietSP.maCTSP}">Sửa</a>
                 <a class="btn btn-danger" href="/chi-tiet-san-pham/delete/${chiTietSP.maCTSP}">Xóa</a>
-                <input type="submit" value="Add to Cart">
+
+                <form action="/cart/add" method="post">
+                    <input type="submit" value="Add to Cart">
+                </form>
             </td>
         </tr>
     </c:forEach>
