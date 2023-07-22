@@ -359,10 +359,23 @@
 
                     <div>
                         <label class="form-label">Giới tính</label>
-                        <sf:radiobutton value="Nam" path="gioiTinh" class="form-check-input" checked="true"/> Nam
-                        <sf:radiobutton value="Nữ" path="gioiTinh" class="form-check-input"/> Nữ
                         <br>
-                        <sf:errors path="gioiTinh" cssStyle="color:red;"/>
+                        <div class="form-check">
+                        <sf:radiobutton value="Nam" path="gioiTinh" class="form-check-input" checked="true" name="flexRadioDefault" id="flexRadioDefault1"/>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Nam
+                        </label>
+                        </div>
+
+                        <div class="form-check">
+                            <sf:radiobutton value="Nữ" path="gioiTinh" class="form-check-input" name="flexRadioDefault" id="flexRadioDefault2"/>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                               Nữ
+                            </label>
+                            <br>
+                            <sf:errors path="gioiTinh" cssStyle="color:red;"/>
+                        </div>
+
                     </div>
 
                     <div>
@@ -381,6 +394,8 @@
                         <sf:input path="diaChi" class="form-control"/>
                         <sf:errors path="diaChi" cssStyle="color:red;"/>
                     </div>
+
+                    <br>
 
                     <div class="row">
                         <div class="col-md-2"></div>

@@ -22,8 +22,7 @@ import java.sql.Date;
 @Setter
 @Entity
 @Table(name = "Size")
-public class Size implements Serializable {
-
+public class Size {
     @Id
     @Column(name = "maSize")
     @NotBlank(message = "Vui lòng nhập mã size")
