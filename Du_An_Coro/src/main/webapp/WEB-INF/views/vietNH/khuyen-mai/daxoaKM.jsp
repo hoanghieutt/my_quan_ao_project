@@ -332,32 +332,10 @@
             </nav>
             <!-- How to code article   -->
             <%--Todo code article--%>
-            <h2 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">KHUYẾN MÃI CÒN HOẠT ĐỘNG</h2>
-            <form method="post" action="/KM/timKW">
 
-                <table style="border: none; margin-left: 40px">
-                    <tr style="border: none">
-                        <td style="border: none; margin-left: 40px; width: 150px">Tên:</td>
-                        <td style="border: none"><input type="text" name="tukhoa"> <br></td>
-                    </tr>
-                    <tr style="border: none">
-                        <td style="border: none; margin-left: 40px; width: 150px">Khoảng giá:</td>
-                        <td style="border: none"><input type="number" name="minVL"> - <input type="number" name="maxVL"></td>
-                    </tr>
-                    <tr style="border: none">
-                        <td style="border: none; margin-left: 40px; width: 150px">Khoảng thời gian:</td>
-                        <td style="border: none"><input type="date" name="startD"> - <input type="date" name="endD"></td>
-                    </tr>
-                </table>
-                
-                <button class="btn btn-primary" type="submit" style="margin-left: 40px">Find</button>
-            </form>
-
+            <h2 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">KHUYẾN MÃI DỪNG HOẠT ĐỘNG</h2>
+            <a href="/KM/return" class="btn btn-primary" style="margin-left: 40px">Khuyến mãi còn hoạt động</a> <br>
             <br>
-            <br>
-
-            <a href="/KM/themKM" class="btn btn-primary" style="margin-left: 40px">Tạo khuyến mãi mới</a>
-            <br> <br>
             <table class="col-md-12">
                 <tr>
                     <th>ID</th>
@@ -366,10 +344,10 @@
                     <th>Ngày kết thúc</th>
                     <th>Giá trị</th>
                     <th>Ngày tạo</th>
-                    <th>Ngày sửa</th>
+                    <th>Ngày sửa lần cuối bởi người dùng</th>
                     <th>Chức năng khác</th>
                 </tr>
-                <c:forEach items="${kmpage.content}" var="k">
+                <c:forEach items="${kmX}" var="k">
                     <tr>
                         <td>${k.makm}</td>
                         <td>${k.tenkm}</td>
@@ -378,22 +356,13 @@
                         <td>${k.giamgia}</td>
                         <td>${k.ngaytao}</td>
                         <td>${k.ngaysua}</td>
-                        <td>
-                            <a style="width: 49%" class="btn btn-primary" href="/KM/suaKM/${k.makm}">UPDATE</a>
-                            <a style="width: 49%" class="btn btn-danger" href="/KM/xoaKM/${k.makm}">DELETE</a>
-                        </td>
+                        <td><a class="btn btn-primary" href="/KM/suaKM/${k.makm}">RESTORE</a></td>
                     </tr>
                 </c:forEach>
             </table>
-            <br>
-            <br>
-            <a href="?pageNum=0" class="btn btn-primary" style="margin-left: 40px">First</a>
-            <a href="?pageNum=${kmpage.number-1}" class="btn btn-primary" style="margin-left: 40px">Pevious</a>
-            <a href="?pageNum=${kmpage.number+1}" class="btn btn-primary" style="margin-left: 40px">Next</a>
-            <a href="?pageNum=${kmpage.totalPages-1}" class="btn btn-primary" style="margin-left: 40px">Last</a> <br>
-            <br>
 
-            <a href="/KM/daxoa" class="btn btn-warning" style="margin-left: 40px">Khuyến mãi dừng hoạt động</a>
+
+
 
             <!-- Footer -->
             <footer style="margin-top: 300px" class="sticky-footer bg-white">
