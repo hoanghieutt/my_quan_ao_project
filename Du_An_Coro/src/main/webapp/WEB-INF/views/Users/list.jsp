@@ -83,7 +83,7 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">User:</h6>
-                    <a class="collapse-item" href="/#">Nhân viên</a>
+                    <a class="collapse-item" href="/Users/hien-thi">Nhân viên</a>
                     <a class="collapse-item" href="/chuc-vu/hien-thi">Chức vụ</a>
 
 
@@ -329,6 +329,12 @@
                 <input type="date" name="max" value="${maxDate}">
                 <button class="btn btn-primary">Tìm kiếm</button>
             </form>
+
+            <h1 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">List danh sách nhân viên</h1>
+
+            <a class="col-sm-4" href="${pageContext.request.contextPath}/Users/exportFilePDF"><button class="btn btn-primary" style="margin-bottom: 30px">Xuất file pdf</button></a>
+            <a class="col-sm-4" href="${pageContext.request.contextPath}/Users/exportFileExcel"><button class="btn btn-primary" style="margin-bottom: 30px">Xuất file excal</button></a>
+
 
             <br>
             <a class="btn btn-warning" href="/Users/create">Thêm mới</a>

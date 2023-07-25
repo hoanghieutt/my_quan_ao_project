@@ -79,8 +79,8 @@ create table LoaiSanPham
 )
 INSERT INTO LoaiSanPham (maLSP, ten, ngayTao, ngaySua, trangThai)
 VALUES
-('LSP001', 'Áo', '2023-07-01', '2023-07-03', 1),
-('LSP002', 'Quần', '2023-07-02', '2023-07-04', 1)
+('LSP001', N'Áo', '2023-07-01', '2023-07-03', 1),
+('LSP002', N'Quần', '2023-07-02', '2023-07-04', 1)
 go
 ---bảng Size
 
@@ -188,11 +188,11 @@ create table KhachHang
 )
 INSERT INTO KhachHang (maKH, tenKH, ngaySinh, gioiTinh, soDienThoai, diaChi, ngayTao, ngaySua, trangThai)
 VALUES
-('KH001', 'Nguyễn Văn A', '2000-01-01', 'Nam', 123456789, 'Hoàng Hoa Thám, Hà Nội', '2023-07-01', '2023-07-03', 1),
-('KH002', 'Nguyễn Thị B', '1998-05-10', 'Nữ', 987654321, 'Nguyễn Khuyến, Hà Nội', '2023-07-02', '2023-07-04', 1),
-('KH003', 'Trần Văn C', '2002-09-15', 'Nam', 567891234, 'Ba Đình, Hà Nội', '2023-07-01', '2023-07-02', 1),
-('KH004', 'Lê Thị D', '1995-03-20', 'Nữ', 345678912, 'Cầu Giấy, Hà Nội', '2023-07-03', '2023-07-05', 1),
-('KH005', 'Phạm Văn E', '1997-07-25', 'Nam', 789123456, 'Đống Đa, Hà Nội', '2023-07-04', '2023-07-06', 1);
+('KH001', N'Nguyễn Văn A', '2000-01-01', 'Nam', 123456789, 'Hoàng Hoa Thám, Hà Nội', '2023-07-01', '2023-07-03', 1),
+('KH002', N'Nguyễn Thị B', '1998-05-10', 'Nữ', 987654321, 'Nguyễn Khuyến, Hà Nội', '2023-07-02', '2023-07-04', 1),
+('KH003', N'Trần Văn C', '2002-09-15', 'Nam', 567891234, 'Ba Đình, Hà Nội', '2023-07-01', '2023-07-02', 1),
+('KH004', N'Lê Thị D', '1995-03-20', 'Nữ', 345678912, 'Cầu Giấy, Hà Nội', '2023-07-03', '2023-07-05', 1),
+('KH005', N'Phạm Văn E', '1997-07-25', 'Nam', 789123456, 'Đống Đa, Hà Nội', '2023-07-04', '2023-07-06', 1);
 go
 
 ---bảng hình thức thanh toán
@@ -208,8 +208,8 @@ create table HinhThucThanhToan
 )
 INSERT INTO HinhThucThanhToan (maHTTT, tenHTTT, ngayTao, ngaySua, trangThai)
 VALUES
-    ('HTTT001', 'Tiền mặt', '2023-07-01', '2023-07-03', 1),
-    ('HTTT002', 'Chuyển khoản', '2023-07-02', '2023-07-04', 1)
+    ('HTTT001', N'Tiền mặt', '2023-07-01', '2023-07-03', 1),
+    ('HTTT002', N'Chuyển khoản', '2023-07-02', '2023-07-04', 1)
 go
 
 ---bảng chức vụ
@@ -228,8 +228,8 @@ create table ChucVu
 INSERT INTO ChucVu (maCV, tenCV, ngayTao, ngaySua, trangThai)
 VALUES
 
-    ('CV002', 'Quản lý', '2023-07-02', '2023-07-04', 1),
-    ('CV003', 'Nhân viên', '2023-07-01', '2023-07-02', 1)
+    ('CV002', N'Quản lý', '2023-07-02', '2023-07-04', 1),
+    ('CV003', N'Nhân viên', '2023-07-01', '2023-07-02', 1)
 go
 ---bảng nhân viên
 
@@ -256,11 +256,11 @@ create table Users
 )
 INSERT INTO Users (maNV, maCV, tenNV, diaChi, gioiTinh, email, soDienThoai, ngaySinh, ngayTao, ngaySua, trangThai, [role])
 VALUES
-    ('NV001', 'CV002', 'Nguyễn Văn A', 'Hà Nội', 'Nam', 'nva@example.com', 123456789, '2000-01-01', '2023-07-01', '2023-07-03', 1, 'Admin'),
-    ('NV002', 'CV002', 'Nguyễn Thị B', 'HCM', 'Nữ', 'ntb@example.com', 987654321, '1998-05-10', '2023-07-02', '2023-07-04', 1, 'User'),
-    ('NV003', 'CV003', 'Trần Văn C', 'Đà Nẵng', 'Nam', 'tvc@example.com', 567891234, '2002-09-15', '2023-07-01', '2023-07-02', 1, 'User'),
-    ('NV004', 'CV002', 'Lê Thị D', 'Hà Nội', 'Nữ', 'ltd@example.com', 345678912, '1995-03-20', '2023-07-03', '2023-07-05', 1, 'User'),
-    ('NV005', 'CV003', 'Phạm Văn E', 'HCM', 'Nam', 'pve@example.com', 789123456, '1997-07-25', '2023-07-04', '2023-07-06', 1, 'User');
+    ('NV001', 'CV002', N'Nguyễn Văn A', N'Hà Nội', 'Nam', 'nva@example.com', 123456789, '2000-01-01', '2023-07-01', '2023-07-03', 1, 'Admin'),
+    ('NV002', 'CV002', N'Nguyễn Thị B', N'HCM', 'Nữ', 'ntb@example.com', 987654321, '1998-05-10', '2023-07-02', '2023-07-04', 1, 'User'),
+    ('NV003', 'CV003', N'Trần Văn C', N'Đà Nẵng', 'Nam', 'tvc@example.com', 567891234, '2002-09-15', '2023-07-01', '2023-07-02', 1, 'User'),
+    ('NV004', 'CV002', N'Lê Thị D', N'Hà Nội', 'Nữ', 'ltd@example.com', 345678912, '1995-03-20', '2023-07-03', '2023-07-05', 1, 'User'),
+    ('NV005', 'CV003', N'Phạm Văn E', N'HCM', 'Nam', 'pve@example.com', 789123456, '1997-07-25', '2023-07-04', '2023-07-06', 1, 'User');
 
 
 go
