@@ -346,3 +346,54 @@ insert into KHUYENMAI values (N'KM5','2018-02-02','2019-01-01',1000,'2003-01-01'
 
 
 select * from KHUYENMAI
+
+
+
+
+create table GioHang
+(
+  
+      maGH            nvarchar(30)				not null,
+
+	  maKH	          nvarchar(30)				not null,
+	  maNV			  nvarchar(30)				not null,
+
+      ghiChu	      nvarchar(30)				    null,
+	  thanhTien	      money							null,
+	  ngayTao	      Date							null,
+	  ngayThanhToan	  Date							null,
+	  tenNguoiNhan    nvarchar(30)				    null,
+	  diaChi		  nvarchar(300)				    null,
+	  sdt			  nvarchar(20)					null,						    
+	  trangThai	  int							    null,
+
+	  Constraint PK_GioHang			               Primary key(maGH),
+
+	  Constraint FK_GioHang_KhachHang             Foreign key(maKH)     References KhachHang,
+      Constraint FK_GioHang_Users                 Foreign key(maNV)   References Users,
+
+)
+
+
+create table GioHangChiTiet
+(
+  
+      maGHCT            nvarchar(30)				not null,
+
+	  maGH	          nvarchar(30)				    not null,
+	  maCTSP			  nvarchar(30)				not null,
+
+	  soLuong			 int null,
+	  donGia            DECIMAL(20, 0) DEFAULT 0,
+	  donGiaKhiGiam	    DECIMAL(20, 0) DEFAULT 0,
+
+	  ngayTao   date null,
+	  ngaySua	date null,
+	  trangThai	  int							    null,
+
+	  Constraint PK_GioHangChiTiet		               Primary key(maGHCT),
+
+	  Constraint FK_GioHang_ChiTietSanPham             Foreign key(maCTSP)     References ChiTietSanPham,
+      Constraint FK_GioHang_GioHang                    Foreign key(maGH)   References GioHang,
+
+)
