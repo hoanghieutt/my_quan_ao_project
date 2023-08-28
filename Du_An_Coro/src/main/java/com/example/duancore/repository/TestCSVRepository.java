@@ -1,9 +1,9 @@
 package com.example.duancore.repository;
 
-import com.example.duancore.entity.MauSac;
 import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.duancore.entity.testcsv;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MauSacRepository extends JpaRepository<MauSac,String> {
+public interface TestCSVRepository extends JpaRepository<testcsv,String> {
 }

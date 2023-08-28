@@ -1,9 +1,11 @@
 package com.example.duancore.repository;
 
 import com.example.duancore.entity.ChiTietSanPham;
-import com.example.duancore.entity.KhachHang;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-public interface ChiTietSanPhamRepository extends JpaRepository<ChiTietSanPham, String> {
-    ChiTietSanPham findByMaCTSP(String maCTSP);
+@Repository
+public interface ChiTietSanPhamRepository extends JpaRepository<ChiTietSanPham,String> {
 }
