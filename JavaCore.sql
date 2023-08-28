@@ -341,13 +341,33 @@ create table GioHang
 	  maKH	          nvarchar(30)				    null,
 	  maNV			  nvarchar(30)				    null,
 
+<<<<<<< HEAD:JavaCore.sql
+=======
+select * from KHUYENMAI
+
+
+
+
+create table GioHang
+(
+  
+      maGH            nvarchar(30)				not null,
+
+	  maKH	          nvarchar(30)				not null,
+	  maNV			  nvarchar(30)				not null,
+
+>>>>>>> 0c0d59e5cddda799565cca56e40653277ece1510:JavaCore (1).sql
       ghiChu	      nvarchar(30)				    null,
 	  thanhTien	      money							null,
 	  ngayTao	      Date							null,
 	  ngayThanhToan	  Date							null,
 	  tenNguoiNhan    nvarchar(30)				    null,
 	  diaChi		  nvarchar(300)				    null,
+<<<<<<< HEAD:JavaCore.sql
 	  soDienThoai	  nvarchar(30)	 null,
+=======
+	  sdt			  nvarchar(20)					null,						    
+>>>>>>> 0c0d59e5cddda799565cca56e40653277ece1510:JavaCore (1).sql
 	  trangThai	  int							    null,
 
 	  Constraint PK_GioHang			               Primary key(maGH),
@@ -361,10 +381,17 @@ create table GioHang
 create table GioHangChiTiet
 (
   
+<<<<<<< HEAD:JavaCore.sql
       maGHCT            nvarchar(1000)				not null,
 
 	  maGH				nvarchar(1000)				 null,
 	  maCTSP			nvarchar(3000)				 null,
+=======
+      maGHCT            nvarchar(30)				not null,
+
+	  maGH	          nvarchar(30)				    not null,
+	  maCTSP			  nvarchar(30)				not null,
+>>>>>>> 0c0d59e5cddda799565cca56e40653277ece1510:JavaCore (1).sql
 
 	  soLuong			 int null,
 	  donGia            DECIMAL(20, 0) DEFAULT 0,
@@ -379,6 +406,7 @@ create table GioHangChiTiet
 	  Constraint FK_GioHang_ChiTietSanPham             Foreign key(maCTSP)     References ChiTietSanPham,
       Constraint FK_GioHang_GioHang                    Foreign key(maGH)   References GioHang,
 
+<<<<<<< HEAD:JavaCore.sql
 )
 
 
@@ -390,3 +418,6 @@ select * from Users
 
 
 select * from 
+=======
+)
+>>>>>>> 0c0d59e5cddda799565cca56e40653277ece1510:JavaCore (1).sql
