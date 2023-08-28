@@ -67,31 +67,28 @@ public class WebMVCConfig implements WebMvcConfigurer {
         return sp;
     }
 
-    //   Authorize the size web
+ @Autowired
+    LogGinInterceptor loginInterceptor;
 
-//    @Autowired
-//    loGinInterceptor loginInterceptor;
-//
-//    @Autowired
-//    adminInterceptor adminInterceptor;
-//
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry){
-//
-//        //chỉ xem
-//        registry.addInterceptor(loginInterceptor)
-//                .addPathPatterns("/checkout", "/profile","/product/list","/category/list");
-//
-//
-//        //Phân quyền bắt đăng nhập
-//        registry.addInterceptor(adminInterceptor)
-//                .addPathPatterns("/admin/**", "/product/create", "/product/edit/{id}","/category/create","/category/edit/{id}","/product/delete/{id}","/category/delete/{id}");
-//
-//      }
-//
+    @Autowired
+    adminInterceptor adminInterceptor;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry){
+
+        //Các file được xem
+        registry.addInterceptor(loginInterceptor)
+                .addPathPatterns("/checkout", "/profile","","/category/list");
+
+
+        //Phân quyền bắt đăng nhập
+        registry.addInterceptor(adminInterceptor)
+                .addPathPatterns("/admin/**","/sanPham/create", "/product/create", "/product/edit/{id}","/category/create","/category/edit/{id}","/product/delete/{id}","/category/delete/{id}");
+
+      }
+
 
     //how to code all language
-
 
 
 
