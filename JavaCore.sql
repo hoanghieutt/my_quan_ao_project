@@ -79,8 +79,8 @@ create table LoaiSanPham
 )
 INSERT INTO LoaiSanPham (maLSP, ten, ngayTao, ngaySua, trangThai)
 VALUES
-('LSP001', N'Áo', '2023-07-01', '2023-07-03', 1),
-('LSP002', N'Quần', '2023-07-02', '2023-07-04', 1)
+('LSP001', 'Áo', '2023-07-01', '2023-07-03', 1),
+('LSP002', 'Quần', '2023-07-02', '2023-07-04', 1)
 go
 ---bảng Size
 
@@ -112,23 +112,20 @@ go
     
 		  maSP			nvarchar(30)      not null,
 		  tenSP			nvarchar(30)      null,
-		  soLuong		int				  null,
 		  ngayTao       Date              null,
 		  ngaySua		Date			  null,
 		  trangThai	    int				  null,
-		 [Image]       nvarchar    (max)  NULL,
 	  
-
 		  Constraint PK_SanPham    Primary key(maSP)
 
 	)
-	INSERT INTO SanPham (maSP, tenSP, soLuong, ngayTao, ngaySua, trangThai, [Image])
+	INSERT INTO SanPham (maSP, tenSP, ngayTao, ngaySua, trangThai)
 VALUES
-('SP001', N'Áo chạy bộ', 20, '2023-07-01', '2023-07-03', 1, 'image1.jpg'),
-('SP002', N'Áo đá bóng', 15, '2023-07-02', '2023-07-04', 1, 'image2.jpg'),
-('SP003', N'Quần chạy bộ', 30, '2023-07-01', '2023-07-02', 1, 'image3.jpg'),
-('SP004', N'Áo tập gym', 25, '2023-07-03', '2023-07-05', 1, 'image4.jpg'),
-('SP005', N'Quần tập gym', 10, '2023-07-04', '2023-07-06', 1, 'image5.jpg');
+('SP001', N'Áo chạy bộ', '2023-07-01', '2023-07-03', 1),
+('SP002', N'Áo đá bóng', '2023-07-02', '2023-07-04', 1),
+('SP003', N'Quần chạy bộ', '2023-07-01', '2023-07-02', 1),
+('SP004', N'Áo tập gym', '2023-07-03', '2023-07-05', 1 ),
+('SP005', N'Quần tập gym', '2023-07-04', '2023-07-06', 1 );
 go
 
 ---bảng chi tiết sản phẩm
@@ -136,7 +133,7 @@ go
 
 create table ChiTietSanPham
 (
-     maCTSP        nvarchar(30)      not null,
+     maCTSP        nvarchar(3000)      not null,
 	 maSize        nvarchar(30)      not null,
 	 maMS          nvarchar(30)      not null,
 	 maCL    	   nvarchar(30)      not null,
@@ -144,9 +141,11 @@ create table ChiTietSanPham
      maLSP         nvarchar(30)      not null,
      maMTT         nvarchar(30)      not null,
 	 soLuong       int				 null,
-	 gia		   money			 null,
+	 giaNhap	   DECIMAL(20, 0) DEFAULT 0			 null,
+	 giaBan		   DECIMAL(20, 0) DEFAULT 0			 null,
 	 ngayTao	   Date				 null,
 	 ngaySua	   Date				 null,
+	 Image       nvarchar    (max)  NULL,
 	 trangThai	   int				 null,
 
 	 Constraint PK_ChiTietSanPham              Primary key(maCTSP),
@@ -158,13 +157,15 @@ create table ChiTietSanPham
 	 Constraint FK_ChiTietSanPham_MonTheThao   Foreign key(maMTT)  References MonTheThao
 	
 )
+
+/*
 INSERT INTO ChiTietSanPham (maCTSP, maSize, maMS, maCL, maSP, maLSP, maMTT, soLuong, gia, ngayTao, ngaySua, trangThai)
 VALUES
 ('CTSP001', 'S001', 'MS1', 'CL1', 'SP001', 'LSP001', 'MTT001', 10, 500000, '2023-07-01', '2023-07-03', 1),
 ('CTSP002', 'S002', 'MS2', 'CL2', 'SP002', 'LSP002', 'MTT002', 15, 600000, '2023-07-02', '2023-07-04', 1),
 ('CTSP003', 'S003', 'MS2', 'CL3', 'SP003', 'LSP001', 'MTT003', 20, 700000, '2023-07-01', '2023-07-02', 1),
 ('CTSP004', 'S004', 'MS4', 'CL2', 'SP004', 'LSP001', 'MTT004', 12, 800000, '2023-07-03', '2023-07-05', 1)
-
+*/
 go
 
 ---bảng khách hàng
@@ -176,7 +177,7 @@ create table KhachHang
 	 tenKH					nvarchar(30)     null,
 	 ngaySinh				Date			 null,
 	 gioiTinh               nvarchar(30)	 null,
-	 soDienThoai			int				 null,
+	 soDienThoai			nvarchar(30)	 null,
 	 diaChi					nvarchar(50)	 null,
 	 ngayTao				Date			 null,
 	 ngaySua				Date             null,
@@ -188,11 +189,11 @@ create table KhachHang
 )
 INSERT INTO KhachHang (maKH, tenKH, ngaySinh, gioiTinh, soDienThoai, diaChi, ngayTao, ngaySua, trangThai)
 VALUES
-('KH001', N'Nguyễn Văn A', '2000-01-01', 'Nam', 123456789, 'Hoàng Hoa Thám, Hà Nội', '2023-07-01', '2023-07-03', 1),
-('KH002', N'Nguyễn Thị B', '1998-05-10', 'Nữ', 987654321, 'Nguyễn Khuyến, Hà Nội', '2023-07-02', '2023-07-04', 1),
-('KH003', N'Trần Văn C', '2002-09-15', 'Nam', 567891234, 'Ba Đình, Hà Nội', '2023-07-01', '2023-07-02', 1),
-('KH004', N'Lê Thị D', '1995-03-20', 'Nữ', 345678912, 'Cầu Giấy, Hà Nội', '2023-07-03', '2023-07-05', 1),
-('KH005', N'Phạm Văn E', '1997-07-25', 'Nam', 789123456, 'Đống Đa, Hà Nội', '2023-07-04', '2023-07-06', 1);
+('KH001', 'Nguyễn Văn A', '2000-01-01', 'Nam', '123456789', 'Hoàng Hoa Thám, Hà Nội', '2023-07-01', '2023-07-03', 1),
+('KH002', 'Nguyễn Thị B', '1998-05-10', 'Nữ', '987654321', 'Nguyễn Khuyến, Hà Nội', '2023-07-02', '2023-07-04', 1),
+('KH003', 'Trần Văn C', '2002-09-15', 'Nam', '567891234', 'Ba Đình, Hà Nội', '2023-07-01', '2023-07-02', 1),
+('KH004', 'Lê Thị D', '1995-03-20', 'Nữ', '345678912', 'Cầu Giấy, Hà Nội', '2023-07-03', '2023-07-05', 1),
+('KH005', 'Phạm Văn E', '1997-07-25', 'Nam', '789123456', 'Đống Đa, Hà Nội', '2023-07-04', '2023-07-06', 1);
 go
 
 ---bảng hình thức thanh toán
@@ -204,63 +205,43 @@ create table HinhThucThanhToan
 	ngayTao					Date       				    null,
 	ngaySua					Date						null,
 	trangThai				int						    null,
+
 	Constraint PK_HinhThucThanhToan				Primary key(maHTTT)
 )
 INSERT INTO HinhThucThanhToan (maHTTT, tenHTTT, ngayTao, ngaySua, trangThai)
 VALUES
-    ('HTTT001', N'Tiền mặt', '2023-07-01', '2023-07-03', 1),
-    ('HTTT002', N'Chuyển khoản', '2023-07-02', '2023-07-04', 1)
+    ('HTTT001', 'Tiền mặt', '2023-07-01', '2023-07-03', 1),
+    ('HTTT002', 'Chuyển khoản', '2023-07-02', '2023-07-04', 1)
 go
 
----bảng chức vụ
-
-create table ChucVu
-(
-    maCV       nvarchar(30)				not null,
-	tenCV	   nvarchar(30)				not null,
-	ngayTao    Date						    null,
-	ngaySua	   Date							null,
-	trangThai  int							null,
-
-	Constraint PK_ChucVu    Primary key(maCV)
-
-)
-INSERT INTO ChucVu (maCV, tenCV, ngayTao, ngaySua, trangThai)
-VALUES
-
-    ('CV002', N'Quản lý', '2023-07-02', '2023-07-04', 1),
-    ('CV003', N'Nhân viên', '2023-07-01', '2023-07-02', 1)
-go
 ---bảng nhân viên
 
 create table Users
 (
     
 	  maNV				nvarchar(30)				not null,
-	  maCV				nvarchar(30)				not null,
 	  tenNV				nvarchar(30)					null,
 	  diaChi			nvarchar(30)					null,
 	  gioiTinh			nvarchar(30)					null,
 	  email				nvarchar(30)					null,
+	  password          nvarchar(30)				    null,
 	  soDienThoai       int							    null,
-	 
-	  ngaySinh          Date        				    null,
+	  ngaySinh          nvarchar(30)				    null,
 	  ngayTao			Date							null,
 	  ngaySua			Date							null,
 	  trangThai		    int								null,
-	  [role]            nvarchar(30)                    null,
+	  role              nvarchar(30)                    null,
 
 	  Constraint PK_Users               Primary key(maNV),
-	  Constraint FK_Users_ChucVu        Foreign key(maCV)  References ChucVu
 
 )
-INSERT INTO Users (maNV, maCV, tenNV, diaChi, gioiTinh, email, soDienThoai, ngaySinh, ngayTao, ngaySua, trangThai, [role])
+INSERT INTO Users (maNV, tenNV, diaChi, gioiTinh, email, password, soDienThoai, ngaySinh, ngayTao, ngaySua, trangThai, [role])
 VALUES
-    ('NV001', 'CV002', N'Nguyễn Văn A', N'Hà Nội', 'Nam', 'nva@example.com', 123456789, '2000-01-01', '2023-07-01', '2023-07-03', 1, 'Admin'),
-    ('NV002', 'CV002', N'Nguyễn Thị B', N'HCM', 'Nữ', 'ntb@example.com', 987654321, '1998-05-10', '2023-07-02', '2023-07-04', 1, 'User'),
-    ('NV003', 'CV003', N'Trần Văn C', N'Đà Nẵng', 'Nam', 'tvc@example.com', 567891234, '2002-09-15', '2023-07-01', '2023-07-02', 1, 'User'),
-    ('NV004', 'CV002', N'Lê Thị D', N'Hà Nội', 'Nữ', 'ltd@example.com', 345678912, '1995-03-20', '2023-07-03', '2023-07-05', 1, 'User'),
-    ('NV005', 'CV003', N'Phạm Văn E', N'HCM', 'Nam', 'pve@example.com', 789123456, '1997-07-25', '2023-07-04', '2023-07-06', 1, 'User');
+    ('NV001', 'Nguyễn Văn A', 'Hà Nội', 'Nam', 'nva@example.com','1111', 123456789, '2000-01-01', '2023-07-01', '2023-07-03', 1, 'Admin'),
+    ('NV002', 'Nguyễn Thị B', 'HCM', 'Nữ', 'ntb@example.com', '1111',987654321, '1998-05-10', '2023-07-02', '2023-07-04', 1, 'User'),
+    ('NV003', 'Trần Văn C', 'Đà Nẵng', 'Nam', 'tvc@example.com','111' , 567891234, '2002-09-15', '2023-07-01', '2023-07-02', 1, 'User'),
+    ('NV004', 'Lê Thị D', 'Hà Nội', 'Nữ', 'ltd@example.com','1111', 345678912, '1995-03-20', '2023-07-03', '2023-07-05', 1, 'User'),
+    ('NV005', 'Phạm Văn E', 'HCM', 'Nam', 'pve@example.com','1111', 789123456, '1997-07-25', '2023-07-04', '2023-07-06', 1, 'User');
 
 
 go
@@ -269,20 +250,26 @@ go
 create table HoaDon
 (
   
-      maHD        nvarchar(30)				not null,
-	  maKH	      nvarchar(30)				not null,
-	  maHTTT      nvarchar(30)				not null,
-	  maNV        nvarchar(30)				not null,
-      ghiChu	  nvarchar(30)				    null,
-	  thanhTien	  money							null,
-	  ngayTao	  Date							null,
-	  ngaySua	  Date							null,
-	  trangThai	  int							null,
+      maHD				nvarchar(3000)				not null,
+	  maKH				nvarchar(30)				    null,
+	  maHTTT			nvarchar(30)				    null,
+	  maNV				nvarchar(30)				    null,
+	  tenNguoiNhan      nvarchar(300)				    null,
+	  diaChiNhanHang    nvarchar(300)				    null,
+	  soDienThoai       int								null,           
+      ghiChu			nvarchar(30)				    null,
+	  thanhTien			money							null,
+	  tienKhachDua      money							null,
+	  tienTraLai		money							null,
+	  ngayTao			Date							null,
+	  ngaySua			Date							null,
+	  trangThai			int							    null,
 
 	  Constraint PK_HoaDon			             Primary key(maHD),
+
 	  Constraint FK_HoaDon_KhachHang             Foreign key(maKH)     References KhachHang,
       Constraint FK_HoaDon_HinhThucThanhToan     Foreign key(maHTTT)   References HinhThucThanhToan,
-	  Constraint FK_HoaDon_Users			 Foreign key(maNV)     References Users
+	  Constraint FK_HoaDon_Users			     Foreign key(maNV)     References Users
 
 )
 INSERT INTO HoaDon (maHD, maKH, maHTTT, maNV, ghiChu, thanhTien, ngayTao, ngaySua, trangThai)
@@ -300,12 +287,15 @@ go
 create table HoaDonChiTiet
 (
    
-   maHDCT        nvarchar(30)				not null,
-   maCTSP        nvarchar(30)				not null,
-   maHD          nvarchar(30)				not null,
+   maHDCT        nvarchar(3000)				not null,
+   maCTSP        nvarchar(3000)				    null,
+   maHD          nvarchar(3000)				    null,
    soLuong       int							null,
    gia		     money							null,
    thanhTien	 money							null,
+   donGia	    DECIMAL(20, 0) DEFAULT 0		null,
+   tienKhachDua      money							null,
+   tienTraLai		money							null,
    ghiChu		 nvarchar(30)				    null,
    ngayTao		 Date							null,
    ngaySua		 Date							null,
@@ -344,5 +334,59 @@ insert into KHUYENMAI values (N'KM4','2018-02-02','2019-01-01',700,'2003-01-01',
 insert into KHUYENMAI values (N'KM5','2018-02-02','2019-01-01',1000,'2003-01-01','2002-02-02',0)
 
 
+create table GioHang
+(
+  
+      maGH            nvarchar(1000)				not null,
+	  maKH	          nvarchar(30)				    null,
+	  maNV			  nvarchar(30)				    null,
+
+      ghiChu	      nvarchar(30)				    null,
+	  thanhTien	      money							null,
+	  ngayTao	      Date							null,
+	  ngayThanhToan	  Date							null,
+	  tenNguoiNhan    nvarchar(30)				    null,
+	  diaChi		  nvarchar(300)				    null,
+	  soDienThoai	  nvarchar(30)	 null,
+	  trangThai	  int							    null,
+
+	  Constraint PK_GioHang			               Primary key(maGH),
+
+	  Constraint FK_GioHang_KhachHang             Foreign key(maKH)     References KhachHang,
+      Constraint FK_GioHang_Users                 Foreign key(maNV)   References Users,
+
+)
+
+
+create table GioHangChiTiet
+(
+  
+      maGHCT            nvarchar(1000)				not null,
+
+	  maGH				nvarchar(1000)				 null,
+	  maCTSP			nvarchar(3000)				 null,
+
+	  soLuong			 int null,
+	  donGia            DECIMAL(20, 0) DEFAULT 0,
+	  donGiaKhiGiam	    DECIMAL(20, 0) DEFAULT 0,
+
+	  ngayTao   date null,
+	  ngaySua	date null,
+	  trangThai	  int							    null,
+
+	  Constraint PK_GioHangChiTiet		               Primary key(maGHCT),
+
+	  Constraint FK_GioHang_ChiTietSanPham             Foreign key(maCTSP)     References ChiTietSanPham,
+      Constraint FK_GioHang_GioHang                    Foreign key(maGH)   References GioHang,
+
+)
+
 
 select * from KHUYENMAI
+
+select * from KhachHang
+select * from GioHangChiTiet
+select * from Users
+
+
+select * from 
