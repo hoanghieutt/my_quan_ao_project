@@ -44,12 +44,8 @@ public class WebMVCConfig implements WebMvcConfigurer {
         KhachHang vm = new KhachHang();
         return vm;
     }
-    @Bean("cVu")
-    public ChucVu getChucVu(){
-        ChucVu vm = new ChucVu();
-        return vm;
-    }
-    @Bean("users")
+
+    @Bean("user")
     public Users getnhanvien(){
         Users us = new Users();
         return us;

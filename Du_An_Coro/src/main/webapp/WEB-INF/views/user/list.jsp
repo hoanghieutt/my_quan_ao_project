@@ -1,15 +1,14 @@
-<%@ page language="java" pageEncoding="UTF-8" %>
-<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="frm" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%--    <link rel="icon" href="img/background_title.jpg" type="image/x-icon">--%>
+<%--    <link rel="icon" href="img/background_title.jpg" type="image/x-icon">--%>
     <title>Teams Store</title>
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -52,21 +51,21 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header" style="color: black; font-size: 13px;">Pages</h6>
-                    <a class="collapse-item" href="/sanPham/list">Sản phẩm</a>
-                    <a class="collapse-item" href="/hoaDonCT/list">Hóa đơn chi tiết</a>
-                    <a class="collapse-item" href="/hoaDon/list">Hóa đơn</a>
-                    <a class="collapse-item" href="/hinh-thuc-thanh-toan/hien-thi">Hình thức thanh toán</a>
-                    <a class="collapse-item" href="/khach-hang/hien-thi">Khách hàng</a>
-                    <a class="collapse-item" href="/KM/index">Khuyến mại</a>
-                    <a class="collapse-item" href="">Chi tiết sản phẩm</a>
+                                        <a class="collapse-item" href="/sanPham/list">Sản phẩm</a>
+                                        <a class="collapse-item" href="/hoaDonCT/list">Hóa đơn chi tiết</a>
+                                        <a class="collapse-item" href="/hoaDon/list">Hóa đơn</a>
+                                        <a class="collapse-item" href="/hinh-thuc-thanh-toan/hien-thi">Hình thức thanh toán</a>
+                                        <a class="collapse-item" href="/khach-hang/hien-thi">Khách hàng</a>
+                                        <a class="collapse-item" href="/KM/index">Khuyến mại</a>
+                                        <a class="collapse-item" href="">Chi tiết sản phẩm</a>
 
                     <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">Other pages:</h6>
-                    <a class="collapse-item" href="/mau-sac/hien-thi">Màu sắc</a>
-                    <a class="collapse-item" href="/size/hien-thi">Size</a>
-                    <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
-                    <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
-                    <a class="collapse-item" href="/loai-san-pham/add">Loại sản phẩm</a>
+                                        <h6 class="collapse-header">Other pages:</h6>
+                                        <a class="collapse-item" href="">Màu sắc</a>
+                                        <a class="collapse-item" href="/Size/list">Size</a>
+                                        <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
+                                        <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
+                                        <a class="collapse-item" href="/loai-san-pham/add">Loại sản phẩm</a>
 
 
                 </div>
@@ -89,7 +88,7 @@
 
 
 
-                    <%--                    <a class="collapse-item" href="/authentication/enregistrer">Register</a>--%>
+                <%--                    <a class="collapse-item" href="/authentication/enregistrer">Register</a>--%>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Other User:</h6>
                     <a class="collapse-item" href="/404">Login</a>
@@ -321,105 +320,102 @@
             </nav>
             <!-- How to code article   -->
             <%--Todo code article--%>
+            <div>
 
-            <sf:form action="${action}" method="post" modelAttribute="us">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-5"></div>
-                        <div class="col-md-5">
-                            <h1 style="text-align: center; color: black">Quản lý Nhân viên</h1>
-                        </div>
-                    </div>
+                <h1 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">List danh sách Users</h1>
 
-                    <div>
-                        <label class="form-label">Tên</label>
-                        <sf:input path="tenNV" class="form-control"/>
-                    </div>
+                <a class="col-sm-4" href="${pageContext.request.contextPath}"><button class="btn btn-primary" style="margin-bottom: 30px">Create</button></a>
 
-                    <div>
-                        <label class="form-label">Ngày sinh</label>
-                        <sf:input path="ngaySinh" class="form-control" type="date"/>
-                    </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center">#</th>
+                        <th scope="col" style="text-align: center">Mã User</th>
+                        <th scope="col" style="text-align: center">Tên User</th>
+                        <th scope="col" style="text-align: center">Địa chỉ</th>
+                        <th scope="col" style="text-align: center">Giới tính</th>
+                        <th scope="col" style="text-align: center">Email</th>
+                        <th scope="col" style="text-align: center">Số điện thoại</th>
+                        <th scope="col" style="text-align: center">Ngày sinh</th>
+                        <th scope="col" style="text-align: center">Ngày tạo</th>
+                        <th scope="col" style="text-align: center">Ngày sửa</th>
+                        <th scope="col" style="text-align: center">Role</th>
+                        <th scope="col" style="text-align: center">Trạng thái</th>
+                        <th scope="col" style="text-align: center;" >Funtions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="us" items="${user}" varStatus="i">
+                        <tr>
+                            <th style="padding-top: 40px" scope="row">${i.index+1}</th>
+                            <td style="padding-top: 55px; text-align: center">${us.maUser}</td>
+                            <td style="padding-top: 55px ;text-align: center">${us.tenUser}</td>
+                            <td style="padding-top: 55px ;text-align: center">${us.diaChi}</td>
+                            <td style="padding-top: 55px ;text-align: center">${us.gioiTinh}</td>
+                            <td style="padding-top: 55px ;text-align: center">${us.email}</td>
+                            <td style="padding-top: 55px ;text-align: center">${us.soDienThoai}</td>
+                            <td style="padding-top: 55px ;text-align: center">${us.ngaySinh}</td>
+                            <td style="padding-top: 55px ;text-align: center">${us.ngayTao}</td>
+                            <td style="padding-top: 55px ;text-align: center">${us.ngaySua}</td>
+                            <td style="padding-top: 55px ;text-align: center">${us.role}</td>
+                            <td style="padding-top: 55px; text-align: center">${us.trangThai==1?"Còn hàng" : "Hết hàng"}</td>
+                            <td>
+                                <a class="" href="${pageContext.request.contextPath}"><button style="margin-top: 40px" class="btn-primary">Edit</button></a>
+                                <a class="" href="${pageContext.request.contextPath}"><button class="btn-primary " onclick="if (!confirm('Bạn chắc chắn có muốn xóa không ?')){return false;}else{return true}">Delete</button></a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
 
-                    <div>
-                        <label class="form-label">Giới tính</label>
-                        <sf:radiobutton value="Nam" path="gioiTinh" class="form-check-input" cssStyle="margin-left: 10px"/> <label style="margin-left: 30px">Nam</label>
-                        <sf:radiobutton value="Nữ" path="gioiTinh" class="form-check-input" cssStyle="margin-left: 30px"/> <label style="margin-left: 60px">Nữ</label>
-                    </div>
-
-                    <div>
-                        <label class="form-label">Số điện thoại</label>
-                        <sf:input path="soDienThoai" class="form-control"/>
-                    </div>
-
-                    <div>
-                        <label class="form-label">Địa chỉ</label>
-                        <sf:input path="diaChi" class="form-control"/>
-                    </div>
-
-                    <div>
-                        <label class="form-label" style="margin-right: 40px">Trạng thái</label>
-                        <sf:radiobutton value="1" path="trangThai" class="form-check-input" cssStyle="margin-left: 90p"/><label style="margin-left: 30px">Còn hoạt động</label>
-                        <sf:radiobutton value="0" path="trangThai" class="form-check-input" cssStyle="margin-left: 30px"/> <label style="margin-left: 60px">Không hoạt động</label>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8">
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-primary" style="margin-top: 70px">UPDATE</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </sf:form>
             <!-- Footer -->
-            <footer style="margin-top: 50px" class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
+        <footer style="margin-top: 50px" class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2021</span>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
     </div>
+</div>
 
 
 
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
 
 
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-titl se" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/logout">Logout</a>
-                </div>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-titl se" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="/logout">Logout</a>
             </div>
         </div>
     </div>
 </div>
+    </div>
 </div>
 
-<script src="/vendor/jquery/jquery.min.js"></script>
-<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="/js/sb-admin-2.min.js"></script>
-<script src="/vendor/chart.js/Chart.min.js"></script>
-<script src="/js/demo/chart-area-demo.js"></script>
-<script src="/js/demo/chart-pie-demo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/js/sb-admin-2.min.js"></script>
+    <script src="/vendor/chart.js/Chart.min.js"></script>
+    <script src="/js/demo/chart-area-demo.js"></script>
+    <script src="/js/demo/chart-pie-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 </body>
 </html>
