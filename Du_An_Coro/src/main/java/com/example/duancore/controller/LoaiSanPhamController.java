@@ -1,6 +1,7 @@
 package com.example.duancore.controller;
 
 
+import com.example.duancore.entity.ChatLieu;
 import com.example.duancore.entity.LoaiSanPham;
 import com.example.duancore.service.LoaiSanPhamService;
 import jakarta.validation.Valid;
@@ -18,12 +19,10 @@ public class LoaiSanPhamController {
 
     @GetMapping("/loai-san-pham/hien-thi")
     public String hienThiLoaiSP(@RequestParam(name = "page",defaultValue = "0") Integer pageNo, Model model) {
-        List<LoaiSanPham> loaiSanPhams = loaiSanPhamService.getAllLoaiSanPham();
         Page<LoaiSanPham> page = loaiSanPhamService.findPage(pageNo,3);
         model.addAttribute("loaiSP",page.getContent());
         model.addAttribute("currentPage",page.getNumber());
         model.addAttribute("totalPages",page.getTotalPages());
-        model.addAttribute("loaiSP", loaiSanPhams);
         model.addAttribute("lsp", new LoaiSanPham());
         return "/loaiSP/loai-san-pham";
     }
@@ -60,6 +59,16 @@ public class LoaiSanPhamController {
     public String update(@ModelAttribute LoaiSanPham loaiSanPham, Model model) {
         loaiSanPhamService.updateLoaiSanPham(loaiSanPham);
         model.addAttribute("loaiSanPham", loaiSanPham);
+        return "redirect:/loai-san-pham/hien-thi";
+    }
+    @PostMapping("/loai-san-pham/sreach")
+    public String sreach(@RequestParam(name = "page",defaultValue = "0") Integer pageNo,@RequestParam("ten") String ten,@RequestParam("trangThai") String trangThai, Model model) {
+        Page<LoaiSanPham> page = loaiSanPhamService.findPage(pageNo,3);
+        model.addAttribute("ten", loaiSanPhamService.sreach(ten,trangThai));
+        model.addAttribute("currentPage",page.getNumber());
+        model.addAttribute("totalPages",page.getTotalPages());
+        model.addAttribute("loaiSP",page.getContent());
+
         return "redirect:/loai-san-pham/hien-thi";
     }
 }

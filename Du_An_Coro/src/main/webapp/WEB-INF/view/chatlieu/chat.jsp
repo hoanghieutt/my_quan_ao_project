@@ -325,6 +325,10 @@
 
 
             <h2>Chất Liệu</h2>
+            <form action="/chat-lieu/sreach" method="post">
+                <input type="text" name="ten">
+                <button>Tim</button>
+            </form>
             <form:form action="/chat-lieu/add" method="post" modelAttribute="cl">
 
                 Ma: <form:input path="maCL"/>

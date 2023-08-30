@@ -2,6 +2,7 @@ package com.example.duancore.service;
 
 
 import com.example.duancore.entity.ChatLieu;
+import com.example.duancore.entity.MauSac;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface ChatLieuService {
     void deleteChatLieu(String id);
     void  updateChatLieu(ChatLieu chatLieu);
     Page<ChatLieu> findPage(Integer pageNo, Integer pageSize);
+    List<ChatLieu>sreach(String ten, String trangThai);
 }

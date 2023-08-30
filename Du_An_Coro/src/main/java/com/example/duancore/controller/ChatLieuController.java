@@ -2,6 +2,7 @@ package com.example.duancore.controller;
 
 
 import com.example.duancore.entity.ChatLieu;
+import com.example.duancore.entity.MauSac;
 import com.example.duancore.service.ChatLieuService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,10 @@ public class ChatLieuController {
 
     @GetMapping("/chat-lieu/hien-thi")
     public String hienThiChatLieu(@RequestParam(name = "page",defaultValue = "0") Integer pageNo, Model model) {
-        List<ChatLieu> chatLieus = chatLieuService.getAllChatLieu();
-        model.addAttribute("chatLieu", chatLieus);
         Page<ChatLieu> page = chatLieuService.findPage(pageNo,3);
         model.addAttribute("chatLieu",page.getContent());
         model.addAttribute("currentPage",page.getNumber());
         model.addAttribute("totalPages",page.getTotalPages());
-        model.addAttribute("chatLieu", chatLieus);
         model.addAttribute("cl", new ChatLieu());
         return "/chatlieu/chat";
     }
@@ -66,4 +64,16 @@ public class ChatLieuController {
         model.addAttribute("chatlieu", chatLieu);
         return "redirect:/chat-lieu/hien-thi";
     }
+
+    @PostMapping("/chat-lieu/sreach")
+    public String sreach(@RequestParam(name = "page",defaultValue = "0") Integer pageNo,@RequestParam("ten") String ten,@RequestParam("trangThai") String trangThai, Model model) {
+        Page<ChatLieu> page = chatLieuService.findPage(pageNo,3);
+        model.addAttribute("ten", chatLieuService.sreach(ten,trangThai));
+        model.addAttribute("currentPage",page.getNumber());
+        model.addAttribute("totalPages",page.getTotalPages());
+        model.addAttribute("chatLieu",page.getContent());
+
+        return "redirect:/chat-lieu/hien-thi";
+    }
+
 }

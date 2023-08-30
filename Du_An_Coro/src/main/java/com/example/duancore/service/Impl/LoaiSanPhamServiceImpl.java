@@ -1,6 +1,7 @@
 package com.example.duancore.service.Impl;
 
 
+import com.example.duancore.entity.ChatLieu;
 import com.example.duancore.entity.LoaiSanPham;
 import com.example.duancore.repository.LoaiSanPhamRepository;
 import com.example.duancore.service.LoaiSanPhamService;
@@ -57,5 +58,9 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
     public Page<LoaiSanPham> findPage(Integer pageNo, Integer pageSize) {
         Pageable pageable = PageRequest.of(pageNo,pageSize);
         return loaiSanPhamRepository.findAll(pageable);
+    }
+    @Override
+    public List<LoaiSanPham> sreach(String ten, String trangThai) {
+        return loaiSanPhamRepository.findByTenAndTrangThai(ten,Integer.valueOf(trangThai));
     }
 }
