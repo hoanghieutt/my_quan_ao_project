@@ -44,4 +44,14 @@ public class SizeServiceImpl implements SizeService {
         Pageable pageable = PageRequest.of(pageNo,pageSize);
         return sizeRepository.findAll(pageable);
     }
+
+//    @Override
+//    public List<Size> sreach(Integer min, Integer max) {
+//        return sizeRepository.findBySizeBetween(min,max);
+//    }
+
+    @Override
+    public Page<Size> searchBetwwenSize(Integer tuoiMin, Integer tuoiMax, Pageable pageable) {
+        return sizeRepository.findBySizeBetween(tuoiMin,tuoiMax,pageable);
+    }
 }

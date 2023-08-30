@@ -46,4 +46,9 @@ public class MauSacServiceImpl implements MauSacService {
         Pageable pageable = PageRequest.of(pageNo,pageSize);
         return mauSacRepository.findAll(pageable);
     }
+
+    @Override
+    public List<MauSac> sreach(String ten,String trangThai) {
+        return mauSacRepository.findByTenAndTrangThai(ten,Integer.valueOf(trangThai));
+    }
 }
