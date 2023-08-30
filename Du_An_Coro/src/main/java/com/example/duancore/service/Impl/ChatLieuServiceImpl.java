@@ -5,6 +5,9 @@ import com.example.duancore.entity.ChatLieu;
 import com.example.duancore.repository.ChatLieuRepository;
 import com.example.duancore.service.ChatLieuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,5 +46,10 @@ public class ChatLieuServiceImpl implements ChatLieuService {
     @Override
     public void updateChatLieu(ChatLieu chatLieu) {
         chatLieuRepository.save(chatLieu);
+    }
+    @Override
+    public Page<ChatLieu> findPage(Integer pageNo, Integer pageSize) {
+        Pageable pageable = PageRequest.of(pageNo,pageSize);
+        return chatLieuRepository.findAll(pageable);
     }
 }

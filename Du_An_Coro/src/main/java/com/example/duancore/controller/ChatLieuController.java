@@ -1,20 +1,15 @@
 package com.example.duancore.controller;
 
 
-
-
-
 import com.example.duancore.entity.ChatLieu;
 import com.example.duancore.service.ChatLieuService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,8 +19,13 @@ public class ChatLieuController {
     private ChatLieuService chatLieuService;
 
     @GetMapping("/chat-lieu/hien-thi")
-    public String hienThiChatLieu(Model model) {
+    public String hienThiChatLieu(@RequestParam(name = "page",defaultValue = "0") Integer pageNo, Model model) {
         List<ChatLieu> chatLieus = chatLieuService.getAllChatLieu();
+        model.addAttribute("chatLieu", chatLieus);
+        Page<ChatLieu> page = chatLieuService.findPage(pageNo,3);
+        model.addAttribute("chatLieu",page.getContent());
+        model.addAttribute("currentPage",page.getNumber());
+        model.addAttribute("totalPages",page.getTotalPages());
         model.addAttribute("chatLieu", chatLieus);
         model.addAttribute("cl", new ChatLieu());
         return "/chatlieu/chat";
