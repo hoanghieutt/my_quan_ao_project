@@ -342,7 +342,7 @@
                     <br>
                     <div class="col-6">
                         <label style="margin-left: 150px; margin-right: 30px; margin-bottom: 30px">Số lượng</label>
-                        <form:input path="soLuong" cssStyle="width: 200px;"  value=""/>
+                        <form:input path="soLuong" cssStyle="width: 200px;" min="1" value=""/>
                     </div>
                     <br>
                     <div class="col-6">

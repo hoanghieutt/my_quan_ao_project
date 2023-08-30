@@ -325,23 +325,16 @@
 
 
             <h2>Mau Sac</h2>
-            <form action="/mau-sac/sreach" method="post">
-                <input type="text" name="ten">
-                <button>Tim</button>
-            </form>
-<%--            <form action="/mau-sac/sreach" method="post">--%>
-<%--                <div class="col-4" style="margin-left: 800px">--%>
-<%--                    <nav class="navbar navbar-expand-lg bg-body-tertiary">--%>
-<%--                        <div class="container-fluid">--%>
-<%--                            <form class="d-flex" role="search">--%>
-<%--                                <input class="form-control me-2" name="ten" placeholder="Tên màu" aria-label="Search">--%>
-<%--                                <button class="btn btn-outline-success" type="submit">Search</button>--%>
-<%--                            </form>--%>
-<%--                        </div>--%>
-<%--                    </nav>--%>
-<%--                </div>--%>
-<%--            </form>--%>
-            <a class="col-sm-4" href="/mau-sac/view-add"><button class="btn btn-primary" style="margin-bottom: 30px">ADD</button></a>
+            <div class="row">
+                <a class="col-sm-4" href="/mau-sac/view-add"><button class="btn btn-primary" style="margin-bottom: 30px">ADD</button></a>
+                <div class="col-">
+                    <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form></div>
+
+            </div>
+
             <table class="table">
                 <tr>
                     <th>STT</th>
@@ -392,6 +385,7 @@
                     </li>
                 </ul>
             </nav>
+
             <!-- Footer -->
             <footer style="margin-top: 50px" class="sticky-footer bg-white">
                 <div class="container my-auto">

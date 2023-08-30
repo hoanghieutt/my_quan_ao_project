@@ -381,7 +381,24 @@
                 </tbody>
             </table>
 
-
+            <nav aria-label="Page navigation example" style="margin-right: 800px">
+                <ul class="pagination float-end">
+                    <li class="page-item">
+                        <a class="page-link" href="/chat-lieu/hien-thi?page=${currentPage -1 <= 0?0:currentPage -1}">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <c:forEach var="i" begin="0" end="${totalPages -1}">
+                        <li class="page-item"><a class="page-link" href="/chat-lieu/hien-thi?page=${i}">${i + 1}</a></li>
+                    </c:forEach>
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="/chat-lieu/hien-thi?page=${currentPage +1 >= totalPages -1?totalPages -1:currentPage +1}">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
 
 

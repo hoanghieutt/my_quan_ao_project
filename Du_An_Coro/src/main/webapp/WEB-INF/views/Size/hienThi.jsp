@@ -319,32 +319,8 @@
             </nav>
             <!-- How to code article   -->
             <%--Todo code article--%>
-            <div class="container my-2">
-<%--                <div class="col-4 offset-4">--%>
-                    <form action="/size/search" method="get">
-                        <div class="col mb-3">
-                            <input type="text" value="${min}" name="tuoiMin" class="form-control" placeholder="Tuoi Min...">
-                        </div>
-                        <div class="col mb-3">
-                            <input type="text" value="${max}" name="tuoiMax" class="form-control" placeholder="Tuoi Max...">
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-6">
-                                <button class="btn btn-primary">Search</button>
-                            </div>
-                            <div class="col-6"></div>
-                        </div>
-                    </form>
-<%--                </div>--%>
-<%--            <nav class="navbar navbar-expand-lg bg-body-tertiary">--%>
-<%--                <div class="container-fluid">--%>
-<%--                        <form class="d-flex" role="search">--%>
-<%--                            <input class="form-control me-2" type="search" placeholder="Size" aria-label="Search">--%>
-<%--                            <button class="btn btn-outline-success" type="submit">Search</button>--%>
-<%--                        </form>--%>
-<%--                    </div>--%>
-<%--            </nav>--%>
-                <a class="col-sm-4" href="/size/view-add"><button class="btn btn-primary" style="margin-bottom: 30px">ADD</button></a>
+
+            <a class="col-sm-4" href="/size/view-add"><button class="btn btn-primary" style="margin-bottom: 30px">ADD</button></a>
 
             <table class="table">
                 <thead>
@@ -381,7 +357,7 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <nav aria-label="Page navigation example" style="margin-right: 850px">
+            <nav aria-label="Page navigation example" style="margin-right: 750px">
                 <ul class="pagination float-end">
                     <li class="page-item">
                         <a class="page-link" href="/size/hien-thi?page=${currentPage -1 <= 0?0:currentPage -1}">
