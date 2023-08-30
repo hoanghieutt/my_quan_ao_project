@@ -1,14 +1,13 @@
-<%@ page language="java" pageEncoding="UTF-8" %>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%--    <link rel="icon" href="img/background_title.jpg" type="image/x-icon">--%>
+<%--    <link rel="icon" href="img/background_title.jpg" type="image/x-icon">--%>
     <title>Teams Store</title>
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -51,21 +50,21 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header" style="color: black; font-size: 13px;">Pages</h6>
-                    <a class="collapse-item" href="/sanPham/list">Sản phẩm</a>
-                    <a class="collapse-item" href="/hoaDonCT/list">Hóa đơn chi tiết</a>
-                    <a class="collapse-item" href="/hoaDon/list">Hóa đơn</a>
-                    <a class="collapse-item" href="/hinh-thuc-thanh-toan/hien-thi">Hình thức thanh toán</a>
-                    <a class="collapse-item" href="/khach-hang/hien-thi">Khách hàng</a>
-                    <a class="collapse-item" href="/KM/index">Khuyến mại</a>
-                    <a class="collapse-item" href="">Chi tiết sản phẩm</a>
+                                        <a class="collapse-item" href="/sanPham/list">Sản phẩm</a>
+                                        <a class="collapse-item" href="/hoaDonCT/list">Hóa đơn chi tiết</a>
+                                        <a class="collapse-item" href="/hoaDon/list">Hóa đơn</a>
+                                        <a class="collapse-item" href="/hinh-thuc-thanh-toan/hien-thi">Hình thức thanh toán</a>
+                                        <a class="collapse-item" href="/khach-hang/hien-thi">Khách hàng</a>
+                                        <a class="collapse-item" href="/KM/index">Khuyến mại</a>
+                                        <a class="collapse-item" href="">Chi tiết sản phẩm</a>
 
                     <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">Other pages:</h6>
-                    <a class="collapse-item" href="/mau-sac/hien-thi">Màu sắc</a>
-                    <a class="collapse-item" href="/size/hien-thi">Size</a>
-                    <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
-                    <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
-                    <a class="collapse-item" href="/loai-san-pham/add">Loại sản phẩm</a>
+                                        <h6 class="collapse-header">Other pages:</h6>
+                                        <a class="collapse-item" href="">Màu sắc</a>
+                                        <a class="collapse-item" href="/Size/list">Size</a>
+                                        <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
+                                        <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
+                                        <a class="collapse-item" href="/loai-san-pham/add">Loại sản phẩm</a>
 
 
                 </div>
@@ -83,12 +82,12 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">User:</h6>
-                    <a class="collapse-item" href="/Users/hien-thi">Nhân viên</a>
+                    <a class="collapse-item" href="/#">Nhân viên</a>
                     <a class="collapse-item" href="/chuc-vu/hien-thi">Chức vụ</a>
 
 
 
-                    <%--                    <a class="collapse-item" href="/authentication/enregistrer">Register</a>--%>
+                <%--                    <a class="collapse-item" href="/authentication/enregistrer">Register</a>--%>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Other User:</h6>
                     <a class="collapse-item" href="/404">Login</a>
@@ -321,115 +320,115 @@
             <!-- How to code article   -->
             <%--Todo code article--%>
 
-            <h1 style="text-align: center;">Quản lý Khách hàng</h1>
-            <br>
-            <form action="${pageContext.request.contextPath}/Users/search" method="post">
-                <input type="text" placeholder="Nhập từ khóa cần tìm kiếm" name="keyword" value="${keyword}">
-                <input type="date" name="min" value="${minDate}">
-                <input type="date" name="max" value="${maxDate}">
-                <button class="btn btn-primary">Tìm kiếm</button>
-            </form>
+            <div class="banHang">
 
-            <h1 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">List danh sách nhân viên</h1>
-
-            <a class="col-sm-4" href="${pageContext.request.contextPath}/Users/exportFilePDF"><button class="btn btn-primary" style="margin-bottom: 30px">Xuất file pdf</button></a>
-            <a class="col-sm-4" href="${pageContext.request.contextPath}/Users/exportFileExcel"><button class="btn btn-primary" style="margin-bottom: 30px">Xuất file excal</button></a>
+                <h1 style="text-align: center; color: black">List chi tiết sản phẩm</h1>
 
 
-            <br>
-            <a class="btn btn-warning" href="/Users/create">Thêm mới</a>
-            <br>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Mã</th>
-                    <th scope="col">chúc vụ</th>
-                    <th scope="col">Tên</th>
-                    <th scope="col">Ngày sinh</th>
-                    <th scope="col">Giới tính</th>
-                    <th scope="col">emai</th>
-                    <th scope="col">Số điện thoại</th>
-                    <th scope="col">Địa chỉ</th>
-                    <th scope="col">Ngày tạo</th>
-                    <th scope="col">Ngày sửa</th>
-                    <th scope="col">role</th>
-                    <th scope="col">Trạng thái</th>
-                    <th scope="col">Action</th>
-                </tr>
-                </thead>
+                <div class="HoaDon">
 
-                <tbody>
-                <c:forEach items="${data}" var="khachHang">
+                <table class="table">
+                    <thead>
                     <tr>
-                        <td>${khachHang.maNV}</td>
-                        <td>${khachHang.maCV.tenCV}</td>
-                        <td>${khachHang.tenNV}</td>
-                        <td>${khachHang.ngaySinh}</td>
-                        <td>${khachHang.gioiTinh}</td>
-                        <td>${khachHang.email}</td>
-                        <td>${khachHang.soDienThoai}</td>
-                        <td>${khachHang.diaChi}</td>
-                        <td>${khachHang.ngayTao}</td>
-                        <td>${khachHang.ngaySua}</td>
-                        <td>${khachHang.role}</td>
-                        <td>${khachHang.trangThai == 1 ? 'Còn hoạt động' : 'Không hoạt động'}</td>
-                        <td>
-                            <a class="btn btn-warning" href="/Users/edit/${khachHang.maNV}">Sửa</a>
-                            <a class="btn btn-danger" href="/Users/delete/${khachHang.maNV}">Xóa</a>
-                        </td>
+                        <th scope="col" style="text-align: center">#</th>
+                        <th scope="col" style="text-align: center">Image</th>
+                        <th scope="col" style="text-align: center">Mã CTSP</th>
+                        <th scope="col" style="text-align: center">Màu sắc</th>
+                        <th scope="col" style="text-align: center">Sản phẩm</th>
+                        <th scope="col" style="text-align: center">Size</th>
+                        <th scope="col" style="text-align: center">Chất liệu</th>
+                        <th scope="col" style="text-align: center">Môn thể thao</th>
+                        <th scope="col" style="text-align: center">Loại sản phẩm</th>
+                        <th scope="col" style="text-align: center">Số lượng</th>
+                        <th scope="col" style="text-align: center">Giá nhập</th>
+                        <th scope="col" style="text-align: center">Giá bán</th>
+                        <th scope="col" style="text-align: center">Ngày tạo</th>
+                        <th scope="col" style="text-align: center">Ngày sửa</th>
+                        <th scope="col" style="text-align: center">Trạng thái</th>
                     </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="sp" items="${ctsp}" varStatus="i">
+                        <tr>
+                            <th style="padding-top: 40px" scope="row">${i.index+1}</th>
+                            <td class="imag"><img  width="100px" style="margin-top: 7px; margin-left: 50px" src="${pageContext.request.contextPath}/upload/${sp.image}"></td>
+                            <td style="padding-top: 55px; text-align: center">${sp.mactsp}</td>
+                            <td style="padding-top: 55px; text-align: center">${sp.mausac.ten}</td>
+                            <td style="padding-top: 55px; text-align: center">${sp.sanpham.tensp}</td>
+                            <td style="padding-top: 55px; text-align: center">${sp.size.size}</td>
+                            <td style="padding-top: 55px; text-align: center">${sp.chatlieu.ten}</td>
+                            <td style="padding-top: 55px; text-align: center">${sp.monthethao.ten}</td>
+                            <td style="padding-top: 55px; text-align: center">${sp.loaisanpham.ten}</td>
+                            <td style="padding-top: 55px; text-align: center">${sp.soLuong}</td>
+                            <td style="padding-top: 55px; text-align: center">${sp.gianhap}</td>
+                            <td style="padding-top: 55px; text-align: center">${sp.giaban}</td>
+                            <td style="padding-top: 55px ;text-align: center">${sp.ngaytao}</td>
+                            <td style="padding-top: 55px; text-align: center">${sp.ngaysua}</td>
+                            <td style="padding-top: 55px; text-align: center">${sp.trangthai == 1 ? "Còn hàng" : "Hết hàng"} </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
 
-
-            <!-- Footer -->
-            <footer style="margin-top: 50px" class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
                 </div>
-            </footer>
-        </div>
+
+            <div class="GioHang">
+                </div>
+
+
+
+                </div>
+
+
+
+
+        <!-- Footer -->
+        <footer style="margin-top: 50px" class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2021</span>
+                </div>
+            </div>
+        </footer>
     </div>
+</div>
 
 
 
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
 
 
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-titl se" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/logout">Logout</a>
-                </div>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-titl se" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="/logout">Logout</a>
             </div>
         </div>
     </div>
 </div>
+    </div>
 </div>
 
-<script src="/vendor/jquery/jquery.min.js"></script>
-<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="/js/sb-admin-2.min.js"></script>
-<script src="/vendor/chart.js/Chart.min.js"></script>
-<script src="/js/demo/chart-area-demo.js"></script>
-<script src="/js/demo/chart-pie-demo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/js/sb-admin-2.min.js"></script>
+    <script src="/vendor/chart.js/Chart.min.js"></script>
+    <script src="/js/demo/chart-area-demo.js"></script>
+    <script src="/js/demo/chart-pie-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 </body>
 </html>

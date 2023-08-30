@@ -26,7 +26,6 @@
             </form>
             <h1 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">List danh sách sản phẩm</h1>
 
-            <a class="col-sm-4" href="${pageContext.request.contextPath}/chuc-vu/create"><button class="btn btn-primary" style="margin-bottom: 30px">Create</button></a>
             <a class="col-sm-4" href="${pageContext.request.contextPath}/chuc-vu/exportFilePDF"><button class="btn btn-primary" style="margin-bottom: 30px">Xuất file pdf</button></a>
             <a class="col-sm-4" href="${pageContext.request.contextPath}/chuc-vu/exportFileExcel"><button class="btn btn-primary" style="margin-bottom: 30px">Xuất file excal</button></a>
 

@@ -1,14 +1,13 @@
-<%@ page language="java" pageEncoding="UTF-8" %>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%--    <link rel="icon" href="img/background_title.jpg" type="image/x-icon">--%>
+<%--    <link rel="icon" href="img/background_title.jpg" type="image/x-icon">--%>
     <title>Teams Store</title>
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,7 +22,48 @@
     <link href="/css/index.css" rel="stylesheet">
     <link href="/css/home.css" rel="stylesheet">
     <link href="/css/productList.css" rel="stylesheet">
+    <style>
+        .cart-icon {
+            position: relative;
+            display: inline-block;
+        }
 
+        .cart-icon img {
+            top: 30px;
+            margin-top: 5px;
+            width: 35px;
+            height: 30px;
+            vertical-align: middle;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 0;
+            left: 25px;
+            background-color: red;
+            color: #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+        }
+    </style>
+    <script>
+        // script.js
+        const cartCountElement = document.querySelector(".cart-count");
+        const addToCartButtons = document.querySelectorAll(".add-to-cart");
+
+        let cartCount = 0;
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                cartCount++;
+                cartCountElement.textContent = cartCount;
+            });
+        });
+
+    </script>
 </head>
 <body id="page-top">
 <!-- Page Wrapper -->
@@ -51,21 +91,21 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header" style="color: black; font-size: 13px;">Pages</h6>
-                    <a class="collapse-item" href="/sanPham/list">Sản phẩm</a>
-                    <a class="collapse-item" href="/hoaDonCT/list">Hóa đơn chi tiết</a>
-                    <a class="collapse-item" href="/hoaDon/list">Hóa đơn</a>
-                    <a class="collapse-item" href="/hinh-thuc-thanh-toan/hien-thi">Hình thức thanh toán</a>
-                    <a class="collapse-item" href="/khach-hang/hien-thi">Khách hàng</a>
-                    <a class="collapse-item" href="/KM/index">Khuyến mại</a>
-                    <a class="collapse-item" href="">Chi tiết sản phẩm</a>
+                                        <a class="collapse-item" href="/sanPham/list">Sản phẩm</a>
+                                        <a class="collapse-item" href="/hoaDonCT/list">Hóa đơn chi tiết</a>
+                                        <a class="collapse-item" href="/hoaDon/list">Hóa đơn</a>
+                                        <a class="collapse-item" href="/hinh-thuc-thanh-toan/hien-thi">Hình thức thanh toán</a>
+                                        <a class="collapse-item" href="/khach-hang/hien-thi">Khách hàng</a>
+                                        <a class="collapse-item" href="/KM/index">Khuyến mại</a>
+                                        <a class="collapse-item" href="">Chi tiết sản phẩm</a>
 
                     <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">Other pages:</h6>
-                    <a class="collapse-item" href="/mau-sac/hien-thi">Màu sắc</a>
-                    <a class="collapse-item" href="/size/hien-thi">Size</a>
-                    <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
-                    <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
-                    <a class="collapse-item" href="/loai-san-pham/add">Loại sản phẩm</a>
+                                        <h6 class="collapse-header">Other pages:</h6>
+                                        <a class="collapse-item" href="">Màu sắc</a>
+                                        <a class="collapse-item" href="/Size/list">Size</a>
+                                        <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
+                                        <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
+                                        <a class="collapse-item" href="/loai-san-pham/add">Loại sản phẩm</a>
 
 
                 </div>
@@ -83,12 +123,12 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">User:</h6>
-                    <a class="collapse-item" href="/Users/hien-thi">Nhân viên</a>
+                    <a class="collapse-item" href="/#">Nhân viên</a>
                     <a class="collapse-item" href="/chuc-vu/hien-thi">Chức vụ</a>
 
 
 
-                    <%--                    <a class="collapse-item" href="/authentication/enregistrer">Register</a>--%>
+                <%--                    <a class="collapse-item" href="/authentication/enregistrer">Register</a>--%>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Other User:</h6>
                     <a class="collapse-item" href="/404">Login</a>
@@ -134,9 +174,14 @@
                     </div>
 
                 </form>
-
-                <div class="hello">
-                    <a style="color: red">Hello: ${userLogged.name}</a>
+                <div class="hello" style="margin-left: 100px">
+                    <a style="color: red">Hello: ${userLog.tenUser} ( ${userLog.role} )</a>
+                </div>
+                <div class="cart-icon" style="text-align: center; margin-left: 200px">
+                    <a href="${pageContext.request.contextPath}/gioHang/gioHangView">
+                        <img src="/images/cart-fill-frame.jpg" alt="Cart">
+                        <span style="" class="cart-count">0</span>
+                    </a>
                 </div>
 
                 <!-- Topbar Navbar -->
@@ -321,115 +366,109 @@
             <!-- How to code article   -->
             <%--Todo code article--%>
 
-            <h1 style="text-align: center;">Quản lý Khách hàng</h1>
-            <br>
-            <form action="${pageContext.request.contextPath}/Users/search" method="post">
-                <input type="text" placeholder="Nhập từ khóa cần tìm kiếm" name="keyword" value="${keyword}">
-                <input type="date" name="min" value="${minDate}">
-                <input type="date" name="max" value="${maxDate}">
-                <button class="btn btn-primary">Tìm kiếm</button>
-            </form>
+            <div class="banHang">
+                <h3 style="text-align: center; color: black">Thông tin về giỏ hàng chi tiết !</h3>
+                <div class="GioHang">
 
-            <h1 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">List danh sách nhân viên</h1>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col" style="text-align: center">#</th>
+                                <th scope="col" style="text-align: center">Tên</th>
+                                <th scope="col" style="text-align: center">Số lượng</th>
+                                <th scope="col" style="text-align: center">Đơn giá</th>
+                                <th scope="col" style="text-align: center">Thành tiền</th>
+        <%--                        <th scope="col" style="text-align: center">Ngày tạo</th>--%>
+        <%--                        <th scope="col" style="text-align: center">Ngày sửa</th>--%>
+                                <th scope="col" style="text-align: center">Trạng thái</th>
+                                <th scope="col" style="text-align: center">Functions</th>
 
-            <a class="col-sm-4" href="${pageContext.request.contextPath}/Users/exportFilePDF"><button class="btn btn-primary" style="margin-bottom: 30px">Xuất file pdf</button></a>
-            <a class="col-sm-4" href="${pageContext.request.contextPath}/Users/exportFileExcel"><button class="btn btn-primary" style="margin-bottom: 30px">Xuất file excal</button></a>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="sp" items="${ghct}" varStatus="i">
+                                <tr>
+                                    <th style="padding-top: 40px" scope="row">${i.index+1}</th>
+                                    <td style="padding-top: 55px; text-align: center">${sp.mactsp.sanpham.tensp}</td>
+<%--                                    <td style="padding-top: 55px; text-align: center">${sp.soLuong}</td>--%>
+<%--                                    Todo code update số lượng--%>
+                                    <td>
+                                        <form action="/gioHang/updateSoLuong/${sp.maGHCT}" method="post">
+                                            <button type="submit" name="actions" value="giam">-</button>
+                                            <input aria-label="soLuong" class="input-qty" max="${sp.mactsp.soLuong}" min="0" type="number"
+                                                   name="soLuong" value="${sp.soLuong}">
+                                            <button type="submit" name="actions" value="tang">+</button>
+                                        </form>
+                                    </td>
+                                    <td style="padding-top: 55px ;text-align: center">${sp.mactsp.giaban}</td>
+                                    <td style="padding-top: 55px; text-align: center">${sp.mactsp.giaban * sp.soLuong}</td>
+                                    <td style="padding-top: 55px; text-align: center">${sp.trangThai==0 ? "Chưa thanh toán" : "Thanh toán"}</td>
+                                    <td>
+                                        <a class="" href="${pageContext.request.contextPath}/gioHang/delete/${sp.maGHCT}"><button class="btn-primary " onclick="if (!confirm('Bạn chắc chắn có muốn xóa không ?')){return false;}else{return true}">Delete</button></a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
 
+                    <div class="ThanhToan">
+                        <h4>Tổng tiền: ${tongTien}</h4>
 
-            <br>
-            <a class="btn btn-warning" href="/Users/create">Thêm mới</a>
-            <br>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Mã</th>
-                    <th scope="col">chúc vụ</th>
-                    <th scope="col">Tên</th>
-                    <th scope="col">Ngày sinh</th>
-                    <th scope="col">Giới tính</th>
-                    <th scope="col">emai</th>
-                    <th scope="col">Số điện thoại</th>
-                    <th scope="col">Địa chỉ</th>
-                    <th scope="col">Ngày tạo</th>
-                    <th scope="col">Ngày sửa</th>
-                    <th scope="col">role</th>
-                    <th scope="col">Trạng thái</th>
-                    <th scope="col">Action</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                <c:forEach items="${data}" var="khachHang">
-                    <tr>
-                        <td>${khachHang.maNV}</td>
-                        <td>${khachHang.maCV.tenCV}</td>
-                        <td>${khachHang.tenNV}</td>
-                        <td>${khachHang.ngaySinh}</td>
-                        <td>${khachHang.gioiTinh}</td>
-                        <td>${khachHang.email}</td>
-                        <td>${khachHang.soDienThoai}</td>
-                        <td>${khachHang.diaChi}</td>
-                        <td>${khachHang.ngayTao}</td>
-                        <td>${khachHang.ngaySua}</td>
-                        <td>${khachHang.role}</td>
-                        <td>${khachHang.trangThai == 1 ? 'Còn hoạt động' : 'Không hoạt động'}</td>
-                        <td>
-                            <a class="btn btn-warning" href="/Users/edit/${khachHang.maNV}">Sửa</a>
-                            <a class="btn btn-danger" href="/Users/delete/${khachHang.maNV}">Xóa</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-
-
-            <!-- Footer -->
-            <footer style="margin-top: 50px" class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <a href="/gioHang/checkout">
+                            <button>Mua hàng</button>
+                        </a>
                     </div>
+
+                  </div>
+            </div>
+
+        <!-- Footer -->
+        <footer style="margin-top: 50px" class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2021</span>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
     </div>
+</div>
 
 
 
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
 
 
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-titl se" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/logout">Logout</a>
-                </div>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-titl se" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="/logout">Logout</a>
             </div>
         </div>
     </div>
 </div>
+    </div>
 </div>
 
-<script src="/vendor/jquery/jquery.min.js"></script>
-<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="/js/sb-admin-2.min.js"></script>
-<script src="/vendor/chart.js/Chart.min.js"></script>
-<script src="/js/demo/chart-area-demo.js"></script>
-<script src="/js/demo/chart-pie-demo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/js/sb-admin-2.min.js"></script>
+    <script src="/vendor/chart.js/Chart.min.js"></script>
+    <script src="/js/demo/chart-area-demo.js"></script>
+    <script src="/js/demo/chart-pie-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 </body>
 </html>

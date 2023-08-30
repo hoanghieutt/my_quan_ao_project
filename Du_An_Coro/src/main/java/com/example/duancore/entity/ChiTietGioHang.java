@@ -16,44 +16,31 @@ import java.math.BigDecimal;
 @Setter
 
 @Entity
-@Table(name = "HoaDonChiTiet")
-public class HoaDonChiTiet {
+@Table(name = "GioHangChiTiet")
+public class ChiTietGioHang {
 
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-//    @NotBlank(message = "Mã hóa đơn chi tiết không được để trống !")
-    @Column(name = "maHDCT")
-    private String maHDCT;
+    @Column(name = "maGHCT")
+    private String maGHCT;
 
     @ManyToOne
-    @JoinColumn(name = "maHD")
-    private HoaDon maHD;
+    @JoinColumn(name = "maGH")
+    public GioHang maGH;
 
     @ManyToOne
     @JoinColumn(name = "maCTSP")
-    private ChiTietSanPham mactsp;
+    public ChiTietSanPham mactsp;
 
     @Column(name = "soLuong")
-    private int soLuong;
-
-    @Column(name = "gia")
-    private BigDecimal gia;
-
-    @Column(name = "thanhTien")
-    private BigDecimal thanhTien;
-
-    @Column(name = "tienKhachDua")
-    private BigDecimal tienKhachDua;
-
-    @Column(name = "tienTraLai")
-    private BigDecimal tienTraLai;
-
-    @Column(name = "ghiChu")
-    private String ghiChu;
+    private Integer soLuong;
 
     @Column(name = "donGia")
     private BigDecimal donGia;
+
+    @Column(name = "donGiaKhiGiam")
+    private BigDecimal donGiaKhiGiam;
 
     @Column(name = "ngayTao")
     private String ngayTao;

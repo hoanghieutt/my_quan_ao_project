@@ -1,7 +1,5 @@
-<%@ page language="java" pageEncoding="UTF-8" %>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ page pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -23,6 +21,20 @@
     <link href="/css/index.css" rel="stylesheet">
     <link href="/css/home.css" rel="stylesheet">
     <link href="/css/productList.css" rel="stylesheet">
+
+    <STYLE>
+        h2{
+            width: 100%;
+            text-align: center;
+        }
+        table{
+            border: 1px solid black;
+            width: 100%;
+        }
+        td{
+            border: 1px solid black;
+        }
+    </STYLE>
 
 </head>
 <body id="page-top">
@@ -53,7 +65,7 @@
                     <h6 class="collapse-header" style="color: black; font-size: 13px;">Pages</h6>
                     <a class="collapse-item" href="/sanPham/list">Sản phẩm</a>
                     <a class="collapse-item" href="/hoaDonCT/list">Hóa đơn chi tiết</a>
-                    <a class="collapse-item" href="/hoaDon/list">Hóa đơn</a>
+                    <a class="collapse-item" href="/category/list">Hóa đơn</a>
                     <a class="collapse-item" href="/hinh-thuc-thanh-toan/hien-thi">Hình thức thanh toán</a>
                     <a class="collapse-item" href="/khach-hang/hien-thi">Khách hàng</a>
                     <a class="collapse-item" href="/KM/index">Khuyến mại</a>
@@ -61,8 +73,8 @@
 
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Other pages:</h6>
-                    <a class="collapse-item" href="/mau-sac/hien-thi">Màu sắc</a>
-                    <a class="collapse-item" href="/size/hien-thi">Size</a>
+                    <a class="collapse-item" href="">Màu sắc</a>
+                    <a class="collapse-item" href="">Size</a>
                     <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
                     <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
                     <a class="collapse-item" href="/loai-san-pham/add">Loại sản phẩm</a>
@@ -83,7 +95,7 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">User:</h6>
-                    <a class="collapse-item" href="/Users/hien-thi">Nhân viên</a>
+                    <a class="collapse-item" href="/login">Nhân viên</a>
                     <a class="collapse-item" href="/chuc-vu/hien-thi">Chức vụ</a>
 
 
@@ -321,70 +333,39 @@
             <!-- How to code article   -->
             <%--Todo code article--%>
 
-            <h1 style="text-align: center;">Quản lý Khách hàng</h1>
+            <h2 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">KHUYẾN MÃI DỪNG HOẠT ĐỘNG</h2>
+            <a href="/KM/return" class="btn btn-primary" style="margin-left: 40px">Khuyến mãi còn hoạt động</a> <br>
             <br>
-            <form action="${pageContext.request.contextPath}/Users/search" method="post">
-                <input type="text" placeholder="Nhập từ khóa cần tìm kiếm" name="keyword" value="${keyword}">
-                <input type="date" name="min" value="${minDate}">
-                <input type="date" name="max" value="${maxDate}">
-                <button class="btn btn-primary">Tìm kiếm</button>
-            </form>
-
-            <h1 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">List danh sách nhân viên</h1>
-
-            <a class="col-sm-4" href="${pageContext.request.contextPath}/Users/exportFilePDF"><button class="btn btn-primary" style="margin-bottom: 30px">Xuất file pdf</button></a>
-            <a class="col-sm-4" href="${pageContext.request.contextPath}/Users/exportFileExcel"><button class="btn btn-primary" style="margin-bottom: 30px">Xuất file excal</button></a>
-
-
-            <br>
-            <a class="btn btn-warning" href="/Users/create">Thêm mới</a>
-            <br>
-            <table class="table">
-                <thead>
+            <table class="col-md-12">
                 <tr>
-                    <th scope="col">Mã</th>
-                    <th scope="col">chúc vụ</th>
-                    <th scope="col">Tên</th>
-                    <th scope="col">Ngày sinh</th>
-                    <th scope="col">Giới tính</th>
-                    <th scope="col">emai</th>
-                    <th scope="col">Số điện thoại</th>
-                    <th scope="col">Địa chỉ</th>
-                    <th scope="col">Ngày tạo</th>
-                    <th scope="col">Ngày sửa</th>
-                    <th scope="col">role</th>
-                    <th scope="col">Trạng thái</th>
-                    <th scope="col">Action</th>
+                    <th>ID</th>
+                    <th>Tên</th>
+                    <th>Ngày bắt đầu</th>
+                    <th>Ngày kết thúc</th>
+                    <th>Giá trị</th>
+                    <th>Ngày tạo</th>
+                    <th>Ngày sửa lần cuối bởi người dùng</th>
+                    <th>Chức năng khác</th>
                 </tr>
-                </thead>
-
-                <tbody>
-                <c:forEach items="${data}" var="khachHang">
+                <c:forEach items="${kmX}" var="k">
                     <tr>
-                        <td>${khachHang.maNV}</td>
-                        <td>${khachHang.maCV.tenCV}</td>
-                        <td>${khachHang.tenNV}</td>
-                        <td>${khachHang.ngaySinh}</td>
-                        <td>${khachHang.gioiTinh}</td>
-                        <td>${khachHang.email}</td>
-                        <td>${khachHang.soDienThoai}</td>
-                        <td>${khachHang.diaChi}</td>
-                        <td>${khachHang.ngayTao}</td>
-                        <td>${khachHang.ngaySua}</td>
-                        <td>${khachHang.role}</td>
-                        <td>${khachHang.trangThai == 1 ? 'Còn hoạt động' : 'Không hoạt động'}</td>
-                        <td>
-                            <a class="btn btn-warning" href="/Users/edit/${khachHang.maNV}">Sửa</a>
-                            <a class="btn btn-danger" href="/Users/delete/${khachHang.maNV}">Xóa</a>
-                        </td>
+                        <td>${k.makm}</td>
+                        <td>${k.tenkm}</td>
+                        <td>${k.ngaybatdau}</td>
+                        <td>${k.ngayketthuc}</td>
+                        <td>${k.giamgia}</td>
+                        <td>${k.ngaytao}</td>
+                        <td>${k.ngaysua}</td>
+                        <td><a class="btn btn-primary" href="/KM/suaKM/${k.makm}">RESTORE</a></td>
                     </tr>
                 </c:forEach>
-                </tbody>
             </table>
 
 
+
+
             <!-- Footer -->
-            <footer style="margin-top: 50px" class="sticky-footer bg-white">
+            <footer style="margin-top: 300px" class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website 2021</span>

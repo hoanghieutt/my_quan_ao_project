@@ -1,14 +1,14 @@
-<%@ page language="java" pageEncoding="UTF-8" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF8"
+         pageEncoding="UTF8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="frm"%>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%--    <link rel="icon" href="img/background_title.jpg" type="image/x-icon">--%>
+<%--    <link rel="icon" href="img/background_title.jpg" type="image/x-icon">--%>
     <title>Teams Store</title>
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,7 +23,48 @@
     <link href="/css/index.css" rel="stylesheet">
     <link href="/css/home.css" rel="stylesheet">
     <link href="/css/productList.css" rel="stylesheet">
+    <style>
+        .cart-icon {
+            position: relative;
+            display: inline-block;
+        }
 
+        .cart-icon img {
+            top: 30px;
+            margin-top: 5px;
+            width: 35px;
+            height: 30px;
+            vertical-align: middle;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 0;
+            left: 25px;
+            background-color: red;
+            color: #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+        }
+    </style>
+    <script>
+        // script.js
+        const cartCountElement = document.querySelector(".cart-count");
+        const addToCartButtons = document.querySelectorAll(".add-to-cart");
+
+        let cartCount = 0;
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                cartCount++;
+                cartCountElement.textContent = cartCount;
+            });
+        });
+
+    </script>
 </head>
 <body id="page-top">
 <!-- Page Wrapper -->
@@ -51,21 +92,21 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header" style="color: black; font-size: 13px;">Pages</h6>
-                    <a class="collapse-item" href="/sanPham/list">Sản phẩm</a>
-                    <a class="collapse-item" href="/hoaDonCT/list">Hóa đơn chi tiết</a>
-                    <a class="collapse-item" href="/hoaDon/list">Hóa đơn</a>
-                    <a class="collapse-item" href="/hinh-thuc-thanh-toan/hien-thi">Hình thức thanh toán</a>
-                    <a class="collapse-item" href="/khach-hang/hien-thi">Khách hàng</a>
-                    <a class="collapse-item" href="/KM/index">Khuyến mại</a>
-                    <a class="collapse-item" href="">Chi tiết sản phẩm</a>
+                                        <a class="collapse-item" href="/sanPham/list">Sản phẩm</a>
+                                        <a class="collapse-item" href="/hoaDonCT/list">Hóa đơn chi tiết</a>
+                                        <a class="collapse-item" href="/hoaDon/list">Hóa đơn</a>
+                                        <a class="collapse-item" href="/hinh-thuc-thanh-toan/hien-thi">Hình thức thanh toán</a>
+                                        <a class="collapse-item" href="/khach-hang/hien-thi">Khách hàng</a>
+                                        <a class="collapse-item" href="/KM/index">Khuyến mại</a>
+                                        <a class="collapse-item" href="">Chi tiết sản phẩm</a>
 
                     <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">Other pages:</h6>
-                    <a class="collapse-item" href="/mau-sac/hien-thi">Màu sắc</a>
-                    <a class="collapse-item" href="/size/hien-thi">Size</a>
-                    <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
-                    <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
-                    <a class="collapse-item" href="/loai-san-pham/add">Loại sản phẩm</a>
+                                        <h6 class="collapse-header">Other pages:</h6>
+                                        <a class="collapse-item" href="">Màu sắc</a>
+                                        <a class="collapse-item" href="/Size/list">Size</a>
+                                        <a class="collapse-item" href="/mon_the_thao/index">Môn thể thao</a>
+                                        <a class="collapse-item" href="/chat-lieu/hien-thi">Chất liệu</a>
+                                        <a class="collapse-item" href="/loai-san-pham/add">Loại sản phẩm</a>
 
 
                 </div>
@@ -83,12 +124,12 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">User:</h6>
-                    <a class="collapse-item" href="/Users/hien-thi">Nhân viên</a>
+                    <a class="collapse-item" href="/#">Nhân viên</a>
                     <a class="collapse-item" href="/chuc-vu/hien-thi">Chức vụ</a>
 
 
 
-                    <%--                    <a class="collapse-item" href="/authentication/enregistrer">Register</a>--%>
+                <%--                    <a class="collapse-item" href="/authentication/enregistrer">Register</a>--%>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Other User:</h6>
                     <a class="collapse-item" href="/404">Login</a>
@@ -135,8 +176,14 @@
 
                 </form>
 
-                <div class="hello">
-                    <a style="color: red">Hello: ${userLogged.name}</a>
+                <div class="hello" style="margin-left: 100px">
+                    <a style="color: red">Hello: ${userLog.tenUser} ( ${userLog.role} )</a>
+                </div>
+                <div class="cart-icon" style="text-align: center; margin-left: 200px">
+                    <a href="${pageContext.request.contextPath}/gioHang/gioHangView">
+                        <img src="/images/cart-fill-frame.jpg" alt="Cart">
+                        <span style="" class="cart-count">0</span>
+                    </a>
                 </div>
 
                 <!-- Topbar Navbar -->
@@ -321,115 +368,135 @@
             <!-- How to code article   -->
             <%--Todo code article--%>
 
-            <h1 style="text-align: center;">Quản lý Khách hàng</h1>
-            <br>
-            <form action="${pageContext.request.contextPath}/Users/search" method="post">
-                <input type="text" placeholder="Nhập từ khóa cần tìm kiếm" name="keyword" value="${keyword}">
-                <input type="date" name="min" value="${minDate}">
-                <input type="date" name="max" value="${maxDate}">
-                <button class="btn btn-primary">Tìm kiếm</button>
-            </form>
 
-            <h1 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">List danh sách nhân viên</h1>
+            <div class="taoSanPham">
 
-            <a class="col-sm-4" href="${pageContext.request.contextPath}/Users/exportFilePDF"><button class="btn btn-primary" style="margin-bottom: 30px">Xuất file pdf</button></a>
-            <a class="col-sm-4" href="${pageContext.request.contextPath}/Users/exportFileExcel"><button class="btn btn-primary" style="margin-bottom: 30px">Xuất file excal</button></a>
+                <h1 style="text-align: center">Thông tin sản phẩm</h1>
 
+                        <div class="row" style="margin-left: 150px; margin-top: 40px">
+                                <div class="col-6" style="border: 1px solid gray; height: 500px">
 
-            <br>
-            <a class="btn btn-warning" href="/Users/create">Thêm mới</a>
-            <br>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Mã</th>
-                    <th scope="col">chúc vụ</th>
-                    <th scope="col">Tên</th>
-                    <th scope="col">Ngày sinh</th>
-                    <th scope="col">Giới tính</th>
-                    <th scope="col">emai</th>
-                    <th scope="col">Số điện thoại</th>
-                    <th scope="col">Địa chỉ</th>
-                    <th scope="col">Ngày tạo</th>
-                    <th scope="col">Ngày sửa</th>
-                    <th scope="col">role</th>
-                    <th scope="col">Trạng thái</th>
-                    <th scope="col">Action</th>
-                </tr>
-                </thead>
+                                    <h4 style="color: black; text-align: center; margin-top: 10px; ">Hình ảnh sản phẩm</h4>
+                                    <img width="250px" style="margin-top: 20px; margin-left: 140px" src="${pageContext.request.contextPath}/upload/${sanpham.image}">
 
-                <tbody>
-                <c:forEach items="${data}" var="khachHang">
-                    <tr>
-                        <td>${khachHang.maNV}</td>
-                        <td>${khachHang.maCV.tenCV}</td>
-                        <td>${khachHang.tenNV}</td>
-                        <td>${khachHang.ngaySinh}</td>
-                        <td>${khachHang.gioiTinh}</td>
-                        <td>${khachHang.email}</td>
-                        <td>${khachHang.soDienThoai}</td>
-                        <td>${khachHang.diaChi}</td>
-                        <td>${khachHang.ngayTao}</td>
-                        <td>${khachHang.ngaySua}</td>
-                        <td>${khachHang.role}</td>
-                        <td>${khachHang.trangThai == 1 ? 'Còn hoạt động' : 'Không hoạt động'}</td>
-                        <td>
-                            <a class="btn btn-warning" href="/Users/edit/${khachHang.maNV}">Sửa</a>
-                            <a class="btn btn-danger" href="/Users/delete/${khachHang.maNV}">Xóa</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                                    <frm:form action="/gioHang/addToCart/${sanpham.mactsp}" method="POST">
+                                        <!-- Trường input cho mã khách hàng -->
+                                        <div class="textTitle"><frm:errors cssStyle="margin-left: 40px; color: red" class="errors" path="maGH" /></div>
+                                        <!-- Trường input cho số lượng sản phẩm -->
+                                        <%--  <input type="number" name="soLuong" min="1" max="${sp.soLuong}" value="1">--%>
+<%--                                            <label style="margin-top: 30px; margin-left: 150px"><h6 style="color: black">Nhập số lượng bạn muốn mua!</h6></label>--%>
+                                            <p style="margin-top: 40px; margin-left: 60px">Số lượng mua
+                                                <input type="number" name="soLuong" id="soLuong" min="1" max="${sanpham.soLuong}" value="1" placeholder="Nhập số lượng mua" style=" width: 100px; margin-right: 20px; margin-left: 20px">
+                                                ${sanPham.soLuong} sản phẩm có sẵn.
+                                            </p>
+                                                <br>
+
+                                        <button style="margin-left: 200px" type="submit" onclick="if (!confirm('Bạn chắc chắn muốn thêm vào giỏ hàng không ?')){return false;}else{return true;}" class="btn btn-primary add-to-cart">Add to cart</button>
+                                    </frm:form>
 
 
-            <!-- Footer -->
-            <footer style="margin-top: 50px" class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
+                                </div>
+                                <div class="col-6" style="border: 1px solid gray">
+
+                                    <h4 style="color: black; text-align: center; margin-top: 10px; ">Thông tin chi tiết sản phẩm</h4>
+
+                                    <div class="title" style="margin-top: 30px">
+                                         <h5 style="color: black">Tên sản phẩm: <span style="margin-left: 40px">${sanpham.sanpham.tensp}</span></h5>
+                                         <h5 style="color: black">Giá bán: <span style="margin-left: 100px; color: red">${sanpham.giaban} VNĐ</span></h5>
+                                         <h5 style="color: black">Màu sản phẩm: <span style="margin-left: 40px">${sanpham.mausac.ten}</span></h5>
+                                         <h5 style="color: black">Chất liệu sản phẩm: <span style="margin-left: 40px">${sanpham.chatlieu.ten}</span></h5>
+                                         <h5 style="color: black">Môn thể thao: <span style="margin-left: 40px">${sanpham.monthethao.ten}</span></h5>
+                                         <h5 style="color: black">Size sản phẩm: <span style="margin-left: 40px">${sanpham.size.size}</span></h5>
+                                         <h5 style="color: black">Loại sản phẩm: <span style="margin-left: 40px">${sanpham.loaisanpham.ten}</span></h5>
+                                         <h5 style="color: black">Số lượng hiện có: <span style="margin-left: 40px; color: red">${sanpham.soLuong} Chiếc</span></h5>
+<%--                                         <h5 style="color: black">Số lượng bạn muốn mua: <span style="margin-left: 40px; color: red">${sanpham.soluong}</span></h5>--%>
+<%--                                         <input type="number" name="soLuong" min="1" max="${sanpham.soLuong}" value="1">--%>
+
+<%--                                        <frm:form action="/gioHang/addToCart/${sanpham.mactsp}" method="POST">--%>
+<%--                                            <!-- Trường input cho mã khách hàng -->--%>
+<%--&lt;%&ndash;                                            <div class="textTitle"><frm:errors cssStyle="margin-left: 40px; color: red" class="errors" path="maGH" /></div>&ndash;%&gt;--%>
+<%--                                            <!-- Trường input cho số lượng sản phẩm -->--%>
+<%--                                            <input type="number" name="soLuong" id="soLuong" min="1" value="1">--%>
+<%--&lt;%&ndash;                                            <button type="submit" onclick="if (!confirm('Bạn chắc chắn muốn thêm vào giỏ hàng không ?')){return false;}else{return true;}" class="btn btn-primary">Add to cart</button>&ndash;%&gt;--%>
+<%--                                        </frm:form>--%>
+
+                                    </div>
+                                </div>
+                        </div>
+
+
+            </div>
+
+
+
+
+        <!-- Footer -->
+        <footer style="margin-top: 50px" class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2021</span>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
     </div>
+</div>
 
 
 
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
 
 
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-titl se" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/logout">Logout</a>
-                </div>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-titl se" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="/logout">Logout</a>
             </div>
         </div>
     </div>
 </div>
+    </div>
 </div>
+   <script>
+       var isLoggedInEmployee = true;
 
-<script src="/vendor/jquery/jquery.min.js"></script>
-<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="/js/sb-admin-2.min.js"></script>
-<script src="/vendor/chart.js/Chart.min.js"></script>
-<script src="/js/demo/chart-area-demo.js"></script>
-<script src="/js/demo/chart-pie-demo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+       // Tìm nút thêm vào giỏ hàng
+       var addButton = document.getElementById('add-to-cart-button');
+
+       // Gán sự kiện nhấp chuột cho nút thêm vào giỏ hàng
+       addButton.addEventListener('click', function() {
+           if (isLoggedInEmployee) {
+               // Thực hiện các hành động cần thiết để thêm sản phẩm vào giỏ hàng cho nhân viên đã đăng nhập
+               // Ví dụ: gửi yêu cầu đến máy chủ hoặc cập nhật giỏ hàng trên giao diện người dùng
+               // ...
+
+               // Hiển thị thông báo cho người dùng
+               alert('Sản phẩm đã được thêm vào giỏ hàng cho nhân viên đã đăng nhập.');
+           } else {
+               alert('Vui lòng đăng nhập vào tài khoản nhân viên!');
+           }
+       });
+   </script>
+
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/js/sb-admin-2.min.js"></script>
+    <script src="/vendor/chart.js/Chart.min.js"></script>
+    <script src="/js/demo/chart-area-demo.js"></script>
+    <script src="/js/demo/chart-pie-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 </body>
 </html>

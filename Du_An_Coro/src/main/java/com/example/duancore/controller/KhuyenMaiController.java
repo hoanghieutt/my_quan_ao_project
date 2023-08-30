@@ -55,8 +55,6 @@ public class KhuyenMaiController {
             pageNum=soTrang/kiemTraTrang;
         }
 
-
-
         if (pageNum<0){
             pageNum=0;
         }
@@ -65,9 +63,26 @@ public class KhuyenMaiController {
         Page<KhuyenMai> listKM = repository.findByKwd("%"+kwd+"%", minVLs, maxVLs, startDs, endDs, pageable);
         model.addAttribute("kmpage", listKM);
 
+        return "vietNH/khuyen-mai/indexKM";
+    }
+
+    @RequestMapping("/KM/daxoa")
+    public String bangDaXoa(Model model){
         List<KhuyenMai> daXoa = repository.findDeleted();
         model.addAttribute("kmX", daXoa);
-        return "vietNH/khuyen-mai/indexKM";
+        return "vietNH/khuyen-mai/daxoaKM";
+    }
+
+    @RequestMapping("/KM/return")
+    public String trolai(){
+        kwd = "";
+
+        minVLs = 0.0;
+        maxVLs = 100000000000000.0;
+
+        startDs = doiVeNgay("1999-01-01");
+        endDs = doiVeNgay("9999-12-20");
+        return "redirect:/KM/index";
     }
 
     private Date doiVeNgay(String ngayketthuc) {

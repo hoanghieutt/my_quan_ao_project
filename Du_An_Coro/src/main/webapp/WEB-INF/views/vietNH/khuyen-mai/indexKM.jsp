@@ -367,6 +367,7 @@
                     <th>Giá trị</th>
                     <th>Ngày tạo</th>
                     <th>Ngày sửa</th>
+                    <th>Chức năng khác</th>
                 </tr>
                 <c:forEach items="${kmpage.content}" var="k">
                     <tr>
@@ -377,8 +378,9 @@
                         <td>${k.giamgia}</td>
                         <td>${k.ngaytao}</td>
                         <td>${k.ngaysua}</td>
-                        <td><a class="btn btn-primary" href="/KM/suaKM/${k.makm}">UPDATE</a>
-                        <a class="btn btn-danger" href="/KM/xoaKM/${k.makm}">DELETE</a>
+                        <td>
+                            <a style="width: 49%" class="btn btn-primary" href="/KM/suaKM/${k.makm}">UPDATE</a>
+                            <a style="width: 49%" class="btn btn-danger" href="/KM/xoaKM/${k.makm}">DELETE</a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -388,35 +390,10 @@
             <a href="?pageNum=0" class="btn btn-primary" style="margin-left: 40px">First</a>
             <a href="?pageNum=${kmpage.number-1}" class="btn btn-primary" style="margin-left: 40px">Pevious</a>
             <a href="?pageNum=${kmpage.number+1}" class="btn btn-primary" style="margin-left: 40px">Next</a>
-            <a href="?pageNum=${kmpage.totalPages-1}" class="btn btn-primary" style="margin-left: 40px">Last</a>
+            <a href="?pageNum=${kmpage.totalPages-1}" class="btn btn-primary" style="margin-left: 40px">Last</a> <br>
+            <br>
 
-            <h2 style="text-align: center; color: black; margin-top: 50px; margin-bottom: 50px">KHUYẾN MÃI DỪNG HOẠT ĐỘNG</h2>
-            <table class="col-md-12">
-                <tr>
-                    <th>ID</th>
-                    <th>Tên</th>
-                    <th>Ngày bắt đầu</th>
-                    <th>Ngày kết thúc</th>
-                    <th>Giá trị</th>
-                    <th>Ngày tạo</th>
-                    <th>Ngày sửa lần cuối bởi người dùng</th>
-                </tr>
-                <c:forEach items="${kmX}" var="k">
-                    <tr>
-                        <td>${k.makm}</td>
-                        <td>${k.tenkm}</td>
-                        <td>${k.ngaybatdau}</td>
-                        <td>${k.ngayketthuc}</td>
-                        <td>${k.giamgia}</td>
-                        <td>${k.ngaytao}</td>
-                        <td>${k.ngaysua}</td>
-                        <td><a class="btn btn-primary" href="/KM/suaKM/${k.makm}">RESTORE</a></td>
-                    </tr>
-                </c:forEach>
-            </table>
-
-
-
+            <a href="/KM/daxoa" class="btn btn-warning" style="margin-left: 40px">Khuyến mãi dừng hoạt động</a>
 
             <!-- Footer -->
             <footer style="margin-top: 300px" class="sticky-footer bg-white">
