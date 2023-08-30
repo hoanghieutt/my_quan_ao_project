@@ -2,7 +2,6 @@ package com.example.duancore.service;
 
 
 import com.example.duancore.entity.LoaiSanPham;
-import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -12,5 +11,4 @@ public interface LoaiSanPhamService {
     void  addLoaiSanPham(LoaiSanPham loaiSanPham);
     void deleteLoaiSanPham(String id);
     void  updateLoaiSanPham(LoaiSanPham loaiSanPham);
-    Page<LoaiSanPham> findPage(Integer pageNo, Integer pageSize);
 }
