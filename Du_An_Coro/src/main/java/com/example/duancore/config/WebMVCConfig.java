@@ -1,11 +1,15 @@
 package com.example.duancore.config;
 
 import com.example.duancore.entity.*;
+import com.example.duancore.filter.LogGinInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
+import com.example.duancore.filter.LogGinInterceptor;
+import com.example.duancore.filter.adminInterceptor;
 
 @Configuration
 public class WebMVCConfig implements WebMvcConfigurer {
@@ -46,8 +50,8 @@ public class WebMVCConfig implements WebMvcConfigurer {
     }
 
     @Bean("user")
-    public Users getnhanvien(){
-        Users us = new Users();
+    public User getnhanvien(){
+        User us = new User();
         return us;
     }
 
@@ -63,7 +67,7 @@ public class WebMVCConfig implements WebMvcConfigurer {
         return sp;
     }
 
- @Autowired
+    @Autowired
     LogGinInterceptor loginInterceptor;
 
     @Autowired
