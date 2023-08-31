@@ -13,6 +13,10 @@
 <body>
 
 <h2>Chất Liệu</h2>
+<form action="/loai-san-pham/sreach" method="post">
+    <input type="text" name="ten">
+    <button>Tim</button>
+</form>
 <form:form action="/loai-san-pham/add" method="post" modelAttribute="lsp">
 
     Ma: <form:input path="maLSP"/>

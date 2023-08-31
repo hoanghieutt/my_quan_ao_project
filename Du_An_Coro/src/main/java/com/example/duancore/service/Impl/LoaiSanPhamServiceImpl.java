@@ -1,6 +1,7 @@
 package com.example.duancore.service.Impl;
 
 
+import com.example.duancore.entity.ChatLieu;
 import com.example.duancore.entity.LoaiSanPham;
 import com.example.duancore.repository.LoaiSanPhamRepository;
 import com.example.duancore.service.LoaiSanPhamService;
@@ -36,5 +37,9 @@ public class LoaiSanPhamServiceImpl implements LoaiSanPhamService {
     @Override
     public void updateLoaiSanPham(LoaiSanPham loaiSanPham) {
 
+    }
+    @Override
+    public List<LoaiSanPham> sreach(String ten, String trangThai) {
+        return loaiSanPhamRepository.findByTenAndTrangThai(ten,Integer.valueOf(trangThai));
     }
 }
